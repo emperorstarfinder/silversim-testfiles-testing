@@ -1,0 +1,12 @@
+channel=8
+announce=0
+
+# The top line is the channel commands and networked commands are received on by the Orb.
+# The second line is the channel the HS Orb talks to you on. 0 = normal chat.
+
+# By default the 2 lines should be:
+# channel=8
+# announce=0
+# without any hashes (#) or spaces at the beginning
+
+#PUBLIC DOMAIN

@@ -1,0 +1,5 @@
+This folder has to contain unmodified original scripts.
+
+No modifications for adjustments towards any kind of script engine allowed.
+
+These scripts are all from other sources and left as they came for compiler testing.

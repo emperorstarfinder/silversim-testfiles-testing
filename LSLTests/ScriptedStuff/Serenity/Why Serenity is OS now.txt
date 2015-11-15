@@ -1,0 +1,21 @@
+To all residents in Second Life,
+
+After long consideration, time, and meditation, I have decided to free the source of Serenity Script. The breedable pet system made by CritterBreeds.
+
+We have been thinking of doing this for quite some time now and have finally decided to do so.
+
+The reason for this is that as time goes on more and more people have amazing ideas for the next generation of breedable pets. They also have no where to start as a base. This leaves people having to search for prewritten code or write their own. For those who do not know how to script very well the other route is very expensive. Some people have spent tens of thousands of lindens for code.
+
+We have decided that in the spirit that Serenity was created, the remembrance of the daughter we lost, we are releasing Serenity free and open source.
+
+We wish only that you let your creative minds flow and create amazing products. or at least learn something from the code you receive.
+
+
+Best of luck
+geopbyte
+
+
+
+
+
+if you need help i can attempt to provide help from time to time. no promises

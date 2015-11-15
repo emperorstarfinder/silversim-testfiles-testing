@@ -1,0 +1,65 @@
+Welcome to Serenity v1.0
+
+Serenity has been complete rewritten from the ground up.
+
+Addressing multiple bug reports this version of Serenity is more stable than any previous release.
+
+
+There are 5 different parts to the new Serenity System.
+
+The Generator
+    this script is yours to keep. NEVER give this to anyone.
+This script is what you will use to create your original starter pets.
+
+
+The Food
+    this script is what you will use to feed your pets. this is the script that makes the majority of your income.
+
+The Updater
+    this script is what you will use to update pets to newer versions of your edits.
+
+The Potion
+    this script is a multiscript that will allow you to trigger different effects on your pets.
+
+The Pet
+    This is actually 3 scripts.
+    
+    The "main" script.
+        this script controls 99% of the functionality of the pet
+    The "menu" script.
+        this script controls the dialog menu system
+    The "scale" script.
+        this script controls the scaling of the prims
+        
+
+This system does require you to use at least 2 prims linked together. This is because of the data storage system that is used relies on the prim link number 2 to store data.
+
+This system is best used if you have your prims facing east at zero rotation. to check this create a new box. right click edit that box. look for the red edit arrow. the direction of that arrow is east. and the box is set to zero rotation already.
+
+
+set up of the system.
+
+Create your pet.
+Place menu,scale,and main inside your primset.
+take your pet.
+
+Create your generator.
+Place your pet and the generator script inside.
+
+Create your Food Item.
+Place the food script inside.
+
+Create your updater.
+Place the updater script inside.
+Place a copy of your pet inside.
+Place menu,main,and scale inside.
+
+Create your potions.
+Place the potion script inside.
+
+Touch the generator and generate a male and a female.
+Take the male and female to inventory.
+
+Create a box.
+Place a copy of the male and the female you generated inside the box.
+Sell the box.

@@ -1,0 +1,202 @@
+List of Link Message numbers and their meanings!!
+obs = obsoleted
+
+Last updated 2013. Might be out of date. Trust the scripts over this if in doubt.
+
+[MENUS]
+0001 Sets channel number its menus will talk on,"integer"
+0002 Sets channel number replies will be sent to, "integer"
+0100 Print Status
+0111 Show Main Menu, [key]
+0112 Menu Button Pressed, "button name",[key] 
+0777  Request for values to be stored in Backup script. (causes 9XXX)
+0778 Values from backup Script returned and set. 
+0820 Call Twitter Menu
+
+[SECURITY CONTROL]
+1100 Print Status
+1111 Show a menu with stats
+1205 send list of ops to 21sensor "op|names"
+1500 Set Group Operated, "0" or "1" 
+1666 Disable Access
+1667 Enable Access
+1710 (not used, same script) Request (Security) to Send to (List), "llList2CSV(Operators List)"
+1711 (not used, same script) Request (Security) to Send to (List), "llList2CSV(Relays List)"
+1720 Request (Scanner) to Send to (List), "llList2CSV(Targets List)"
+1721 Request (Scanner) to Send to (List), "llList2CSV(Authorised List)"
+1776 Collect values for web page, reuses 1777 code.
+1777  Request for values to be stored in Backup script. (causes 9XXX)
+1778 Values from backup Script returned and set. 
+1779 Updates completed (disk-encrypted->Security-7020->Updates-decrypt-1779->Security)
+1800 List Operators
+1801 Add Operator "name"
+1803 Delete Operator "name"
+1899 Clear Operator List, "1" means dont print notification (See 8399)
+1900 Print Relays
+1901 Add Relay [key]
+1903 Delete Relay [key]
+1998 Send all ops to network
+1999 Clear Relays List, "1" means dont print notification
+
+[SCANNER]
+2000 Scanner Off, "1" means dont update float text
+2001 Scan Only
+2002 Target Mode
+2003 Alarm Mode
+2010 Enable intruder attack warning
+2011 Disable intruder attack warning and attack immediately
+2012 Set intuder warning message "message",[key to show example to operator]
+2013 display warning dialog sample
+2014 add guest warning
+2015 show guest warning
+2016 toggle on/off script_time_monitor for operators fine tuning /8slt script time settings
+2020 turn on Fake Op Display Name attacking.
+2100 Print Status
+2104 no_op_sleep status: "0" or "1" or "2"
+2106 visit_im "0" or "1", Visitor causes IM? sends ml(81310,"0" or "1",activater_uuid) when turning on Orb.
+2111 Show a menu with stats
+2200 Group Safe Flag from Attack Script: "0" or "1"
+2201 Attack Type from Attack Script: "0" Push, "1" not used, "2" Target mode, "3" Alarm Mode.
+2202 (Removed) Relay Count from Security Script: "number"
+2203 Set the group key [key] used for GroupOperated and GroupSafe using the clicker's current group
+//removed 2300 Strike "name" (one off attack)
+2301 Security sends "nn xx us c" where nn is avatar max script memory, and xx is max script count, and us = microseconds, c = count
+2302 Security sends "us c" where us = warn microseconds, c = warn count
+2310 Visible,"0" or "1"
+2320 Set Warning message "message"
+obs 2330 set landban, "0" or "1"
+2340 trigger warn_then_attack("name", [key], <pos>) in scanner, "name|<pos>",[key]
+2350 object_interface on/off "0 or 1"
+2360 Send "Web URL Changed" IMmessage  to op? "0|1"
+2400 Request all names and settings from 20Scanner to 21Sensor
+2450 Recieve names of people seen by 21Sensor initiated by LM 21450
+test2451 Recieving logs of from 81VisitorLog initiated by LM 81451
+test2452 Completed Recieving logs of from 81VisitorLog initiated by LM 81451
+2500 Scan Range, "integer value"
+2501 Armed Range, "integer value"
+2502 Scan Rate, "<float>"
+2503 Weapon tells us if Foreign Land Safe is "0" or "1"
+2504 Weapon tells us if Other Land Safe is "0" or "1"
+obs 2600 request parameters "2,data,.." sent to ml 4010 for emailing
+2650 up value attack limit sent from security, "number"
+2651 down value attack limit sent from security, "number"
+2700 Show Near-by List
+2776 Collect values for web page, reuses 2777 code.
+2777  Request for values to be stored in Backup script. (causes 9XXX)
+2778 Values from backup Script returned and set. 
+2800 Show Authorised Lists *
+2801 Add "name" to Authorised List *
+2803 Delete "name" from Authorised List *
+2899 Clear Target and Authorised Lists, "1" means dont print notification (See 8199)
+2900 Show Target Lists
+2901 Add "name" Target List *
+2903 Delete "name" from Target List *
+2951 Add "ts=name,name,name,..." Target List * (used for faster backup and restore)
+2999 Clear Target and Authorised Lists, "1" means dont print notification (See 8299)
+2998 send all names of targets and auths to networked HS systems
+
+[WEAPON]
+3000 Prefered Attack "Intruder Name,<pos,pos,pos>", [key]
+3002 Teleport Home "Intruder Name,<pos,pos,pos>", [key] due to fake display name
+3003 Teleport Home "Intruder Name,<pos,pos,pos>", [key] due to excessive scripts
+3010 Activated by "name", (activator's key)
+3100 Print Status
+3111 Show a menu with stats
+3200 Key holds the key of the person we should IM when its group owned (ignored when not group owned).
+3500 Set Group Safe, "0" or "1"
+3501 Set Push Percent "<float>"
+3502 Set Foreign Land Safe, "0" or "1"
+3503 Set Instant Message owner, "0" or "1"
+3504 Set Notify Intruder after attack, "0" or "1" (See 3506 too)
+3505 Set Attack Type, "0" Push, "1" [reserved], "2" Teleport Home, "3" Land Eject
+3506 Set Attack message "message", [key to show example to operator].
+3507 display attack dialog sample
+3508 Set Other Land Safe, "0" or "1"
+3509 Set/Display the Fake Op DisplayName message text dialog box
+obs 3600 request parameters "3,data,.." sent to ml 4010 for emailing
+3777  Request for values to be stored in Backup script. (causes 9XXX)
+3778 Values from backup Script returned and set. 
+3800 Land Ban on/off, "0" or "1". Ban people for X mins if on.
+3801 Land Ban time set. 0 = permanent, any other number is hours (max 144).
+
+[SETTINGS]
+4000 Reset to defaults from notecard
+obs 4010 recieved settings parameters from all other scripts "script,data,data,.."
+4100 Print Status
+4200 get message from internal prim and say it with my UUID
+
+[LISTS]
+obs5000 Show list with buttons to delete a entry,"<list title>" + llList2CSV(list)
+5000 ends a list that has been sent with 59XX and shows the list on the menu, [key to send menu too]
+5001 Set Channel number for menus
+5003 Security got (Delete n) button press, "n" 
+5004 Pervious Page
+5005 Next Page
+5010 Show "nearby" list with buttons to act on a entry,"<list title>" + llList2CSV(list)
+5011 Show options menu for name when selected in Nearby List
+5015 Security returns to this the button selection made in List Near/Change X/ menu, "button pushed" 
+5100 Print Status
+5777  Request for values to be stored in Backup script. (causes 9XXX)
+5778 Values from backup Script returned and set. 
+5900 Clear the list and get the new list's title, "<list title>"
+5901 stream a list of names into the List script, "name,name, ..." -- end this stream with a 5000
+
+[UUIDEmail]
+6000 email to server
+6001 email to server
+6002 email to server
+6100 status
+
+obs [Settings Email]
+obs 6401 Set email address
+obs 6402 Set subject
+obs 6403 add to the email body
+obs 6499 send settings email
+
+[UPGRADE]
+7010 update query, "<upgrade_server>",id of customer
+7011 info? query, "<upgrade_server>",id of customer
+7012 =upgrade= confirm proceding ,id of customer
+7013 (DiskReady) do the update from the placed update disk, id of customer
+7020 Security Script passes encrypted messages from update disk,"encrypted message"
+7021 Backup Script tells Update Script that backup is done and ready for restore, "restore llMessageLinked number"
+7100 status
+
+[LOG]
+8XXX see script
+
+[BACKUP]
+9000 init storage list, string=return llMEssageLinked number
+9001 Apend 1 value for storage, string
+9004 Send values back, string=return llMEssageLinked number (compare with number stored with 9001) and set PIN to 0
+9100 Print status
+
+[UUIDs stated] request from DisQ Hern
+10000 <key> of an avie detected by scanner
+
+[INNER SECOND PRIM]
+20000 to rename the inner prim for data extraction by remote displays
+
+[SENSOR from v9.100]
+21000 recieve new variable values
+21007 List targets
+21008 List visitors
+21100 backup names for update
+21120 get string of operator names. Also log now grabs for Display Name = Op name protection
+21450 get request for all avatars near from 2Scanner
+21667 delete all banned
+21668 delete all visitors
+21700 list near - sends names to List script.
+21914 "-1|name.of.avatar.to.teleport.home",id of op
+21915 "floathours|name.of.avatar.to.land.ban",id of op
+21916 delete name from visitor
+21917 delete name from banned
+21918 add name to visitor
+21919 add name to targets
+21928 restored visitor string from multiple 1kb length strings
+21929 restored target string from multiple 1kb length strings
+21998 send to network all targets and authorised
+
+[All]
+obs 99666 Send delete yourself to each script *except* Security and UUIDEmail1
+

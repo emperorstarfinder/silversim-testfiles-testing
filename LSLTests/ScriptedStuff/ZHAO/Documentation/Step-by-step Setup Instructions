@@ -1,0 +1,64 @@
+This is based on something Robert Goodliffe wrote on the SL Exchange website. Borrowed without permission - I couldn't contact him to get his permission, so I hope he doesn't mind me quoting him.
+
+======================
+How to add animations to the ZHAO
+======================
+
+This will only work if the ZHAO you have is modifiable. If you bought a ZHAO from someone that's pre-packaged with animations and they removed modify permissions, please contact them about that, I can't help you with that. You could try picking up a free empty ZHAO from my store and re-building it from scratch, but if you're reading these instructions, you're probably not very familiar with setting one up, so I would not recommend trying this on your own. So, assuming you have modify permissions on your ZHAO...
+
+1. If you are wearing the ZHAO, detach it.
+
+2. Find the ZHAO in your inventory. If you have multiple ZHAOs, find the right one. Yes, people have edited one ZHAO, worn a different ZHAO, then complained that it wasn't working.
+
+3. Make sure you're on land where you can rez objects, and the auto return is several minutes long. If you're not sure, go to a sandbox.
+
+3. Press Ctrl-3 to bring up the edit window.
+
+4. Drag the ZHAO onto the ground. It should be highlighted for edit. It's mostly transparent, so don't click anywhere else on the ground, or you might lose your ZHAO. Yes, people have done that.
+
+5. On the Edit window, click the 'More' button, then the 'Content' tab. You are now viewing the content's of the ZHAO's inventory.
+
+6. Drag the animation(s) you want to add, from your own inventory, into the ZHAO's inventory. Make sure the animations show up in the ZHAO's inventory.
+
+7. If you bought the ZHAO already pre-loaded with animations, it should have a notecard in it that's already set up. I can't tell you what this notecard will be called, but it should be easy to find. Find this notecard you want to edit, and drag it from the ZHAO's inventory into your inventory.
+
+8. If you bought an empty ZHAO from my store, you should have notecards called 'Empty Notecard' and 'Sample Notecard'. Spend a few minutes looking at both notecards, so you get some idea of what a properly set-up notecard should look like. Copy the Empty Notecard into your inventory.
+
+8. In your inventory, rename this notecard. Call it "My Anims" or something like that. Keep the name small, it needs to fit on a dialog box button.
+
+9. Open up the notecard. You'll see many lines in it that look like the following:
+
+:: [ Walking (also Striding) 1 ] ::
+:: [ Running ] ::
+
+... and so on. DO NOT touch those lines. In between those lines, will be empty lines, or lines that have animation names in them.
+
+10. Find the line that corresponds to the animation you want to add. For example, if you have 2 walks in your ZHAO and you want to add a third walk, find the line ":: [ Walking (also Striding) 3 ] ::", and so on.
+
+11. In the blank line after this line, enter the name of the animation you added. Make sure you spell the name right. Make sure you have the capitalization right. A good way to do this is to copy the animation's name by right-clicking on it and selecting 'Properties'. Make sure you didn't put any extra spaces before the name, or after the name. Make sure you did not hit the enter key and add an extra blank line.
+
+12. Repeat the previous step for all the animations you want to add.
+
+13. Save this notecard.
+
+14. Drag the notecard you just created/saved from your inventory into the ZHAO's inventory.
+
+15. Take the ZHAO back into your inventory.
+
+16. Wear the ZHAO.
+
+17. If the menu isn't visible, click the Menu button to open it.
+
+18. Click the 'Load' button.
+
+19. On the blue dialog box, click the button that has the name of your new notecard in it.
+
+20. Wait for the ZHAO to tell you that it's finished loading the new notecard.
+
+21. Your new animations should now be activated. If you added a new walk/sit/ground sit, make sure to select that number on the corresponding menu.
+
+If you run into any trouble trying to make this work, see my profile picks for instructions on how to report your problems and get help.
+
+Thanks,
+Ziggy Puff
+

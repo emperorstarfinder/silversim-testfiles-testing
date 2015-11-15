@@ -1,0 +1,98 @@
+Ziggy's HUD Animation Overrider
+Version 1.0.11
+
+Based on Francis Chung's Franimation Overrider v1.8
+
+Note: Francis Chung is not associated with the ZHAO in any way. Please do not contact her or any of her friends/volunteers for support on the ZHAO.
+
+Thank you for using Ziggy's HUD Animation Overrider (aka ZHAO, since that's easier to type). This is a free product, and all the scripts are open source. You can distribute this product and modify/build upon it. Licensing information is provided at the end of this notecard.
+
+The core animation override script is based on Francis Chung's Franimation v1.8. As a result, the ZHAO should feel the same as the Amped/Wet Ikon AO, with some new features that are described below. This manual assumes that you are familiar with how the Franimation script works, and how to set up a notecard to use it. If you have never used the Franimation script, please start by reading the original Franimation documentation.
+
+======================
+Original Franimation Documentation
+======================
+
+Once again, Francis Chung is not associated with the ZHAO in any way. Please do not contact her or any of her friends/volunteers for support on the ZHAO.
+
+??
+??
+
+====================
+Step By Step Setup Instructions
+====================
+
+??
+
+==============================
+Quick Setup Guide for Existing Franimation Users
+==============================
+
+The ZHAO can work with old Amped/Wet Ikon config notecards. If you just want to use your existing notecard and animations with the ZHAO, here's what you need to do:
+
+* Open an Edit window (Ctrl-3). Rez the ZHAO on the ground. Go to the Contents tab, and drag the animations and config notecard from your current AO into the ZHAO. (The notecard name should be small so it fits on a menu button.) Take/save the ZHAO back into your inventory.
+
+* Wear the ZHAO.
+
+* Click the 'Menu' button to bring up the menu (if required).
+
+* Click the 'Load' button. On the next dialog box, click the button with your notecard's name on it. Wait for the script to load your notecard.
+
+* Click the 'Walk' button. On the next dialog box, click "1". Repeat with the 'Sit' and 'GroundSit' buttons, clicking "1" for both.
+
+* Click the 'AO On' button to turn the ZHAO on (if required).
+
+That's it, you're done. You now have a HUD controlled animation overrider that works the same way as your old one.
+
+If you want to use the ZHAO's new features, read on...
+
+=========
+ZHAO Features
+=========
+
+* All the controls for the ZHAO are on your HUD. Nothing needs to be typed in the chat window.
+
+* You can now have up to 5 walking, sitting and ground-sitting animations, and activate any one of them from the HUD. These animations are not available if you use the notecard from your old AO, you need to set up a new notecard to use this feature. An empty notecard is provided in the ZHAO for you to use as a template.
+
+* You can disable the sit override and leave all other overrides active. This makes it easy to use furniture and vehicles, which usually have their own sit animations. When you stand up, the ZHAO automatically takes over all other animations.
+
+* You can have up to 12 notecards in the ZHAO, each containing a different set of animations, and load any one by clicking on the 'Load' button. This lets you store different sets of animations for different occasions/moods/etc., and switch between them with a couple of mouse clicks.
+
+* The ZHAO can be attached to any of the following HUD locations - Top Left, Top, Top Right, Bottom Left, Bottom, Bottom Right). The buttons automatically adjust their positions. This lets you use the ZHAO with your other HUD attachments. When you change the attachment point, clicking 'Hide' followed by 'Menu' will make the buttons adjust to the new location.
+
+* The ZHAO menu can be minimized so it takes up very little space on your screen. The buttons move out of the way, so there aren't any transparent prims preventing you from clicking on objects in Second Life (if you've ever worn wings with transparent prims, you know what I'm talking about).
+
+=======
+Commands
+=======
+
+* AO On/Off - This turns the ZHAO on and off. This button is always visible on the HUD.
+
+* Menu/Hide - This displays or hides the rest of the menu buttons. This button is always visible on the HUD.
+
+* Sit On/Off - This turns the sit overrider on and off. Using this, you can disable just the sit overrider (for furniture, vehicles, etc.), and leave the other overrides active.
+
+* Load - This lets you load a complete new set of animations by selecting a new notecard, or re-load a notecard when you make any changes to it.
+
+* GroundSit - This lets you pick a new "sitting on ground" animation.
+
+* Sit - This lets you pick a new "sitting" animation.
+
+* Walk - "This lets you pick a new "walking" animation.
+
+
+=============
+Licensing Information
+=============
+Please note that although this object allows you full technical permissions, you must still abide by the licensing terms specified below.
+
+All the scripts are provided open source, under the GNU General Public License.
+
+?
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
+

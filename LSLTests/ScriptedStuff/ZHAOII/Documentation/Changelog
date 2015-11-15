@@ -1,0 +1,22 @@
+Version 1.0.11.3 - January 18th, 2007 [Limited public release]:
+	* Walk/Sit/GroundSit dialogs now show the animation name in the buttons insted of the number.  They also display the currently active animation.
+
+Version 1.0.12.0 - January 23rd, 2007 [Limited public release]:
+	* Added a "Next Stand" button.
+	* HUD design is now more easly modifiable.  See *** for instructions.
+	* Button textures completly redone.
+	* Cleaned up the button code, integrated the two scripts into a common script used by all non-toggle buttons.
+	* Selects the first found notecard as the default insted of relying on there being one named "Empty".
+	* Removed mutliple unused lists, freeing up some memory.
+	* Added a caching system, this allows for extreamly fast switching between notecards.
+	* Changed reporting of memory to report percentage available insted of bytes to make it easer for non-coders to understand.
+	* Moved dialogs to their own script in order to increase the available memory for notecards.
+
+Revision 4:
+	* Cleaned up some code, removed some unused code.
+	* Replaced some legecy scripts that were committed by mistake :(
+	* Changed the way typing is detected, less memory waste.
+	* Bring up Load dialog when first used insted of trying to auto-detect, more multi-notecard friendly.
+	* Turns off the override and cache scripts when the AO is off, two less scripts running is always a good thing :)
+	* Optimized some llMessageLinked() calls, no longer sends the messages to all prims when only the root prim needed to hear.
+	* Trimed down the script count again, merged two scripts into one.
