@@ -206,7 +206,7 @@ DEBUG ( string msg){
 
 
 
- file 'Global Constants.txt' from the Debug folder.  It has to be the same in all files
+ 
 // If you change this in any script, change it in all of them, please. It works a lot better that way.
 
 // Version 0.43 4-10-2013
@@ -498,10 +498,10 @@ state running
                 + "\n - Package: Place your pet"
                 + "into a nearby " + Crate
                 + "\n - Sound: Toggle Sound On/Off\n"
-                + "- Home Object: Get a new home object\n,
-                + "- Sleep: Toggle Sleep On/Off",
-                + "- Home: Set Home",
-                + "- Clear: Clear Home:,["Nothing", "Name", "Package", "Sound", "Home Object", "Sleep","Home","Clear"], menu_chan);
+                + "- Home Object: Get a new home object\n,"
+                + "- Sleep: Toggle Sleep On/Off,"
+                + "- Home: Set Home,"
+                + "- Clear: Clear Home:",["Nothing", "Name", "Package", "Sound", "Home Object", "Sleep","Home","Clear"], menu_chan);
 
             menu_expired = 1;
 
