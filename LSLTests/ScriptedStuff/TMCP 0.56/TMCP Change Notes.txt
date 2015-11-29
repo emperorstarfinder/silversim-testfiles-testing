@@ -1,0 +1,32 @@
+Change Notes
+
+0.56
+* Solved a bug that caused vector (position/rotation) storage space way more memory than needed
+
+0.55
+* Fixed issue with adjusting when more than one avi suited. 
+  -Must select ''ADJUST'' option from menu first now.
+
+* Improved support for poseballs. 
+  -Number them in description field and they show/hide correctly according to position
+
+0.53
+And Custom Facial expressions
+
+0.51
+Sin got tired of error messages from people logging off.. fixed Pose script (he thinks)
+
+
+0.39
+Several bug fixes. Several usability fixes. Sit targets are defined in 'normal' rotation, avoiding avi's in incorrect rotations right after sit down, on some builds (was: depending how linked prims were oriented relative to root).
+
+* Solved a conflict in the LM constants ; MSG_STORAGE_RESET now has constant 341 (was: 391 - in conflict !)
+* MSG_RESET was incorrectly set to zero
+
+Sitmanager - various changes:
+* Dodged sitting on greater heights
+* Improved support for sitting on linked prims
+* Small fix to rotation
+
+* Removed all auto-upgrade() functions, freeing up some memory
+

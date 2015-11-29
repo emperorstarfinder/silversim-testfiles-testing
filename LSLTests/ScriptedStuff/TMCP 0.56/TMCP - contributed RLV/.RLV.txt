@@ -1,0 +1,67 @@
+Trapped | * | @unsit=n|@touchworld=n|@fartouch=n
+Strip | * | @remoutfit:shirt=force|@remoutfit:pants=force|@remoutfit:socks=force
+Strip | * | @remoutfit:undershirt=force|@remoutfit:underpants=force
+stand | * | !release
+
+NoWear | * | @addoutfit=n
+NoUnwear | * | @remoutfit=n
+Wear | * | @addoutfit=y
+Unwear | * | @remoutfit=y
+StripUpper | * | @addoutfit=n|@remoutfit:shirt=force|@remoutfit:undershirt=force
+StripUpper | * | @remoutfit:jacket=force|@remoutfit:gloves=force
+StripLower | * | @addoutfit=n|@addattach=n|@remoutfit:pants=force
+StripLower | * | @remoutfit:underpants=force|@remoutfit:skirt=force|@remoutfit:socks=force
+StripLower | * | @remoutfit:shoes=force|@remattach:pelvis=force|@remattach:stomach=force
+StripLower | * | @remattach:left foot=force|@remattach:right foot=force
+StripAll | * | @addoutfit=n|@remoutfit=force
+NoAttach | * | @addattach=n
+NoDetach | * | @remattach=n
+Attach | * | @addattach=y
+Detach | * | @remattach=y
+
+StripJacket | * | @addoutfit=n|@remoutfit:jacket=force
+StripShirt | * | @addoutfit=n|@remoutfit:shirt=force
+StripGloves | * | @addoutfit=n|@remoutfit:gloves=force
+StripUndershirt | * | @addoutfit=n|@remoutfit:undershirt=force
+StripPants | * | @addoutfit=n|@remoutfit:pants=force
+StripSkirt | * | @addoutfit=n|@addattach=n|@remoutfit:skirt=force|@remattach:stomach=force
+StripSkirt | * | @remattach:pelvis=force
+StripSocks | * | @addoutfit=n|@remoutfit:socks=force
+StripShoes | * | @addoutfit=n|@addattach=n|@remoutfit:shoes=force
+StripShoes | * | @remattach:left foot=force|@remattach:right foot=force
+
+NoShout | * | @chatshout=n
+Shout | * | @chatshout=y
+NoNormal | * | @chatnormal=n
+Normal | * | @chatnormal=y
+Mute | * | @sendchat=n|@emote=add
+Unmute | * | @sendchat=y|@emote=rem
+Deaf | * | @recvchat=n
+Hear | * | @recvchat=y
+MuteIM | * | @sendim=n
+UnmuteIM | * | @sendim=y
+DeafIM | * | @recvim=n
+HearIM | * | @recvim=y
+
+NoMinimap | * | @showminimap=n
+Minimap | * | @showminimap=y
+NoMap | * | @showworldmap=n
+Map | * | @showworldmap=y
+NoLocation | * | @showloc=n
+Location | * | @showloc=y
+NoNames | * | @shownames=n
+Names | * | @shownames=y
+
+NoInventory | * | @showinv=n
+Inventory | * | @showinv=y
+NoRez | * | @rez=n
+Rez | * | @rez=y
+NoEdit | * | @edit=n
+Edit | * | @edit=y
+NoNotecards | * | @viewnote=n
+Notecards | * | @viewnote=y
+NoScripts | * | @viewscript=n
+Scripts | * | @viewscript=y
+NoTextures | * | @vewtexture=n
+Textures | * | @vewtexture=y
+

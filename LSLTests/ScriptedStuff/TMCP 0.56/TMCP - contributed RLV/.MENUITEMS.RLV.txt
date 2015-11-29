@@ -1,0 +1,69 @@
+MENU RLV
+GRAB
+RELEASE
+TOMENU Strip
+TOMENU Restrict
+TOMENU Privileges
+SWAP
+BACK
+
+MENU Strip
+LINKMSG Jacket | 0,-1,-1819,StripJacket
+LINKMSG Shirt | 0,-1,-1819,StripShirt
+LINKMSG Gloves | 0,-1,-1819,StripGloves
+LINKMSG Undershirt | 0,-1,-1819,StripUndershirt
+LINKMSG Pants | 0,-1,-1819,StripPants
+LINKMSG Skirt | 0,-1,-1819,StripSkirt
+LINKMSG Socks | 0,-1,-1819,StripSocks
+LINKMSG Shoes | 0,-1,-1819,StripShoes
+LINKMSG Strip Upper | 0,-1,-1819,StripUpper
+LINKMSG Strip Lower | 0,-1,-1819,StripLower
+LINKMSG Strip All | 0,-1,-1819,StripAll
+BACK
+
+
+MENU Restrict
+LINKMSG No Minimap | 0,-1,-1819,NoMinimap
+LINKMSG No Map | 0,-1,-1819,NoMap
+LINKMSG No Inventory | 0,-1,-1819,NoInventory
+LINKMSG No Rez | 0,-1,-1819,NoRez
+LINKMSG No Location | 0,-1,-1819,NoLocation
+LINKMSG No Edit | 0,-1,-1819,NoEdit
+LINKMSG No Names | 0,-1,-1819,NoNames
+LINKMSG No Notecards | 0,-1,-1819,NoNotecards
+LINKMSG No Scripts | 0,-1,-1819,NoScripts
+LINKMSG No Textures | 0,-1,-1819,NoTextures
+LINKMSG No Shout | 0,-1,-1819,NoShout
+LINKMSG No Normal | 0,-1,-1819,NoNormal
+LINKMSG Mute | 0,-1,-1819,Mute
+LINKMSG Deaf | 0,-1,-1819,Deaf
+LINKMSG Mute IM| 0,-1,-1819,MuteIM
+LINKMSG Deaf IM| 0,-1,-1819,DeafIM
+LINKMSG No Wear | 0,-1,-1819,NoWear
+LINKMSG No Unwear | 0,-1,-1819,NoUnwear
+LINKMSG No Attach | 0,-1,-1819,NoAttach
+LINKMSG No Detach | 0,-1,-1819,NoDetach
+BACK
+
+MENU Privileges
+LINKMSG Minimap | 0,-1,-1819,Minimap
+LINKMSG Map | 0,-1,-1819,Map
+LINKMSG Inventory | 0,-1,-1819,Inventory
+LINKMSG Rez | 0,-1,-1819,Rez
+LINKMSG Location | 0,-1,-1819,Location
+LINKMSG Edit | 0,-1,-1819,Edit
+LINKMSG Names | 0,-1,-1819,Names
+LINKMSG Notecards | 0,-1,-1819,Notecards
+LINKMSG Scripts | 0,-1,-1819,Scripts
+LINKMSG Textures | 0,-1,-1819,Textures
+LINKMSG Shout | 0,-1,-1819,Shout
+LINKMSG Normal | 0,-1,-1819,Normal
+LINKMSG Unmute | 0,-1,-1819,Unmute
+LINKMSG Hear | 0,-1,-1819,Hear
+LINKMSG Unmute IM| 0,-1,-1819,UnmuteIM
+LINKMSG Hear IM| 0,-1,-1819,HearIM
+LINKMSG Wear | 0,-1,-1819,Wear
+LINKMSG Unwear | 0,-1,-1819,Unwear
+LINKMSG Attach | 0,-1,-1819,Attach
+LINKMSG Detach | 0,-1,-1819,Detach
+BACK
