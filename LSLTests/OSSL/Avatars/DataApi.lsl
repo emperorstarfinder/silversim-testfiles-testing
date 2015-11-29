@@ -11,7 +11,7 @@ default
 		l = osGetAvatarList();
 		k = osAvatarName2Key("Test", "User");
 		integer i;
-		i = osGetGender(k);
+		s = osGetGender(k);
 		s = osKey2Name(k);
 	}
 }

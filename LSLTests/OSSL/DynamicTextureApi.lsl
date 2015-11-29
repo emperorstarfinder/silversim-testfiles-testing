@@ -3,6 +3,7 @@ default
 	state_entry()
 	{
 		string s;
+		string TextToDraw = "Hello,World!";
 		s = osMovePen(s, 10, 10);
 		s = osDrawLine(s, 10, 10, 20, 20);
 		s = osDrawLine(s, 30, 30);
@@ -21,10 +22,10 @@ default
 		s = osSetPenColor(s, "Black");
 		s = osSetPenCap(s, "start", "arrow");
 		osSetDynamicTextureData("", "vector", s, "width:256,height:256", 0);
-		osSetDynamicTextureDataBlend("", "vector", s, "width:256,height:256", 0, 0.5);
-		osSetDynamicTextureDataBlendFace("", "vector", s, "width:256,height:256", 0, 0.5, 1);
+		osSetDynamicTextureDataBlend("", "vector", s, "width:256,height:256", 0, 255);
+		osSetDynamicTextureDataBlendFace("", "vector", s, "width:256,height:256", 0, 0, 600, 255, 1);
 		osSetDynamicTextureURL("", "image", "http://example.com/image.png", "width:256,height:256", 600);
-		osSetDynamicTextureURLBlend("", "image", "http://example.com/image.png", "width:256,height:256", 600, 0.5);
-		osSetDynamicTextureURLBlendFace("", "image", "http://example.com/image.png", "width:256,height:256", 600, 0.5, 1);
+		osSetDynamicTextureURLBlend("", "image", "http://example.com/image.png", "width:256,height:256", 600, 255);
+		osSetDynamicTextureURLBlendFace("", "image", "http://example.com/image.png", "width:256,height:256", 0, 0, 600, 255, 1);
 	}
 }

@@ -8,8 +8,8 @@ default
 		l = osMatchString(s, "a", 0);
 		s = osUnixTimeToTimestamp(0);
 		float a;
-		a = osMax(1f, 2f);
-		a = osMin(1f, 2f);
+		a = osMax(1, 2);
+		a = osMin(1, 2);
 		integer i;
 		i = osRegexIsMatch("a", "/a/");
 		s = osReplaceString("a b", "a", "c", -1, 0);
