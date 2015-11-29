@@ -16,7 +16,7 @@ default
 		osNpcLoadAppearance(npc, "appearance");
 		osNpcMoveTo(npc, <1,1,1>);
 		osNpcMoveToTarget(npc, <1,1,1>, OS_NPC_NO_FLY);
-		osNpcSaveAppeaance(npc, "appearance2");
+		osNpcSaveAppearance(npc, "appearance2");
 		osNpcSay(npc, "Hello");
 		osNpcSay(npc, 10, "Hello");
 		osNpcSetRot(npc, ZERO_ROTATION);
