@@ -13,5 +13,9 @@ default
 		integer b;
 		b = v != <0,0,0>;
 		b = r != <1,1,1,1>;
+		if (v == <0, 0, 0> || llVecDist(v, v) > 100) // 100: max shout distance
+		{
+			llSay(PUBLIC_CHANNEL, "Hello");
+		}
 	}
 }
