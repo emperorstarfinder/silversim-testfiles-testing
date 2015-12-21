@@ -141,12 +141,12 @@ showMain(key who)
     txtDia="Please select a dance style\nor SYNCH to resynch current dance";
     if (llList2Integer(dancers,getPairIndex(who)+AUTO))
     {
-        butDia=[]+["OPTIONS", "MANUAL","SYNCH","QUIT"]+llList2List(styles,6,7)+llList2List(styles,3,5)+llList2List(styles,0,2);
+        butDia=[]+["MANUAL","SYNCH","QUIT"]+llList2List(styles,6,8)+llList2List(styles,3,5)+llList2List(styles,0,2);
         txtDia+="\nor MANUAL to return to manual dance selection mode";
     }
     else
     {
-        butDia=[]+["OPTIONS", "AUTO","SYNCH","QUIT"]+llList2List(styles,6,7)+llList2List(styles,3,5)+llList2List(styles,0,2);
+        butDia=[]+["AUTO","SYNCH","QUIT"]+llList2List(styles,6,8)+llList2List(styles,3,5)+llList2List(styles,0,2);
         txtDia+="\nor AUTO to enter auto dance mode";
     }
     llDialog(who,txtDia,butDia,myChannel);
