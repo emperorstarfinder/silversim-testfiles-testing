@@ -14,10 +14,6 @@ default
 		v = osGetRegionSize();
 		list l;
 		l = osGetRegionStats();
-		s = osLoadedCreationDate();
-		s = osLoadedCreationTime();
-
-		k = osLoadedCreationID();
 		s = osGetPhysicsEngineType();
 	}
 }
