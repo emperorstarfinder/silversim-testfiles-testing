@@ -27,12 +27,18 @@ ${testfile}"/>
 				</trycatch>
 			</do>
 		</foreach>
+		<call target="runscripttests-inner"/>
 		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
 	</target>
 	
 	<target name="runscripttests">
-		<property name="failedtests" value="" overwrite="false"/>
+		<property name="failedtests" value=""/>
 		<mkdir dir="../testresults"/>
+		<call target="runscripttests-inner"/>
+		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+	</target>
+	
+	<target name="runscripttests-inner">
 		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
 		<foreach item="File" property="stestfile">
 			<in>
@@ -64,6 +70,5 @@ ${testfile}"/>
 				</trycatch>
 			</do>
 		</foreach>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
-	</target>
+	</target>	
 </project>
