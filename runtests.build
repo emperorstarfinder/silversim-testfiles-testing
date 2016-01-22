@@ -29,4 +29,41 @@ ${testfile}"/>
 		</foreach>
 		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
 	</target>
+	
+	<target name="runscripttests">
+		<property name="failedtests" value="" overwrite="false"/>
+		<mkdir dir="../testresults"/>
+		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<foreach item="File" property="stestfile">
+			<in>
+				<items basedir="LSLTests/FunctionalTests">
+					<include name="**/*.lsl"/>
+				</items>
+			</in>
+			<do>
+				<property name="testfile" 
+				value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
+				<echo message="Running ${testfile}"/>
+				<property name="testoutput" value="${testfile}.xml"/>
+				<mkdir dir="../testresults/${path::get-directory-name(testoutput)}"/>
+				<trycatch>
+					<try>
+						<exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true">
+							<arg value="-m=testing"/>
+							<arg value="-c"/>
+							<arg value="../tests/common/RunScriptTest.Common.ini"/>
+							<arg value="-D:SilverSim.Tests.Scripting.RunScript:00000000-0000-0000-0000-000000000000=../tests/${testfile}"/>
+							<arg value="-D:TestRunner:Name=${testfile}"/>
+							<arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
+						</exec>
+					</try>
+					<catch>
+						<property name="failedtests" value="${failedtests}
+${testfile}"/>
+					</catch>
+				</trycatch>
+			</do>
+		</foreach>
+		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+	</target>
 </project>
