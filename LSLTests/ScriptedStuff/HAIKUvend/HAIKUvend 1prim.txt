@@ -1,0 +1,62 @@
+//
+//          HAIKUvend 1prim vendor
+//          version 2.0
+//
+//          You may not resell any part of this system, nor give it away.
+//          Please forward other people towards http://code.google.com/p/haikuvend/ if you want to recommend this system.
+//
+//          An up-to-date version will always be available at:
+//          http://code.google.com/p/haikuvend/
+//
+//          Please report any errors in the code to "haikuvend Resident"
+//          and feel free to contact me if you have any improvements
+//
+//          This is the configuration notecard file: "HAIKUvend 1prim.cfg"
+//
+
+VENDOR_TEXTURE = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+VENDOR_NAME = My Vendor
+
+@ = my_email@goes-here.com
+
+URL_MENU_INFO = Visit the Second-Life Website!
+URL_MENU_LINK = http://www.secondlife.com
+
+FOLDER1 = folder one name#listItem1,listItem2,listItem3#00#notecard1
+FOLDER2 = folder two name#listItem1,listItem2,listItem3#00
+FOLDER3 = folder three name#listItem1,listItem2,listItem3#00
+FOLDER4 = folder four name#listItem1,listItem2,listItem3#10#notecard4
+FOLDER5 = folder five name#listItem1,listItem2,listItem3#50
+FOLDER6 = folder six name#listItem1,listItem2,listItem3#100
+FOLDER7 = folder seven name#listItem1,listItem2,listItem3#2
+FOLDER8 = folder eight name#listItem1,listItem2,listItem3#3#notecard8
+FOLDER9 = folder nine name#listItem1,listItem2,listItem3#5#notecard9
+
+%01a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%01b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%01c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%02a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%02b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%02c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%03a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%03b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%03c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%04a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%04b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%04c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%05a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%05b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%05c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%06a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%06b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%06c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%07a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%07b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%07c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%08a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%08b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%08c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%09a = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%09b = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+%09c = 0 = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
