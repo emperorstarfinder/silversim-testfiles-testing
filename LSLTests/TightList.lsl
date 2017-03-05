@@ -29,7 +29,7 @@ integer TightListTypeLength(string input)
 {
     string seperators = llGetSubString(input,(0),6);
     return ((llParseStringKeepNulls(llDeleteSubString(input,(0),5), [],[input=llGetSubString(seperators,(0),(0)),
-           llGetSubString(seperators,1,1),llGetSubString(seperators,2,2),llGetSubString(separators,3,3),
+           llGetSubString(seperators,1,1),llGetSubString(seperators,2,2),llGetSubString(seperators,3,3),
            llGetSubString(seperators,4,4),llGetSubString(seperators,5,5)]) != []) + (llSubStringIndex(seperators,llGetSubString(seperators,6,6)) < 6)) >> 1;
 }
  
