@@ -6,7 +6,7 @@ default
     {
 	_test_Result(FALSE);
         _test_Log(LOG_INFO, "Starting timer");
-        llSetTimerEvent(1);
+        llSetTimerEvent(0.5);
     }
     timer()
     {
