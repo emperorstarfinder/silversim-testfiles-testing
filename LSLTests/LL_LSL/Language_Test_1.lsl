@@ -422,7 +422,7 @@ tests()
     ensureVectorEqual("(<2.2, 4.4, 6.6> * 2.0)", (<2.2, 4.4, 6.6> * 2.0), <4.4, 8.8, 13.2>);
     ensureVectorEqual("(2.0 * <2.2, 4.4, 6.6>)", (<2.2, 4.4, 6.6> * 2.0), (2.0 * <2.2, 4.4, 6.6>));
     ensureFloatEqual("<1,3,-5> * <4,-2,-1>", <1,3,-5> * <4,-2,-1>, 3.0);
-    //FT: ensureVectorEqual("<-1,0,0> * <0, 0, 0.707, 0.707>", <-1,0,0> * <0, 0, 0.707, 0.707>, <0,-1, 0>);
+    ensureVectorEqual("<-1,0,0> * <0, 0, 0.707, 0.707>", <-1,0,0> * <0, 0, 0.707, 0.707>, <0,-1, 0>);
     ensureRotationEqual("(<1.0, 2.0, 3.0, 4.0> * <5.0, 6.0, 7.0, 8.0>)", (<1.0, 2.0, 3.0, 4.0> * <5.0, 6.0, 7.0, 8.0>), <32.0, 32.0, 56.0, -6.0>);
  
  
@@ -460,9 +460,9 @@ tests()
     ensureIntegerEqual("i = 2; i *= 2;", i, 4);
  
     // multiplication assignment integer *= float
-    //FT: i = 1;
-    //FT: i *= 0.5;
-    //FT: ensureIntegerEqual("i = 1; i *= 0.5;", i, 0);
+    i = 1;
+    i *= 0.5;
+    ensureIntegerEqual("i = 1; i *= 0.5;", i, 0);
  
     // division assignment
     i = 2;
