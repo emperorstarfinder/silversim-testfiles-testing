@@ -427,9 +427,6 @@ Report()
                                                 + string2string_PASSstring + "\n";
 
  
-    //AddUnitReport()
-    //send to Coordinator on the broadcastChannel the selected report
-    //format example -> AddUnitReport::unitKey::00000-0000-0000-00000::Report::Successful Completion of Test
     llSay( 0, reportString);
  
 }
@@ -443,7 +440,7 @@ Report()
         RunTest();
         Report();
         _test_Shutdown();
-    } //end of link message
+    } 
  
  
-} // end default
+} 
