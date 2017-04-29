@@ -17,7 +17,7 @@ default
 		
 		if(getparcelname() != "Your Parcel")
 		{
-			pass = TRUE;
+			pass = FALSE;
 		}
 		osSetParcelDetails(llGetPos(), [PARCEL_DETAILS_NAME, "My Parcel"]);
 		if(getparcelname() != "My Parcel")

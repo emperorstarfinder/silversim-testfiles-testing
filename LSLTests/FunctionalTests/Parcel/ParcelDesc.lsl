@@ -17,7 +17,7 @@ default
 		
 		if(getparceldesc() != "")
 		{
-			pass = TRUE;
+			pass = FALSE;
 		}
 		osSetParcelDetails(llGetPos(), [PARCEL_DETAILS_DESC, "Desc One"]);
 		if(getparceldesc() != "Desc One")
