@@ -1,0 +1,103 @@
+[Console]
+	EnableLocalConsole = false
+	EnableLogConsole = true
+
+[Network]
+	ExternalHostName = "localhost"
+	
+[HTTP]
+	Port = 9300
+
+[TestRunner]
+	Module = SilverSim.Tests:TestRunner
+	Name = "PostgreSQL Database Tests"
+	XUnitResultsFile = ../testresults/PostgreSQL.xml
+
+[SQLitePrecondition]
+	Module = SilverSim.Tests.Preconditions.SQLite:ResetDatabase
+	Services=AssetService,AuthInfoService,InventoryService,GroupsStorage,AvatarNameStorage,AvatarService,GridUserService,ServerParamStorage,UserAccountService
+
+[AssetService]
+	Type = SQLite
+	
+[AuthInfoService]
+	Type = SQLite
+	
+[InventoryService]
+	Type = SQLite
+
+[GroupsService]
+	Type = SQLite
+
+[AvatarNameStorage]
+	Type = SQLite
+
+[AvatarService]
+	Type = SQLite
+
+[GridUserService]
+	Type = SQLite
+	
+[ServerParamStorage]
+	Type = SQLite
+	
+[UserAccountService]
+	Type = SQLite
+	
+[SilverSim.Tests.Assets.LoadStore]
+	AssetService = AssetService
+
+[SilverSim.Tests.Assets.TempLoadStore]
+	AssetService = AssetService
+
+[SilverSim.Tests.Avatar.ServiceTests]
+	AvatarService = AvatarService
+	UserID = 11223344-1122-1122-1122-112233445566
+
+[SilverSim.Tests.GridUser.Tests]
+	ServiceUnderTest = GridUserService
+	Backend = GridUserService
+
+[SilverSim.Tests.ServerParams.Tests]
+	ServerParamService = ServerParamStorage
+
+[SilverSim.Tests.Inventory.CreateUserInventory]
+	InventoryService = InventoryService
+	UserID = 11223344-1122-1122-1122-112233445566
+
+[SilverSim.Tests.UserAccounts.Tests]
+	ServiceUnderTest = UserAccountService
+	Backend = UserAccountService
+	
+[SilverSim.Tests.Groups.GroupCreateDeleteTest]
+	GroupsService = GroupsStorage
+	AvatarNameService = AvatarNameStorage
+	
+[SilverSim.Tests.Groups.GroupRoleCreateDeleteTest]
+	GroupsService = GroupsStorage
+	AvatarNameService = AvatarNameStorage
+	
+[SilverSim.Tests.Groups.GroupInviteCreateDeleteTest]
+	GroupsService = GroupsStorage
+	AvatarNameService = AvatarNameStorage
+	
+[SilverSim.Tests.Groups.GroupMemberCreateDeleteTest]
+	GroupsService = GroupsStorage
+	AvatarNameService = AvatarNameStorage
+	
+[SilverSim.Tests.AuthInfo.AuthInfoLoadStoreTest]
+	AuthInfoService = AuthInfoService
+
+[Tests]
+	SilverSim.Tests.Assets.LoadStore =
+	SilverSim.Tests.Assets.TempLoadStore =
+	SilverSim.Tests.Inventory.CreateUserInventory =
+	SilverSim.Tests.Avatar.ServiceTests =
+	SilverSim.Tests.GridUser.Tests =
+	SilverSim.Tests.ServerParams.Tests =
+	SilverSim.Tests.UserAccounts.Tests =
+	SilverSim.Tests.Groups.GroupCreateDeleteTest =
+	SilverSim.Tests.Groups.GroupRoleCreateDeleteTest =
+    SilverSim.Tests.Groups.GroupInviteCreateDeleteTest =
+    SilverSim.Tests.Groups.GroupMemberCreateDeleteTest =
+	SilverSim.Tests.AuthInfo.AuthInfoLoadStoreTest=
