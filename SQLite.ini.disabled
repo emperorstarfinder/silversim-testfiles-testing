@@ -94,6 +94,13 @@
 	EstateOwner1 = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
 	EstateOwner2 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example Com2
 
+[SilverSim.Tests.Estate.EstateRegionsTests]
+	EstateService = EstateService
+	EstateOwner1 = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
+	EstateOwner2 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example Com2
+	EstateRegion1 = 11223344-1122-1122-1122-112233445566
+	EstateRegion2 = 11223344-1122-1122-1122-112233445567
+
 [SilverSim.Tests.ServerParams.Tests]
 	ServerParamService = ServerParamStorage
 
@@ -143,3 +150,4 @@
 	SilverSim.Tests.Estate.EstateAccessTests=
 	SilverSim.Tests.Estate.EstateBanTests=
 	SilverSim.Tests.Estate.EstateOwnerTests=
+	SilverSim.Tests.Estate.EstateRegionsTests=
