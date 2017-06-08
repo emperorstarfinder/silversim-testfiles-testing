@@ -41,6 +41,9 @@
 [AvatarNameStorage]
 	Type = PostgreSQL
 
+[EstateService]
+	Type = PostgreSQL
+
 [AvatarService]
 	Type = PostgreSQL
 
@@ -66,6 +69,10 @@
 [SilverSim.Tests.GridUser.Tests]
 	ServiceUnderTest = GridUserService
 	Backend = GridUserService
+
+[SilverSim.Tests.Estate.EstateTests]
+	EstateService = EstateService
+	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
 
 [SilverSim.Tests.ServerParams.Tests]
 	ServerParamService = ServerParamStorage
@@ -110,3 +117,4 @@
     SilverSim.Tests.Groups.GroupInviteCreateDeleteTest =
     SilverSim.Tests.Groups.GroupMemberCreateDeleteTest =
 	SilverSim.Tests.AuthInfo.AuthInfoLoadStoreTest=
+	SilverSim.Tests.Estate.EstateTests=
