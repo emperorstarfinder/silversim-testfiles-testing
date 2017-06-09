@@ -56,6 +56,9 @@
 [UserAccountService]
 	Type = PostgreSQL
 	
+[SimulationDataStorage]
+	Type = PostgreSQL
+	
 [Tests]
 	Include-AssetTests=../tests/common/DbServices/AssetTests.ini
 	Include-GridUserTests=../tests/common/DbServices/GridUserTests.ini
@@ -66,3 +69,4 @@
 	Include-InventoryTests=../tests/common/DbServices/InventoryTests.ini
 	Include-UserAccountTests=../tests/common/DbServices/UserAccountTests.ini
 	Include-AuthInfoTests=../tests/common/DbServices/AuthInfoTests.ini
+	Include-SimulationDataTests=../tests/common/DbServices/SimulationDataTests.ini
