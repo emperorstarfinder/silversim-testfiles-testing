@@ -56,107 +56,13 @@
 [UserAccountService]
 	Type = PostgreSQL
 	
-[SilverSim.Tests.Assets.LoadStore]
-	AssetService = AssetService
-
-[SilverSim.Tests.Assets.TempLoadStore]
-	AssetService = AssetService
-
-[SilverSim.Tests.Avatar.ServiceTests]
-	AvatarService = AvatarService
-	UserID = 11223344-1122-1122-1122-112233445566
-
-[SilverSim.Tests.GridUser.Tests]
-	ServiceUnderTest = GridUserService
-	Backend = GridUserService
-
-[SilverSim.Tests.Estate.EstateTests]
-	EstateService = EstateService
-	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-
-[SilverSim.Tests.Estate.EstateManagerTests]
-	EstateService = EstateService
-	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateManager1 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example1 Com
-	EstateManager2 = 11223344-1122-1122-1122-112233445568;http://example.com:80/;Example2 Com
-
-[SilverSim.Tests.Estate.EstateGroupsTests]
-	EstateService = EstateService
-	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateGroup1 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example1 Group
-	EstateGroup2 = 11223344-1122-1122-1122-112233445568;http://example.com:80/;Example2 Group
-
-[SilverSim.Tests.Estate.EstateAccessTests]
-	EstateService = EstateService
-	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateAccessor1 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example1 Com
-	EstateAccessor2 = 11223344-1122-1122-1122-112233445568;http://example.com:80/;Example2 Com
-
-[SilverSim.Tests.Estate.EstateBanTests]
-	EstateService = EstateService
-	EstateOwner = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateAccessor1 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example1 Com
-	EstateAccessor2 = 11223344-1122-1122-1122-112233445568;http://example.com:80/;Example2 Com
-
-[SilverSim.Tests.Estate.EstateOwnerTests]
-	EstateService = EstateService
-	EstateOwner1 = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateOwner2 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example Com2
-
-[SilverSim.Tests.Estate.EstateRegionsTests]
-	EstateService = EstateService
-	EstateOwner1 = 11223344-1122-1122-1122-112233445566;http://example.com:80/;Example Com
-	EstateOwner2 = 11223344-1122-1122-1122-112233445567;http://example.com:80/;Example Com2
-	EstateRegion1 = 11223344-1122-1122-1122-112233445566
-	EstateRegion2 = 11223344-1122-1122-1122-112233445567
-
-[SilverSim.Tests.ServerParams.Tests]
-	ServerParamService = ServerParamStorage
-
-[SilverSim.Tests.Inventory.CreateUserInventory]
-	InventoryService = InventoryService
-	UserID = 11223344-1122-1122-1122-112233445566
-
-[SilverSim.Tests.UserAccounts.Tests]
-	ServiceUnderTest = UserAccountService
-	Backend = UserAccountService
-	
-[SilverSim.Tests.Groups.GroupCreateDeleteTest]
-	GroupsService = GroupsStorage
-	AvatarNameService = AvatarNameStorage
-	
-[SilverSim.Tests.Groups.GroupRoleCreateDeleteTest]
-	GroupsService = GroupsStorage
-	AvatarNameService = AvatarNameStorage
-	
-[SilverSim.Tests.Groups.GroupInviteCreateDeleteTest]
-	GroupsService = GroupsStorage
-	AvatarNameService = AvatarNameStorage
-	
-[SilverSim.Tests.Groups.GroupMemberCreateDeleteTest]
-	GroupsService = GroupsStorage
-	AvatarNameService = AvatarNameStorage
-	
-[SilverSim.Tests.AuthInfo.AuthInfoLoadStoreTest]
-	AuthInfoService = AuthInfoService
-
 [Tests]
-	SilverSim.Tests.Assets.LoadStore =
-	SilverSim.Tests.Assets.TempLoadStore =
-	SilverSim.Tests.Inventory.CreateUserInventory =
-	SilverSim.Tests.Avatar.ServiceTests =
-	SilverSim.Tests.GridUser.Tests =
-	SilverSim.Tests.ServerParams.Tests =
-	SilverSim.Tests.UserAccounts.Tests =
-	SilverSim.Tests.Groups.GroupCreateDeleteTest =
-	SilverSim.Tests.Groups.GroupRoleCreateDeleteTest =
-    SilverSim.Tests.Groups.GroupInviteCreateDeleteTest =
-    SilverSim.Tests.Groups.GroupMemberCreateDeleteTest =
-	SilverSim.Tests.AuthInfo.AuthInfoLoadStoreTest=
-	SilverSim.Tests.Estate.EstateTests=
-	SilverSim.Tests.Estate.EstateManagerTests=
-	SilverSim.Tests.Estate.EstateGroupsTests=
-	SilverSim.Tests.Estate.EstateAccessTests=
-	SilverSim.Tests.Estate.EstateBanTests=
-	SilverSim.Tests.Estate.EstateOwnerTests=
-	SilverSim.Tests.Estate.EstateRegionsTests=
+	Include-AssetTests=../tests/common/DbServices/AssetTests.ini
+	Include-GridUserTests=../tests/common/DbServices/GridUserTests.ini
+	Include-GroupsTests=../tests/common/DbServices/GroupsTests.ini
+	Include-ServerParamsTests=../tests/common/DbServices/ServerParamsTests.ini
+	Include-EstateTests=../tests/common/DbServices/EstateTests.ini
+	Include-AvatarTests=../tests/common/DbServices/AvatarTests.ini
+	Include-InventoryTests=../tests/common/DbServices/InventoryTests.ini
+	Include-UserAccountTests=../tests/common/DbServices/UserAccountTests.ini
+	Include-AuthInfoTests=../tests/common/DbServices/AuthInfoTests.ini
