@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-16"?>
+<InventoryItem>
+  <Name>Shape</Name>
+  <ID>6b4f3771-4bef-4865-924a-416c34cfcb43</ID>
+  <InvType>13</InvType>
+  <CreatorUUID>6c7abd0c-2b72-403f-a95c-a98c659680ca</CreatorUUID>
+  <CreationDate>1271799829</CreationDate>
+  <Owner>6c7abd0c-2b72-403f-a95c-a98c659680ca</Owner>
+  <Description></Description>
+  <AssetType>13</AssetType>
+  <AssetID>00000000-0000-0000-0000-000000000000</AssetID>
+  <SaleType>0</SaleType>
+  <SalePrice>0</SalePrice>
+  <BasePermissions>581639</BasePermissions>
+  <CurrentPermissions>581647</CurrentPermissions>
+  <EveryOnePermissions>0</EveryOnePermissions>
+  <NextPermissions>2147483647</NextPermissions>
+  <Flags>1</Flags>
+  <GroupID>00000000-0000-0000-0000-000000000000</GroupID>
+  <GroupOwned>False</GroupOwned>
+  <CreatorData>http://localhost:8002/;Script Test</CreatorData>
+  <CreatorID>6c7abd0c-2b72-403f-a95c-a98c659680ca</CreatorID>
+</InventoryItem>
