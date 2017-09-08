@@ -1,0 +1,28 @@
+LLWearable version 22
+Full body Alpha
+
+	permissions 0
+	{
+		base_mask	7fffffff
+		owner_mask	7fffffff
+		group_mask	00000000
+		everyone_mask	00000000
+		next_owner_mask	00082000
+		creator_id	00000000-0000-0000-0000-000000000000
+		owner_id	00000000-0000-0000-0000-000000000000
+		last_owner_id	00000000-0000-0000-0000-000000000000
+		group_id	00000000-0000-0000-0000-000000000000
+	}
+	sale_info	0
+	{
+		sale_type	not
+		sale_price	10
+	}
+type 13
+parameters 0
+textures 5
+21 8dcd4a48-2d37-4909-9f78-f7a9eb4ef903
+22 8dcd4a48-2d37-4909-9f78-f7a9eb4ef903
+23 8dcd4a48-2d37-4909-9f78-f7a9eb4ef903
+24 8dcd4a48-2d37-4909-9f78-f7a9eb4ef903
+25 8dcd4a48-2d37-4909-9f78-f7a9eb4ef903

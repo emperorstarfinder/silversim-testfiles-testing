@@ -15,7 +15,7 @@
   <CurrentPermissions>581647</CurrentPermissions>
   <EveryOnePermissions>0</EveryOnePermissions>
   <NextPermissions>2147483647</NextPermissions>
-  <Flags>5</Flags>
+  <Flags>13</Flags>
   <GroupID>00000000-0000-0000-0000-000000000000</GroupID>
   <GroupOwned>False</GroupOwned>
   <CreatorData>http://localhost:8002/;Script Test</CreatorData>
