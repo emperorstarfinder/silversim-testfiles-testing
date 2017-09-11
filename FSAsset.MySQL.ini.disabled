@@ -1,0 +1,39 @@
+[Console]
+	EnableLocalConsole = false
+	EnableLogConsole = true
+
+[DatabaseService]
+	Server=localhost
+	Database=silversimtesting
+	Username=silversimtesting
+	Password=silversimtesting
+
+[Network]
+	ExternalHostName = "localhost"
+	
+[HTTP]
+	Port = 9300
+
+[TestRunner]
+	Module = SilverSim.Tests:TestRunner
+	Name = "FSAsset MySQL Database Tests"
+	XUnitResultsFile = ../testresults/FSAsset.MySQL.xml
+
+[MySQLPrecondition]
+	Module = SilverSim.Tests.Preconditions.MySQL:ResetDatabase
+	Server=localhost
+	Database=silversimtesting
+	Username=silversimtesting
+	Password=silversimtesting
+
+[FSAssetPrecondition]
+	Module = SilverSim.Tests.Preconditions.FSAsset:ResetDatabase
+	
+[AssetService]
+	Type = FSAsset
+	
+[FSAssetStoreRefsService]
+	StorageType = MySQL
+
+[Tests]
+	Include-AssetTests=../tests/common/DbServices/AssetTests.ini
