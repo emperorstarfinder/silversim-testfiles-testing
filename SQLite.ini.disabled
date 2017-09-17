@@ -15,7 +15,7 @@
 
 [SQLitePrecondition]
 	Module = SilverSim.Tests.Preconditions.SQLite:ResetDatabase
-	Services=AssetService,AuthInfoService,InventoryService,GroupsStorage,AvatarNameStorage,AvatarService,GridUserService,ServerParamStorage,UserAccountService
+	Services=AssetService,AuthInfoService,InventoryService,GroupsStorage,AvatarNameStorage,AvatarService,GridUserService,ServerParamStorage,UserAccountService,ExperienceService
 
 [AssetService]
 	Type = SQLite
@@ -33,6 +33,9 @@
 	Type = SQLite
 
 [EstateService]
+	Type = SQLite
+
+[ExperienceService]
 	Type = SQLite
 
 [AvatarService]
@@ -57,3 +60,5 @@
 	Include-InventoryTests=../tests/common/DbServices/InventoryTests.ini
 	Include-UserAccountTests=../tests/common/DbServices/UserAccountTests.ini
 	Include-AuthInfoTests=../tests/common/DbServices/AuthInfoTests.ini
+;	Include-SimulationDataTests=../tests/common/DbServices/SimulationDataTests.ini
+	Include-ExperienceTests=../tests/common/DbServices/ExperienceTests.ini
