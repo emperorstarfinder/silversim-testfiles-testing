@@ -20,14 +20,14 @@
 	Name = "MsSQL Database Tests"
 	XUnitResultsFile = ../testresults/MsSQL.xml
 
-[MySQLPrecondition]
+[MsSQLPrecondition]
 	Module = SilverSim.Tests.Preconditions.MsSql:ResetDatabase
 
 [ParameterMap]
-	MySQLPrecondition.Server=DatabaseService.Server
-	MySQLPrecondition.Database=DatabaseService.Database
-	MySQLPrecondition.Username=DatabaseService.Username
-	MySQLPrecondition.Password=DatabaseService.Password
+	MsSQLPrecondition.Server=DatabaseService.Server
+	MsSQLPrecondition.Database=DatabaseService.Database
+	MsSQLPrecondition.Username=DatabaseService.Username
+	MsSQLPrecondition.Password=DatabaseService.Password
 
 [AssetService]
 	Type = MsSql
