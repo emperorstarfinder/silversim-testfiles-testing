@@ -11,7 +11,7 @@
 [TestRunner]
 	Module = SilverSim.Tests:TestRunner
 	Name = "PostgreSQL Database Tests"
-	XUnitResultsFile = ../testresults/PostgreSQL.xml
+	XUnitResultsFile = ../testresults/SQLite.xml
 
 [SQLitePrecondition]
 	Module = SilverSim.Tests.Preconditions.SQLite:ResetDatabase
