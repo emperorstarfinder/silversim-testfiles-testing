@@ -49,29 +49,38 @@ ${testfile}"/>
 			<do>
 				<property name="testfile" 
 				value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
-				<echo message="Running ${testfile}"/>
-				<property name="testoutput" value="${testfile}.xml"/>
-				<mkdir dir="../testresults/${path::get-directory-name(testoutput)}"/>
-                <property name="scriptini" value="../tests/common/RunScriptTest.Common.ini"/>
-                <property name="specscriptini" value="../tests/${testfile}.ini"/>
-                <property name="scriptini" value="${specscriptini}" if="${file::exists(specscriptini)}"/>
-				<trycatch>
-					<try>
-						<exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true">
-							<arg value="-m=testing"/>
-							<arg value="-c"/>
-							<arg value="${scriptini}"/>
-							<arg value="-D:SilverSim.Tests.Scripting.RunScript:00000000-0000-0000-0000-000000000000=../tests/${testfile}"/>
-							<arg value="-D:TestRunner:Name=${testfile}"/>
-							<arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
-						</exec>
-					</try>
-					<catch>
-						<property name="failedtests" value="${failedtests}
-${testfile}"/>
-					</catch>
-				</trycatch>
+                <call target="runscript-actual"/>
 			</do>
 		</foreach>
-	</target>	
+	</target>
+    <target name="runscripttest">
+		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<property name="failedtests" value=""/>
+        <call target="runscript-actual"/>
+		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+    </target>
+    <target name="runscript-actual">
+        <echo message="Running ${testfile}"/>
+        <property name="testoutput" value="${testfile}.xml"/>
+        <mkdir dir="../testresults/${path::get-directory-name(testoutput)}"/>
+        <property name="scriptini" value="../tests/common/RunScriptTest.Common.ini"/>
+        <property name="specscriptini" value="../tests/${testfile}.ini"/>
+        <property name="scriptini" value="${specscriptini}" if="${file::exists(specscriptini)}"/>
+        <trycatch>
+            <try>
+                <exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true">
+                    <arg value="-m=testing"/>
+                    <arg value="-c"/>
+                    <arg value="${scriptini}"/>
+                    <arg value="-D:SilverSim.Tests.Scripting.RunScript:00000000-0000-0000-0000-000000000000=../tests/${testfile}"/>
+                    <arg value="-D:TestRunner:Name=${testfile}"/>
+                    <arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
+                </exec>
+            </try>
+            <catch>
+                <property name="failedtests" value="${failedtests}
+${testfile}"/>
+            </catch>
+        </trycatch>
+    </target>
 </project>
