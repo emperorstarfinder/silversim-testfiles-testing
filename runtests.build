@@ -12,9 +12,17 @@
 			<do>
 				<property name="testfile" value="${path::get-file-name(testconfig)}"/>
 				<echo message="Running ${testfile}"/>
+				<property name="execute-test" value="true"/>
+				<if test="${platform::is-unix()}">
+					<if test="${pkg-config::exists('mono')}">
+						<iniread default="4.0.0.0" filename="../tests/${testfile}" key="Minimum-Version" section="Mono" property="minversion"/>
+						<property name="execute-test" value="${pkg-config::is-atleast-version('mono',minversion)}"/>
+					</if>
+				</if>
+				<echo message="Skipping ${testfile}" unless="${execute-test}"/>
 				<trycatch>
 					<try>
-						<exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true">
+						<exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true" if="${execute-test}">
 							<arg value="-m=testing"/>
 							<arg value="-c"/>
 							<arg value="../tests/${testfile}"/>
