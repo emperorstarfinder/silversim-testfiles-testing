@@ -14,7 +14,7 @@
 				<echo message="Running ${testfile}"/>
 				<property name="execute-test" value="true"/>
 				<if test="${platform::is-unix()}">
-					<propert name="minversion" value="4.0.0.0"/>
+					<property name="minversion" value="4.0.0.0"/>
 					<if test="${pkg-config::exists('mono')}">
 						<property name="section" value=""/>
 						<foreach item="Line" in="../tests/${testfile}" property="line">
