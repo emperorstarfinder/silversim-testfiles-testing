@@ -22,9 +22,9 @@
 								if="${string::starts-with(trim-line, '[')}"/>
 							<if test="${not string::starts-with(trim-line, '[')}">
 								<property name="equalpos" value="${string::index-of(trim-line, '=')}"/>
-								<if test="${equalpos &gt; 0}">
-									<property name="var" value="${string::trim(string::substring(trim-line, 0, equalpos))}"/>
-									<property name="val" value="${string::trim(string::substring(trim-line, equalpos + 1, string::get-length(trim-line) - equalpos - 1))}"/>
+								<if test="${int::parse(equalpos) &gt; 0}">
+									<property name="var" value="${string::trim(string::substring(trim-line, 0, int::parse(equalpos)))}"/>
+									<property name="val" value="${string::trim(string::substring(trim-line, int::parse(equalpos) + 1, string::get-length(trim-line) - int::parse(equalpos) - 1))}"/>
 									<property name="minversion" value="${val}" if="${var=='Minimum-Version' and section='Mono'}"/> 
 								</if>
 							</if>
