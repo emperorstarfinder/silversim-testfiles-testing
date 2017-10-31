@@ -29,7 +29,6 @@
 								</if>
 							</if>
 						</foreach>
-						<iniread default="4.0.0.0" filename="../tests/${testfile}" key="Minimum-Version" section="Mono" property="minversion"/>
 						<property name="execute-test" value="${pkg-config::is-atleast-version('mono',minversion)}"/>
 					</if>
 				</if>
