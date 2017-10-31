@@ -17,7 +17,7 @@
 					<if test="${pkg-config::exists('mono')}">
 						<property name="section" value=""/>
 						<foreach item="Line" in="../tests/${testfile}" property="line">
-							<property name="trim-line" value="${string::trim(line)"/>
+							<property name="trim-line" value="${string::trim(line)}"/>
 							<property name="section" value="${string::substring(trim-line, 1, string::get-length(trim-line) - 2)}"
 								if="${string::starts-with(trim-line, '[')}"/>
 							<ifnot test="${string::starts-with(trim-line, '[')}">
@@ -25,7 +25,7 @@
 								<if test="${equalpos &gt; 0}">
 									<property name="var" value="${string::trim(string::substring(trim-line, 0, equalpos))}"/>
 									<property name="val" value="${string::trim(string::substring(trim-line, equalpos + 1, string::get-length(trim-line) - equalpos - 1))}"/>
-									<property name="minversion" value="${val}" if="${var=='Minimum-Version' and section='Mono'"/> 
+									<property name="minversion" value="${val}" if="${var=='Minimum-Version' and section='Mono'}"/> 
 								</if>
 							</ifnot>
 						</foreach>
