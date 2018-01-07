@@ -1,0 +1,4 @@
+string HelloWorld = "Hello";
+#endinclude
+
+do not fail here;
