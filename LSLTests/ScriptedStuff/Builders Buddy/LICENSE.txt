@@ -1,0 +1,7 @@
+Obligatory Copyright Notice
+
+There are only a few points here:
+
+    Use this script as you wish, to modify, sell, etc.
+    If you use this script in a for-sale product, please give credit to Newfie Pendragon as the creator of the script.
+    If you wish to modify this script and release the changes for public use, please submit changes to Newfie Pendragon. This is to ensure a consistent version numbering on releases, and to ensure changes are not wiped out in future releases.
