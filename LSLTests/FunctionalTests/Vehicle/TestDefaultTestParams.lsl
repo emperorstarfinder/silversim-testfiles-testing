@@ -47,7 +47,7 @@ default
                         result = FALSE;
                     }
                     orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                    if(llFabs(orientation.x-orientation.x)>1 || llFabs(orientation.y-orientation.y)>1 || llFabs(orientation.z-orientation.z)>1)
+                    if(llFabs(orientation.x-orientation.x)>0.01 || llFabs(orientation.y-orientation.y)>0.01 || llFabs(orientation.z-orientation.z)>0.01)
                     {
                         llSay(PUBLIC_CHANNEL, "Rotation is not stable " + (string)orientation);
                         llSay(PUBLIC_CHANNEL, "AngularMotorTorque = " + (string)v.AngularMotorTorque);
