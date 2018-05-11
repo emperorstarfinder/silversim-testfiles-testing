@@ -13,19 +13,18 @@ default
         _test_Result(FALSE);
         integer x;
         integer result = TRUE;
-        for(x = 0; x < 179; ++x)
+        for(x = 1; x < 180; ++x)
         {
             v = VehicleInstance();
             v.VerticalAttractionEfficency = <1,1,1>;
-            v.VerticalAttractionTimescale = <1,1,1>;
+            v.VerticalAttractionTimescale = <0.1,0.1,0.1>;
             v.Rotation = llEuler2Rot(<x,0,0>*DEG_TO_RAD);
             v.Process(0.2);
             if(v.AngularVelocity.x > 0)
             {
                 result = FALSE;
                 llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");
-                llSay(PUBLIC_CHANNEL, "vertical attraction went wrong direction");
-                break;
+                llSay(PUBLIC_CHANNEL, "vertical attraction went wrong direction " + (string)v.AngularVelocity);
             }
         }
         for(x = 181; x < 360; ++x)
@@ -37,8 +36,7 @@ default
             {
                 result = FALSE;
                 llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");
-                llSay(PUBLIC_CHANNEL, "vertical attraction went wrong direction");
-                break;
+                llSay(PUBLIC_CHANNEL, "vertical attraction went wrong direction " + (string)v.AngularVelocity);
             }
         }
         _test_Result(result);

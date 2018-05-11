@@ -17,9 +17,8 @@ default
         {
             v = VehicleInstance();
             v.VerticalAttractionEfficency = <1,1,1>;
-            v.VerticalAttractionTimescale = <1,1,1>;
+            v.VerticalAttractionTimescale = <0.1,0.1,0.1>;
             v.Rotation = llEuler2Rot(<x,0,0>*DEG_TO_RAD);
-            rotation startrotation = v.Rotation;
             integer step;
             for(step = 0; step < steps; ++step)
             {
@@ -37,8 +36,7 @@ default
             {
                 v.Process(0.2);
                 vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                vector startorientation = llRot2Euler(startrotation)*RAD_TO_DEG;
-                if(llFabs(startorientation.x-orientation.x) > 1 || llFabs(startorientation.y - orientation.y) > 0.000001 || llFabs(startorientation.z - orientation.z) > 0.000001)
+                if(llFabs(orientation.x) > 1 || llFabs(orientation.y) > 0.000001 || llFabs(orientation.z) > 0.000001)
                 {
                     result = FALSE;
                     llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");

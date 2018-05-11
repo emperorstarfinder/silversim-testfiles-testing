@@ -13,10 +13,10 @@ default
         _test_Result(FALSE);
         integer x;
         integer result = TRUE;
-        for(x = 0; x < 179; ++x)
+        for(x = 1; x < 180; ++x)
         {
             v = VehicleInstance();
-            v.VerticalAttractionEfficency = <1,1,1>;
+            v.VerticalAttractionEfficency = <0,1,1>;
             v.VerticalAttractionTimescale = <1,1,1>;
             v.Rotation = llEuler2Rot(<0,x,0>*DEG_TO_RAD);
             rotation startrotation = v.Rotation;
