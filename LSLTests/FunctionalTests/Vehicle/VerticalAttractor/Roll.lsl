@@ -19,11 +19,12 @@ default
         {
             v = VehicleInstance();
             v.Rotation = llEuler2Rot(<x,0,0>*DEG_TO_RAD);
+            rotation startrotation = v.Rotation;
             integer step;
             for(step = 0; step < steps; ++step)
             {
                 v.Process(0.2);
-                vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
+                vector orientation = v.AngularVelocity*RAD_TO_DEG;
                 if(llFabs(orientation.y) > 0.000001 && llFabs(orientation.z) > 0.000001)
                 {
                     result = FALSE;
@@ -36,7 +37,8 @@ default
             {
                 v.Process(0.2);
                 vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                if(llFabs(orientation.x) > 1 && llFabs(orientation.y) > 0.000001 && llFabs(orientation.z) > 0.000001)
+                vector startorientation = llRot2Euler(startrotation)*RAD_TO_DEG;
+                if(llFabs(startorientation.x-orientation.x) > 1 && llFabs(startorientation.y - orientation.y) > 0.000001 && llFabs(startorientation.z - orientation.z) > 0.000001)
                 {
                     result = FALSE;
                     llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");
@@ -45,7 +47,6 @@ default
                 }
             }
         }
-        llSay(0, (string)result);
         _test_Result(result);
         _test_Shutdown();
     }
