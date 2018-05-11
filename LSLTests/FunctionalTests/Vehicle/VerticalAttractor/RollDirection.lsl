@@ -11,13 +11,13 @@ default
     {
         integer steps = 300;
         _test_Result(FALSE);
-        v.VerticalAttractionEfficency = <1,1,1>;
-        v.VerticalAttractionTimescale = <1,1,1>;
         integer x;
         integer result = TRUE;
         for(x = 0; x < 179; ++x)
         {
             v = VehicleInstance();
+            v.VerticalAttractionEfficency = <1,1,1>;
+            v.VerticalAttractionTimescale = <1,1,1>;
             v.Rotation = llEuler2Rot(<x,0,0>*DEG_TO_RAD);
             v.Process(0.2);
             if(v.AngularVelocity.x > 0)
