@@ -25,7 +25,7 @@ default
             {
                 v.Process(0.2);
                 vector orientation = v.AngularVelocity*RAD_TO_DEG;
-                if(llFabs(orientation.x) > 0.000001 && llFabs(orientation.z) > 0.000001)
+                if(llFabs(orientation.x) > 0.000001 || llFabs(orientation.z) > 0.000001)
                 {
                     result = FALSE;
                     llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");
@@ -38,7 +38,7 @@ default
                 v.Process(0.2);
                 vector startorientation = llRot2Euler(startrotation)*RAD_TO_DEG;
                 vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                if(llFabs(startorientation.x-orientation.x) > 0.000001 && llFabs(startorientation.y-orientation.y) > 1 && llFabs(startorientation.z-orientation.z) > 0.000001)
+                if(llFabs(startorientation.x-orientation.x) > 0.000001 || llFabs(startorientation.y-orientation.y) > 1 || llFabs(startorientation.z-orientation.z) > 0.000001)
                 {
                     result = FALSE;
                     llSay(PUBLIC_CHANNEL, "=== starting at angle " + (string)x + " ===");
