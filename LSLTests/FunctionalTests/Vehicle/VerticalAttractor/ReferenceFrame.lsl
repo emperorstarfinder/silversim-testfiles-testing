@@ -28,8 +28,6 @@ default
             {
                 v.Process(0.2);
                 vector check = llRot2Euler(v.Rotation / v.ReferenceFrame)*RAD_TO_DEG;
-                vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                vector reforientation = llRot2Euler(v.ReferenceFrame)*RAD_TO_DEG;
                 if(llFabs(check.x) > 1 || llFabs(check.y) > 1 || llFabs(check.z) > 1)
                 {
                     result = FALSE;
@@ -54,8 +52,6 @@ default
             {
                 v.Process(0.2);
                 vector check = llRot2Euler(v.Rotation / v.ReferenceFrame)*RAD_TO_DEG;
-                vector orientation = llRot2Euler(v.Rotation)*RAD_TO_DEG;
-                vector reforientation = llRot2Euler(v.ReferenceFrame)*RAD_TO_DEG;
                 if(llFabs(check.x) > 1 || llFabs(check.y) > 1 || llFabs(check.z) > 1)
                 {
                     result = FALSE;
