@@ -1,0 +1,25 @@
+//#!Enable:extern
+
+extern("hello") rpc_1(integer update);
+extern("hello", rpc2) rpc_2(integer update);
+extern("prim", "hello") rpc_3(string t);
+extern(4, "hello") rpc_4(string t);
+extern("prim", "hello", rpc2) rpc_5(integer update);
+extern(4, "hello", rpc2) rpc_6(integer update, integer para);
+
+extern rpccall(integer cmd)
+{
+}
+
+default
+{
+	state_entry()
+	{
+		rpc_1(1);
+		rpc_2(2);
+		rpc_3("3");
+		rpc_4("4");
+		rpc_5(5);
+		rpc_6(6, 0);
+	}
+}
