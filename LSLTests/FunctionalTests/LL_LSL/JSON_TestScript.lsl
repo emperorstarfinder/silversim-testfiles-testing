@@ -35,7 +35,7 @@ integer verify(string message, string result, string expected)
     ++tests;
     if (expected != result)
     {
-        llOwnerSay("FAIL test " + message  + ", expected: " + typeName(expected) + ", result: " + typeName(result));
+        llSay(PUBLIC_CHANNEL, "FAIL test " + message  + ", expected: " + typeName(expected) + ", result: " + typeName(result));
         ++fails;
         return 0;
     }
