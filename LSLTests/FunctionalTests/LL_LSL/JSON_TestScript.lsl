@@ -417,6 +417,7 @@ default
 {
     state_entry()
     {
+	_test_Result(FALSE);
         test_types();
         test_get_value();
         test_set_value();
