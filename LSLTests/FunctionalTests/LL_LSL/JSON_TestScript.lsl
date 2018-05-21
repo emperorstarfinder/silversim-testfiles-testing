@@ -238,15 +238,15 @@ test_list_to_json()
 {
     // test objects
     string json = llList2Json(JSON_OBJECT,["a",1,"b",2.5,"c","test","d","true","e","[1,2,3]"]);
-    verify("E01: llList2Json, json object",json,"{\"a\":1,\"b\":2.500000,\"c\":\"test\",\"d\":true,\"e\":[1,2,3]}");
+    verify("E01: llList2Json, json object",json,"{\"a\":1,\"b\":2.5,\"c\":\"test\",\"d\":true,\"e\":[1,2,3]}");
  
     // test arrays
     json = llList2Json(JSON_ARRAY,[1,2.5,"test","true","[1,2,3]"]);
-    verify("E02: llList2Json, json array",json,"[1,2.500000,\"test\",true,[1,2,3]]");
+    verify("E02: llList2Json, json array",json,"[1,2.5,\"test\",true,[1,2,3]]");
  
     // test arrays
     json = llList2Json(JSON_ARRAY,[1,2.5,"test",JSON_TRUE,"[1,2,3]"]);
-    verify("E03: llList2Json, json array, alternative true representation",json,"[1,2.500000,\"test\",true,[1,2,3]]");
+    verify("E03: llList2Json, json array, alternative true representation",json,"[1,2.5,\"test\",true,[1,2,3]]");
  
     // test objects, with empty input
     json = llList2Json(JSON_OBJECT,[]);
