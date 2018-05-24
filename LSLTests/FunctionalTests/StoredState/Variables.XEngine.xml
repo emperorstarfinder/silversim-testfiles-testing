@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<State UUID="5e97c1ec-b536-4035-b8b0-d6ab33cd86b7" Asset="00000000-0000-0000-0000-000000000000" Engine="XEngine">  <ScriptState>
+    <State>default</State>
+    <Running>true</Running>
+    <StartParameter>5</StartParameter>
+    <Variables>
+	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Quaternion" name="Rotation">&lt;1.000000,2.000000,3.000000,4.000000&gt;</Variable>
+        <Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Vector3" name="Vector">&lt;1.000000,2.000000,3.000000&gt;</Variable>
+	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLInteger" name="Integer">2</Variable>
+	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLFloat" name="Float">3.000000</Variable>
+	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString" name="String">Value</Variable>
+	<Variable type="list" name="List1"/>
+	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString" name="Key">key</Variable>
+	<Variable type="list" name="List2">
+	  <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Vector3">&lt;1.000000,2.000000,3.000000&gt;</ListItem>
+	  <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Quaternion">&lt;1.000000,2.000000,3.000000,4.000000&gt;</ListItem>
+          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLFloat">0.500000</ListItem>
+          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLInteger">5</ListItem>
+          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString">Str</ListItem>
+	</Variable>
+    </Variables>
+    <Queue/>
+    <Plugins>
+      <ListItem type="System.String">timer</ListItem>
+      <ListItem type="System.Int32">2</ListItem>
+      <ListItem type="System.Int64">10000000</ListItem>
+      <ListItem type="System.Int64">5000000</ListItem>
+    </Plugins>
+    <MinEventDelay>0</MinEventDelay>
+  </ScriptState>
+</State>
