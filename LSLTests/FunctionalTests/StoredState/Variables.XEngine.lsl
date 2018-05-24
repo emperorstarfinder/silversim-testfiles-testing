@@ -19,6 +19,11 @@ default
 	{
 		llSetTimerEvent(0);
 		integer result = TRUE;
+		if(llGetStartParameter() != 5)
+		{
+			llSay(PUBLIC_CHANNEL, "Restore of StartParameter failed: " + (string)llGetStartParameter());
+			result = FALSE;
+		}
 		if(llFabs(Rotation.x - 1) > 0.000001 || 
 			llFabs(Rotation.y - 2) > 0.000001 || 
 			llFabs(Rotation.z - 3) > 0.000001 || 
