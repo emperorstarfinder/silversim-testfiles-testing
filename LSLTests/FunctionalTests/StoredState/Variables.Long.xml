@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<State UUID="5e97c1ec-b536-4035-b8b0-d6ab33cd86b7" Asset="00000000-0000-0000-0000-000000000000" Engine="XEngine">  <ScriptState>
+    <State>default</State>
+    <Running>true</Running>
+    <StartParameter>5</StartParameter>
+    <Variables>
+	<Variable type="long" name="Long">4000000000</Variable>
+    </Variables>
+    <Queue/>
+    <Plugins>
+      <ListItem type="System.String">timer</ListItem>
+      <ListItem type="System.Int32">2</ListItem>
+      <ListItem type="System.Int64">10000000</ListItem>
+      <ListItem type="System.Int64">5000000</ListItem>
+    </Plugins>
+    <MinEventDelay>0</MinEventDelay>
+  </ScriptState>
+</State>
