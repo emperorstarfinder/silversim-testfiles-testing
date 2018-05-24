@@ -5,7 +5,7 @@
     <StartParameter>5</StartParameter>
     <Variables>
 	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Quaternion" name="Rotation">&lt;1.000000,2.000000,3.000000,4.000000&gt;</Variable>
-        <Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Vector3" name="Vector">&lt;1.000000,2.000000,3.000000&gt;</Variable>
+    <Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Vector3" name="Vector">&lt;1.000000,2.000000,3.000000&gt;</Variable>
 	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLInteger" name="Integer">2</Variable>
 	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLFloat" name="Float">3.000000</Variable>
 	<Variable type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString" name="String">Value</Variable>
@@ -14,9 +14,10 @@
 	<Variable type="list" name="List2">
 	  <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Vector3">&lt;1.000000,2.000000,3.000000&gt;</ListItem>
 	  <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+Quaternion">&lt;1.000000,2.000000,3.000000,4.000000&gt;</ListItem>
-          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLFloat">0.500000</ListItem>
-          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLInteger">5</ListItem>
-          <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString">Str</ListItem>
+        <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLFloat">0.500000</ListItem>
+        <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLInteger">5</ListItem>
+        <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+LSLString">Str</ListItem>
+	  <ListItem type="OpenSim.Region.ScriptEngine.Shared.LSL_Types+key">Key</ListItem>
 	</Variable>
     </Variables>
     <Queue/>
