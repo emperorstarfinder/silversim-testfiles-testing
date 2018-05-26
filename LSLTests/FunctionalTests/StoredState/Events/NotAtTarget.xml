@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<State UUID="5e97c1ec-b536-4035-b8b0-d6ab33cd86b7" Asset="00000000-0000-0000-0000-000000000000" Engine="XEngine">  <ScriptState>
+    <State>default</State>
+    <Running>true</Running>
+    <StartParameter>0</StartParameter>
+    <Variables/>
+    <Queue>
+	<Item event="not_at_target">
+		<Params/>
+		<Detected/>
+	</Item>
+    </Queue>
+    <Plugins/>
+    <MinEventDelay>0</MinEventDelay>
+  </ScriptState>
+</State>
