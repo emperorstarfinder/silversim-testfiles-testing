@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<State UUID="5e97c1ec-b536-4035-b8b0-d6ab33cd86b7" Asset="00000000-0000-0000-0000-000000000000" Engine="XEngine">  <ScriptState>
+    <State>default</State>
+    <Running>true</Running>
+    <StartParameter>0</StartParameter>
+    <Variables/>
+    <Queue>
+	<Item event="touch_end">
+		<Params/>
+		<Detected>
+			<Object 
+				pos="&lt;1,2,3&gt;"
+				linkNum="4"
+				group="11223344-0000-0000-1122-112233445566"
+				name="Name 1"
+				owner="11223344-1122-0000-1122-112233445566"
+				position="&lt;5,6,7&gt;"
+				rotation="&lt;8,9,10,11&gt;"
+				type="12"
+				velocity="&lt;13,14,15&gt;"
+				touchst="&lt;16,17,18&gt;"
+				touchuv="&lt;19,20,21&gt;"
+				touchbinormal="&lt;22,23,24&gt;"
+				touchpos="&lt;25,26,27&gt;"
+				touchface="2">11223344-1122-1122-1122-112233445566</Object>
+		</Detected>
+	</Item>
+    </Queue>
+    <Plugins/>
+    <MinEventDelay>0</MinEventDelay>
+  </ScriptState>
+</State>
