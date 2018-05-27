@@ -1,10 +1,11 @@
 //#!Enable:testing
 
+integer vartoreset = TRUE;
 default
 {
 	state_entry()
 	{
-		_test_Result(TRUE);
+		_test_Result(vartoreset);
 		_test_Shutdown();
 	}
 	
@@ -28,6 +29,7 @@ state check
 	
 	on_rez(integer start_param)
 	{
+		vartoreset = FALSE;
 		_test_scriptresetevent();
 	}
 }
