@@ -101,7 +101,7 @@ ${testfile}"/>
             </try>
             <catch>
                 <property name="failedtests" value="${failedtests}
-${testfile}"/>
+${testfile}" unless="${property::exists('ignore-exit-code')}"/>
             </catch>
         </trycatch>
     </target>
