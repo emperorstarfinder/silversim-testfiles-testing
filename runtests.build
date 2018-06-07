@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <project name="Test Collecton" default="runtests" basedir=".">
 	<target name="runtests">
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
 		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
 		<mkdir dir="../testresults"/>
 		<foreach item="File" property="testconfig">
 			<in>
@@ -41,23 +44,44 @@
 							<arg value="-c"/>
 							<arg value="../tests/${testfile}"/>
 						</exec>
+						<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;success classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Failure&lt;/success&gt;
+&lt;/testcase&gt;
+"/>
 					</try>
 					<catch>
 						<property name="failedtests" value="${failedtests}
 ${testfile}"/>
+						<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;failure classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Failure&lt;/failure&gt;
+&lt;/testcase&gt;
+"/>
 					</catch>
 				</trycatch>
 			</do>
 		</foreach>
 		<call target="runscripttests-inner"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+		<call target="writeoverall"/>
 	</target>
 	
 	<target name="runscripttests">
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
 		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
 		<mkdir dir="../testresults"/>
 		<call target="runscripttests-inner"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+		<call target="writeoverall"/>
+	</target>
+	
+	<target name="writeoverall">
+		<echo message="&lt;testsuite name=&quot;Exit results&quot; tests=&quot;${numtests}&quot; errors=&quot;0&quot; failures=&quot;${numfailedtests}&quot; skip=&quot;0&quot;&gt;"
+			file="../testresults/overall-results.xml"/>
+		<echo message="${testresults}" file="../testresults/overall-results.xml" append="true"/>
+		<echo message="&lt;/testsuite&gt;" file="../testresults/overall-results.xml" append="true"/>
+		<fail message="Failed tests: ${failedtests}" if="${failedtests!=''}"/>
 	</target>
 	
 	<target name="runscripttests-inner">
@@ -75,12 +99,18 @@ ${testfile}"/>
 			</do>
 		</foreach>
 	</target>
-    <target name="runscripttest">
+    
+	<target name="runscripttest">
 		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
 		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
+		<mkdir dir="../testresults"/>
         <call target="runscript-actual"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+		<call target="writeoverall"/>
     </target>
+	
     <target name="runscript-actual">
         <echo message="Running ${testfile}"/>
         <property name="testoutput" value="${testfile}.xml"/>
@@ -98,10 +128,20 @@ ${testfile}"/>
                     <arg value="-D:TestRunner:Name=${testfile}"/>
                     <arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
                 </exec>
+				<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;success classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Succcess&lt;/success&gt;
+&lt;/testcase&gt;
+"/>
             </try>
             <catch>
                 <property name="failedtests" value="${failedtests}
-${testfile}" unless="${property::exists('ignore-exit-code')}"/>
+${testfile}"/>
+				<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;failure classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Failure&lt;/failure&gt;
+&lt;/testcase&gt;
+"/>
             </catch>
         </trycatch>
     </target>
