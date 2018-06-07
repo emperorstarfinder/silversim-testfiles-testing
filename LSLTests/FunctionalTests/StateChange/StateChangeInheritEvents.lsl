@@ -20,7 +20,6 @@ state one
 	timer()
 	{
 		_test_Result(TRUE);
-		_test_Shutdown();
 		state okay;
 	}
 }
@@ -35,7 +34,7 @@ state two
 	timer()
 	{
 		_test_Result(TRUE);
-		_test_Shutdown();
+		state okay;
 	}
 }
 
@@ -44,5 +43,6 @@ state okay
 	state_entry()
 	{
 		llSetTimerEvent(0);
+		_test_Shutdown();
 	}
 }
