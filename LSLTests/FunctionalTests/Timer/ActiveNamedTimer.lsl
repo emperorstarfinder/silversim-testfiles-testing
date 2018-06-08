@@ -11,25 +11,26 @@ timer(Hello) timerfunc()
 	timerseen = TRUE;
 	if(!Timer["Hello"].IsInEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "Timer[\"Hello\"].IsInEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello: Timer[\"Hello\"].IsInEvent not true");
 		result = FALSE;
 	}
 	if(!Timer.Active.IsInEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "Timer.Active.IsInEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello: Timer.Active.IsInEvent not true");
 		result = FALSE;
 	}
 	string timerName = ActiveTimerName;
 	if(timerName != "Hello")
 	{
-		llSay(PUBLIC_CHANNEL, "ActiveTimerName not \"Hello\": \"" + timerName + "\"");
+		llSay(PUBLIC_CHANNEL, "Hello: ActiveTimerName not \"Hello\": \"" + timerName + "\"");
 		result = FALSE;
 	}
 	if(!IsInTimerEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "IsInTimerEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello: IsInTimerEvent not true");
 		result = FALSE;
 	}
+	llSay(PUBLIC_CHANNEL, "Timer Hello triggered done");
 }
 
 timer(Hello2) timerfunc()
@@ -38,32 +39,33 @@ timer(Hello2) timerfunc()
 	timer2seen = TRUE;
 	if(!Timer["Hello2"].IsInEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "Timer[\"Hello2\"].IsInEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello2: Timer[\"Hello2\"].IsInEvent not true");
 		result = FALSE;
 	}
 	if(!Timer.Active.IsInEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "Timer.Active.IsInEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello2: Timer.Active.IsInEvent not true");
 		result = FALSE;
 	}
 	string timerName = ActiveTimerName;
 	if(timerName != "Hello2")
 	{
-		llSay(PUBLIC_CHANNEL, "ActiveTimerName not \"Hello2\": \"" + timerName + "\"");
+		llSay(PUBLIC_CHANNEL, "Hello2: ActiveTimerName not \"Hello2\": \"" + timerName + "\"");
 		result = FALSE;
 	}
 	if(!IsInTimerEvent)
 	{
-		llSay(PUBLIC_CHANNEL, "IsInTimerEvent not true");
+		llSay(PUBLIC_CHANNEL, "Hello2: IsInTimerEvent not true");
 		result = FALSE;
 	}
+	llSay(PUBLIC_CHANNEL, "Timer Hello2 triggered done");
 }
 
 default
 {
     state_entry()
     {
-	_test_Result(FALSE);
+		_test_Result(FALSE);
         _test_Log(LOG_INFO, "Starting timer");
         llSetTimerEvent(0.5);
 		Timer["Hello"].IsOneshot = TRUE;
