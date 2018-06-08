@@ -6,6 +6,7 @@ integer timercnt = 0;
 timer(Hello) timerfunc()
 {
 	llSetTimerEvent(0);
+	Timer["Hello"].Interval = 0;
 	_test_Result(timercnt==1);
 	_test_Shutdown();
 }
