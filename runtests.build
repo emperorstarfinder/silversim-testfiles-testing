@@ -50,14 +50,16 @@ ${testfile}"/>
 			</do>
 		</foreach>
 		<call target="runscripttests-inner"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+		<fail message="Failed tests:${failedtests}" if="${failedtests!='' and not property::exists('ignore-exit-codes')}"/>
+		<echo message="Failed tests:${failedtests}" if="${failedtests!='' and property::exists('ignore-exit-codes')}"/>
 	</target>
 	
 	<target name="runscripttests">
 		<property name="failedtests" value=""/>
 		<mkdir dir="../testresults"/>
 		<call target="runscripttests-inner"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+		<fail message="Failed tests:${failedtests}" if="${failedtests!='' and not property::exists('ignore-exit-codes')}"/>
+		<echo message="Failed tests:${failedtests}" if="${failedtests!='' and property::exists('ignore-exit-codes')}"/>
 	</target>
 	
 	<target name="runscripttests-inner">
@@ -69,17 +71,17 @@ ${testfile}"/>
 				</items>
 			</in>
 			<do>
-				<property name="testfile" 
-				value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
-                <call target="runscript-actual"/>
+				<property name="testfile" value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
+				<call target="runscript-actual"/>
 			</do>
 		</foreach>
 	</target>
     <target name="runscripttest">
-		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
-		<property name="failedtests" value=""/>
+	<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+	<property name="failedtests" value=""/>
         <call target="runscript-actual"/>
-		<fail message="Failed tests:${failedtests}" if="${failedtests!=''}"/>
+	<fail message="Failed tests:${failedtests}" if="${failedtests!='' and not property::exists('ignore-exit-codes')}"/>
+	<echo message="Failed tests:${failedtests}" if="${failedtests!='' and property::exists('ignore-exit-codes')}"/>
     </target>
     <target name="runscript-actual">
         <echo message="Running ${testfile}"/>
