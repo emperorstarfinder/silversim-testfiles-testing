@@ -78,11 +78,10 @@ ${testfile}"/>
 	
 	<target name="writeoverall">
 		<echo message="&lt;testsuite name=&quot;Exit results&quot; tests=&quot;${numtests}&quot; errors=&quot;0&quot; failures=&quot;${numfailedtests}&quot; skip=&quot;0&quot;&gt;"
-			file="../testresults/overall-results.xml"/>
-		<echo message="${testresults}" file="../testresults/overall-results.xml" append="true"/>
-		<echo message="&lt;/testsuite&gt;" file="../testresults/overall-results.xml" append="true"/>
-		<fail message="Failed tests: ${failedtests}" if="${failedtests!='' and not property::exists('ignore-exit-codes')}"/>
-		<echo message="Failed tests: ${failedtests}" if="${failedtests!='' and not property::exists('ignore-exit-codes')}"/>
+			file="../testresults/overall-results.xml" unless="${property::exists('ignore-exit-codes')}"/>
+		<echo message="${testresults}" file="../testresults/overall-results.xml" append="true" unless="${property::exists('ignore-exit-codes')}"/>
+		<echo message="&lt;/testsuite&gt;" file="../testresults/overall-results.xml" append="true" unless="${property::exists('ignore-exit-codes')}"/>
+		<echo message="Failed tests: ${failedtests}" if="${failedtests!=''}"/>
 	</target>
 	
 	<target name="runscripttests-inner">
