@@ -1,0 +1,15 @@
+﻿== 00 FOREWORDS == 
+Welcome to switch! 
+
+🐼 This is a FREE game by Tonaie. 
+⚠️ IF YOU PAID MONEY FOR THIS, YOU HAVE BEEN SCAMMED AND SHOULD DEMAND A REFUND ⚠
+️
+💰 Send a few L$ to Tonaie if you enjoyed this free game ^.^
+🖊️ Source code is here: https://github.com/Tonaie/Switch
+🗒️ My blog is here: http://tonaie.tumblr.com/
+
+LICENSE
+- The assets are licensed as Creative Commons BY https://creativecommons.org/licenses/by/4.0/
+- The code is licensed under GPLv3 https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)
+- You may modify and/or resell this as you wish, but you must not mislead sellers that you made it and that it is available for free.
+
