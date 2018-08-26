@@ -12,6 +12,6 @@ default
 		llSay(PUBLIC_CHANNEL, "Failed to inject script");
 		_test_Shutdown();
 	}
-        llMessageLinked(LINK_SET, 0, "", llRequestSimulatorData("Testing Region", DATA_SIM_RATING));
+        llMessageLinked(LINK_SET, 0, "PG", llRequestSimulatorData("Testing Region", DATA_SIM_RATING));
     }
 }
