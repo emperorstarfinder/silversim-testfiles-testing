@@ -44,16 +44,19 @@ default
 		{
 			llSay(PUBLIC_CHANNEL, "data mismatch");
 			llSay(PUBLIC_CHANNEL, d1 + "  !=  " + d2);
+			result = FALSE;
 		}
 		if(r1 != r2)
 		{
 			llSay(PUBLIC_CHANNEL, "queryid mismatch");
 			llSay(PUBLIC_CHANNEL, r1 + "  !=  " + r2);
+			result = FALSE;
 		}
 		if(success != 2)
 		{
 			llSay(PUBLIC_CHANNEL, "at least one validator missing");
 			llSay(PUBLIC_CHANNEL, (string)success + " != 2");
+			result = FALSE;
 		}
 		_test_Result(result);
 		

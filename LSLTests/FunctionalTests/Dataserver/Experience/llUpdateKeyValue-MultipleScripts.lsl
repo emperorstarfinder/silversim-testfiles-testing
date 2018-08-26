@@ -23,7 +23,7 @@ default
 		llSay(PUBLIC_CHANNEL, "Failed to inject script");
 		_test_Shutdown();
 	}
-        llMessageLinked(LINK_SET, 0, "0,14", llUpdateKeyValue("MyKey", "MyValue", FALSE, ""));
+        llMessageLinked(LINK_SET, 0, "1,MyValue", llUpdateKeyValue("MyKey", "MyValue", FALSE, ""));
     }
     
     dataserver(key q, string data)
