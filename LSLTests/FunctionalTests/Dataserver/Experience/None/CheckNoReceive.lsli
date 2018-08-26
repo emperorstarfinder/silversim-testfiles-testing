@@ -1,0 +1,7 @@
+default
+{
+	dataserver(key q, string data)
+	{
+		llMessageLinked(LINK_SET, 0, "", NULL_KEY);
+	}
+}
