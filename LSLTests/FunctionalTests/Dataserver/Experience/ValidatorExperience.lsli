@@ -1,0 +1,62 @@
+//#!Enable:testing
+
+key r1 = NULL_KEY;
+key r2 = NULL_KEY;
+string d1;
+string d2;
+integer success;
+
+default
+{
+	state_entry()
+	{
+		llSay(PUBLIC_CHANNEL, llGetScriptName() + " running");
+		llSetTimerEvent(2);
+	}
+	
+	link_message(integer sender, integer num, string str, key id)
+	{
+		if(num == 1)
+		{
+			llSay(PUBLIC_CHANNEL, "link_message result received " + str);
+			success += (integer)str;
+		}
+		else
+		{
+			llSay(PUBLIC_CHANNEL, "link_message received " + (string)id);
+			r1 = id;
+			d1 = str;
+		}
+	}
+	
+	dataserver(key id, string data)
+	{
+		llSay(PUBLIC_CHANNEL, "dataserver received " + (string)id);
+		r2 = id;
+		d2 = data;
+	}
+	
+	timer()
+	{
+		llSay(PUBLIC_CHANNEL, "-- Check data --");
+		integer result = TRUE;
+		if(d1 != d2)
+		{
+			llSay(PUBLIC_CHANNEL, "data mismatch");
+			llSay(PUBLIC_CHANNEL, d1 + "  !=  " + d2);
+		}
+		if(r1 != r2)
+		{
+			llSay(PUBLIC_CHANNEL, "queryid mismatch");
+			llSay(PUBLIC_CHANNEL, r1 + "  !=  " + r2);
+		}
+		if(success != 2)
+		{
+			llSay(PUBLIC_CHANNEL, "at least one validator missing");
+			llSay(PUBLIC_CHANNEL, (string)success + " != 2");
+		}
+		_test_Result(result);
+		
+		_test_Shutdown();
+	}
+}

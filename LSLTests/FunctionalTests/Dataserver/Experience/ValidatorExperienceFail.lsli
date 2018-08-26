@@ -1,0 +1,20 @@
+default
+{
+	state_entry()
+	{
+		llSay(PUBLIC_CHANNEL, llGetScriptName() + " running");
+		llSetTimerEvent(1.5);
+	}
+	
+	timer()
+	{
+		llMessageLinked(LINK_SET, 1, "1", NULL_KEY);
+		llSetTimerEvent(0);
+	}
+	
+	dataserver(key q, string data)
+	{
+		llSay(PUBLIC_CHANNEL, "Unexpected dataserver " + (string)q + ":" + data);
+		llMessageLinked(LINK_SET, 1, "0", NULL_KEY);
+	}
+}
