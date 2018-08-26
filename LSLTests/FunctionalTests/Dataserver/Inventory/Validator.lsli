@@ -1,0 +1,35 @@
+//#!Enable:testing
+
+key r1 = NULL_KEY;
+key r2 = NULL_KEY;
+string d1;
+string d2;
+
+default
+{
+	state_entry()
+	{
+		llSetTimerEvent(2);
+	}
+	
+	link_message(integer sender, integer num, string str, key id)
+	{
+		llSay(PUBLIC_CHANNEL, "link_message received " + (string)id);
+		r1 = id;
+		d1 = str;
+		_test_Result(r1 == r2 && d1 == d2);
+	}
+	
+	dataserver(key id, string data)
+	{
+		llSay(PUBLIC_CHANNEL, "dataserver received " + (string)id);
+		r2 = id;
+		d2 = data;
+		_test_Result(r1 == r2 && d1 == d2);
+	}
+	
+	timer()
+	{
+		_test_Shutdown();
+	}
+}
