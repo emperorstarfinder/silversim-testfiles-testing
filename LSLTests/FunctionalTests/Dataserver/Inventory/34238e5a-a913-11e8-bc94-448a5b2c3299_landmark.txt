@@ -1,0 +1,5 @@
+Landmark version 2
+region_id 4e452d2a-a913-11e8-9cc1-448a5b2c3299
+local_pos 132.1592 130.9615 21.26741
+region_handle 1099511628032000
+gatekeeper http://127.0.0.1:8002
