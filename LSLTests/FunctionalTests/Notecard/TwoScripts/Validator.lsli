@@ -12,14 +12,14 @@ default
 	
 	link_message(integer sender, integer num, string str, key id)
 	{
-		llOwnerSay("link_message received " + (string)id);
+		llSay(PUBLIC_CHANNEL, "link_message received " + (string)id);
 		r1 = id;
 		_test_Result(r1 == r2);
 	}
 	
 	dataserver(key id, string data)
 	{
-		llOwnerSay("dataserver received " + (string)id);
+		llSay(PUBLIC_CHANNEL, "dataserver received " + (string)id);
 		r2 = id;
 		_test_Result(r1 == r2);
 	}
