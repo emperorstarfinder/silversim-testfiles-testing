@@ -7,7 +7,7 @@ default
 {
 	state_entry()
 	{
-		llSetTimerEvent(0.8);
+		llSetTimerEvent(2);
 	}
 	
 	link_message(integer sender, integer num, string str, key id)
