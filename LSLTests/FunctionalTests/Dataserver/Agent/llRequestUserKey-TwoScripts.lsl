@@ -12,6 +12,6 @@ default
 		llSay(PUBLIC_CHANNEL, "Failed to inject script");
 		_test_Shutdown();
 	}
-        llMessageLinked(LINK_SET, 0, "", llRequestUserKey("Script.Test"));
+        llMessageLinked(LINK_SET, 0, (string)llGetOwner(), llRequestUserKey("Script.Test"));
     }
 }
