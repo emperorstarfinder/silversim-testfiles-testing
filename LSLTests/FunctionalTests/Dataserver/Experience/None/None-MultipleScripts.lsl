@@ -1,7 +1,5 @@
 //#!Enable:testing
 
-key q;
-
 integer local_received = 0;
 integer remote_received = 0;
 
