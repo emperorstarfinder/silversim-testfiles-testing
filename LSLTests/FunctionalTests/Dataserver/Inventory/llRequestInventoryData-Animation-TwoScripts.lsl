@@ -12,6 +12,6 @@ default
 		llSay(PUBLIC_CHANNEL, "Failed to inject script");
 		_test_Shutdown();
 	}
-        llMessageLinked(LINK_SET, 0, "4.048000", llRequestInventoryData("Sound"));
+        llMessageLinked(LINK_SET, 0, "1.99997997283936", llRequestInventoryData("Animation"));
     }
 }
