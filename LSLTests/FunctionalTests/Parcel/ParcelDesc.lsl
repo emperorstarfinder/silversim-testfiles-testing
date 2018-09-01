@@ -11,7 +11,7 @@ default
 {
 	state_entry()
 	{
-		_test_setserverparam("OSSL.ThreatLevel", "severe");
+		_test_setserverparam("OSSL.osSetParcelDetails.IsEstateManagerAllowed", "true");
 		asSetForcedSleep(FALSE, 0);
 		integer pass = TRUE;
 		
