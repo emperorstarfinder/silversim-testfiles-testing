@@ -23,7 +23,7 @@ default
 		_test_Result(FALSE);
 		scriptname = llGetScriptName();
 		rpc_1(0);
-		llSetTimerEvent(0.5);
+		llSetTimerEvent(0.8);
 	}
 	
 	timer()
