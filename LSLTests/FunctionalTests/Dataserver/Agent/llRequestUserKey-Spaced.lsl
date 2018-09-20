@@ -19,8 +19,9 @@ default
         }
         else
         {
-            llSay(PUBLIC_CHANNEL, data);
-            _test_Result(data == llGetOwner());
+            llSay(PUBLIC_CHANNEL, "Got: " + data);
+	    llSay(PUBLIC_CHANNEL, "Expected: " + (string)llGetOwner());
+            _test_Result(data == (string)llGetOwner());
         }
         _test_Shutdown();
     }
