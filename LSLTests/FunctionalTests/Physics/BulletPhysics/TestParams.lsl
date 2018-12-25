@@ -24,7 +24,11 @@ default
 				BULLET_PARAM_TERRAINCOLLIDE, /* 12 */
 				BULLET_PARAM_LOCALID, /* 13 */
 				BULLET_PARAM_ROOTPARTLOCALID, /* 14 */
-				BULLET_PARAM_COLLISIONSIZE /* 15 */]);
+				BULLET_PARAM_COLLISIONSIZE, /* 15 */
+				BULLET_PARAM_CUR_PHYSICS_PARAMETER_UPDATE_SERIAL, /* 16 */
+				BULLET_PARAM_ACT_PHYSICS_PARAMETER_UPDATE_SERIAL, /* 17 */
+				BULLET_PARAM_CUR_PHYSICS_SHAPE_UPDATE_SERIAL, /* 18 */
+				BULLET_PARAM_ACT_PHYSICS_SHAPE_UPDATE_SERIAL] /* 19 */);
 			
 		list primresults = llGetPrimitiveParams([
 				PRIM_SIZE,
@@ -38,7 +42,7 @@ default
 			llSay(PUBLIC_CHANNEL, "Prim is not activated in physics");
 			success = FALSE;
 		}
-		if(llGetListLength(physresults) != 16)
+		if(llGetListLength(physresults) != 20)
 		{
 			llSay(PUBLIC_CHANNEL, "Prim physics is not returning 16 values");
 			success = FALSE;
