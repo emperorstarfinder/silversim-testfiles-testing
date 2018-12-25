@@ -19,7 +19,7 @@ default
 		llSay(PUBLIC_CHANNEL, "End Frame: " + (string)end);
 		llSay(PUBLIC_CHANNEL, "Processed Frames: " + (string)diff);
 		
-		if(diff < 595)
+		if(diff < 550)
 		{
 			llSay(PUBLIC_CHANNEL, "Did not reach expected FPS");
 			_test_Result(FALSE);
