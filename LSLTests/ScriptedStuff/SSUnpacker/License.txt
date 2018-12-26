@@ -1,0 +1,20 @@
+English
+-----------------------------------------------------------
+Sample action sample.
+There is no support for this product.
+This script, and objects and animations and texture are provided in CC0.
+
+CC0 1.0 Universal (CC0 1.0) 
+Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
+
+
+日本語
+-----------------------------------------------------------
+スクリプト動作のサンプルです。
+この製品に対するサポートは一切ありません。
+このスクリプト、及びオブジェクトとアニメーション、テクスチャは、CC0ライセンスで提供します。
+
+CC0 1.0 全世界 (CC0 1.0) 
+パブリック・ドメイン提供
+https://creativecommons.org/publicdomain/zero/1.0/deed.ja
