@@ -14,6 +14,11 @@ default
 		llCreateLink("11223344-1122-1122-1122-000000000001", TRUE);
 		list paramOwn = btGetPrimParams("11223344-1122-1122-1122-000000000000", BULLET_PARAM_ROOTPARTLOCALID);
 		rootpartlocalid = llList2Integer(paramOwn, 0);
+		if(_test_LocalId2ObjectKey(rootpartlocalid) != "11223344-1122-1122-1122-000000000000")
+		{
+			llSay(PUBLIC_CHANNEL, "Root part local id is not valid");
+			success = FALSE;
+		}
 	}
 	
 	changed(integer flags)
@@ -29,6 +34,11 @@ default
 			integer rootpartOther = llList2Integer(paramOther, 0);
 			llSay(PUBLIC_CHANNEL, "Root linkset: " + (string)rootpartOwn);
 			llSay(PUBLIC_CHANNEL, "Child linkset: " + (string)rootpartOther);
+			if(_test_LocalId2ObjectKey(rootpartOwn) != "11223344-1122-1122-1122-000000000000")
+			{
+				llSay(PUBLIC_CHANNEL, "Root part local id is not valid");
+				success = FALSE;
+			}
 			if(rootpartOwn != rootpartlocalid)
 			{
 				llSay(PUBLIC_CHANNEL, "Root part does not match " + (string)rootpartlocalid + " != " + (string)rootpartOwn);
@@ -66,6 +76,16 @@ state unlink
 			integer rootpartOther = llList2Integer(paramOther, 0);
 			llSay(PUBLIC_CHANNEL, "Root linkset: " + (string)rootpartOwn);
 			llSay(PUBLIC_CHANNEL, "Child linkset: " + (string)rootpartOther);
+			if(_test_LocalId2ObjectKey(rootpartOwn) != "11223344-1122-1122-1122-000000000000")
+			{
+				llSay(PUBLIC_CHANNEL, "Root part local id is not valid");
+				success = FALSE;
+			}
+			if(_test_LocalId2ObjectKey(rootpartOther) != "11223344-1122-1122-1122-000000000001")
+			{
+				llSay(PUBLIC_CHANNEL, "Other root part local id is not valid");
+				success = FALSE;
+			}
 			if(rootpartOwn != rootpartlocalid)
 			{
 				llSay(PUBLIC_CHANNEL, "Root part does not match " + (string)rootpartlocalid + " != " + (string)rootpartOwn);
