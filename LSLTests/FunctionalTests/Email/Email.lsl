@@ -19,7 +19,7 @@ default
 		llSay(PUBLIC_CHANNEL, "Subject: " + subject);
 		llSay(PUBLIC_CHANNEL, "Message: " + message);
 		llSay(PUBLIC_CHANNEL, "Num Left: " + (string)num_left);
-		if(num_left == 0 && address == llGetKey()+"@"+asGetLocalLslEmailDomain() && message == "Message")
+		if(num_left == 0 && address == llGetKey()+"@"+asGetLocalLslEmailDomain() && subject == "Subject" && message == "Message")
 		{
 			_test_Result(TRUE);
 		}
