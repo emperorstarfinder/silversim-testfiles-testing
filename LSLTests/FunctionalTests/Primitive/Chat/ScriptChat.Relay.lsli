@@ -1,0 +1,15 @@
+integer handle;
+
+default
+{
+    state_entry()
+    {
+        handle = llListen(5, "", NULL_KEY, "");
+    }
+    
+    listen(integer channel, string name, key id, string data)
+    {
+        llSay(5, data);
+        llListenRemove(handle);
+    }
+}
