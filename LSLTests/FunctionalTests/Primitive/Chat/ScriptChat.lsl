@@ -2,6 +2,7 @@
 //#!Enable:Testing
 
 integer cnt;
+integer success = TRUE;
 
 default
 {
@@ -30,6 +31,11 @@ state test
 
     listen(integer channel, string name, key id, string data)
     {
+        if(id == llGetKey())
+        {
+            llSay(PUBLIC_CHANNEL, "Self-Receive should not happen");
+            success = FALSE;
+        }
         llSay(PUBLIC_CHANNEL, "Received: " + (string)id + ":" + data);
         ++cnt;
     }
@@ -38,7 +44,11 @@ state test
     {
         llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "Received cnt: " + (string)cnt);
-        _test_Result(cnt == 1);
+        if(cnt != 1)
+        {
+            success = FALSE;
+        }
+        _test_Result(success);
         _test_Shutdown();
     }
 }
