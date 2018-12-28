@@ -1,0 +1,10 @@
+default
+{
+	changed(integer flags)
+	{
+		if(flags & CHANGED_INVENTORY)
+		{
+			llSay(1, llGetInventoryName(INVENTORY_NOTECARD, 0));
+		}
+	}
+}
