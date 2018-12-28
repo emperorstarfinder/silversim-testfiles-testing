@@ -1,0 +1,8 @@
+default
+{
+	on_rez(integer startparam)
+	{
+		llSay(PUBLIC_CHANNEL, "Active");
+		llSay(startparam, "Hello");
+	}
+}
