@@ -1,0 +1,12 @@
+default
+{
+	state_entry()
+	{
+		llListen(10, "", NULL_KEY, "");
+	}
+	
+	listen(integer ch, string name, key id, string data)
+	{
+		llDie();
+	}
+}

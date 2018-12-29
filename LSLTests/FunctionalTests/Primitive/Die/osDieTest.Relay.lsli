@@ -1,0 +1,13 @@
+default
+{
+	state_entry()
+	{
+		llListen(10, "", NULL_KEY, "");
+		llSay(PUBLIC_CHANNEL, "Active");
+	}
+	
+	listen(integer ch, string name, key id, string data)
+	{
+		llSay(10, data);
+	}
+}
