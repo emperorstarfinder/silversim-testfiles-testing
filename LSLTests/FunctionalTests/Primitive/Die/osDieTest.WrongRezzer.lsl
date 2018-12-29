@@ -49,22 +49,22 @@ state checkscript
 			success = FALSE;
 		}
 		osDie("11223344-1122-1122-1122-000000000001");
-		state checkdie;
+		state checknotdie;
 	}
 }
 
-state checkdie
+state checknotdie
 {
 	timer()
 	{
 		if(llGetObjectDetails("11223344-1122-1122-1122-000000000001", [OBJECT_NAME]) != [])
 		{
-			llSay(PUBLIC_CHANNEL, "Test prim did not execute osDie()");
-			success = FALSE;
+			llSay(PUBLIC_CHANNEL, "Test prim ignored osDie()");
 		}
 		else
 		{
-			llSay(PUBLIC_CHANNEL, "Test prim executed die correctly");
+			llSay(PUBLIC_CHANNEL, "Test prim executed osDie() unexpectedly");
+			success = FALSE;
 		}
 		state checklisten;
 	}
@@ -74,18 +74,24 @@ state checklisten
 {
 	state_entry()
 	{
+		received = FALSE;
 		llListen(10, "", NULL_KEY, "");
 		llSay(10, "Hello");
 	}
 	
 	listen(integer ch, string name, key id, string data)
 	{
-		llSay(PUBLIC_CHANNEL, "Script unexpectedly responding");
-		success = FALSE;
+		received = TRUE;
+		llSay(PUBLIC_CHANNEL, "Script is responding");
 	}
 	
 	timer()
 	{
+		if(!received)
+		{
+			llSay(PUBLIC_CHANNEL, "Script is not responding");
+			success = FALSE;
+		}
 		_test_Result(success);
 		_test_Shutdown();
 	}
