@@ -76,6 +76,16 @@ ${testfile}"/>
 		<call target="writeoverall"/>
 	</target>
 	
+	<target name="runviewertests">
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
+		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
+		<mkdir dir="../testresults"/>
+		<call target="runviewertests-inner"/>
+		<call target="writeoverall"/>
+	</target>
+	
 	<target name="writeoverall">
 		<echo message="&lt;testsuite name=&quot;Exit results&quot; tests=&quot;${numtests}&quot; errors=&quot;0&quot; failures=&quot;${numfailedtests}&quot; skip=&quot;0&quot;&gt;"
 			file="../testresults/overall-results.xml" unless="${property::exists('ignore-exit-codes')}"/>
@@ -89,6 +99,22 @@ ${testfile}"/>
 		<foreach item="File" property="stestfile">
 			<in>
 				<items basedir="LSLTests/FunctionalTests">
+					<include name="**/*.lsl"/>
+				</items>
+			</in>
+			<do>
+				<property name="testfile" 
+				value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
+                <call target="runscript-actual"/>
+			</do>
+		</foreach>
+	</target>
+    
+	<target name="runviewertests-inner">
+		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<foreach item="File" property="stestfile">
+			<in>
+				<items basedir="ViewerTests">
 					<include name="**/*.lsl"/>
 				</items>
 			</in>
