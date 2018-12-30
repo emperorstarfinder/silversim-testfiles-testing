@@ -73,6 +73,7 @@ ${testfile}"/>
 		<property name="testresults" value=""/>
 		<mkdir dir="../testresults"/>
 		<call target="runscripttests-inner"/>
+		<call target="runviewertests-inner"/>
 		<call target="writeoverall"/>
 	</target>
 	
