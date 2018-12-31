@@ -9,6 +9,8 @@ vieweragent vagent;
 key agentid;
 list seenobjects;
 integer success = TRUE;
+integer seenself = FALSE;
+integer seenprim = FALSE;
 
 default
 {
@@ -61,7 +63,24 @@ default
 		foreach(objdata in objectlist)
 		{
 			key id = objdata.FullID;
-			llSay(PUBLIC_CHANNEL, seenobjects);
+			if(id == agentid)
+			{
+				seenself = TRUE;
+				if(objdata.Material != PRIM_MATERIAL_FLESH)
+				{
+					llSay(PUBLIC_CHANNEL, "Not flesh for agent: "+ objdata.Material);
+					success = FALSE;
+				}
+			}
+			if(id == llGetKey())
+			{
+				seenprim = TRUE;
+				if(objdata.Material != PRIM_MATERIAL_WOOD)
+				{
+					llSay(PUBLIC_CHANNEL, "Not wood for prim: " + objdata.Material);
+					success = FALSE;
+				}
+			}
 			if(llListFindList(seenobjects, [id]) < 0)
 			{
 				seenobjects += id;
@@ -86,6 +105,16 @@ state logout
 		llSay(PUBLIC_CHANNEL, "Seen objects " + received_objects);
 		if(received_objects != 2)
 		{
+			success = FALSE;
+		}
+		if(!seenprim)
+		{
+			llSay(PUBLIC_CHANNEL, "Prim not seen");
+			success = FALSE;
+		}
+		if(!seenself)
+		{
+			llSay(PUBLIC_CHANNEL, "Agent not seen");
 			success = FALSE;
 		}
 		_test_Result(success);
