@@ -97,7 +97,6 @@ default
 	
 	objectupdate_received(agentinfo agent, float timedilation, objectdatalist objectlist)
 	{
-		llSay(PUBLIC_CHANNEL, "objectupdate_received(" + objectlist.Count +")");
 		if(agent.AgentID == agentid)
 		{
 			foreach(objdata in objectlist)
@@ -277,12 +276,11 @@ state logoutcontrol
 			llSay(PUBLIC_CHANNEL, "Agent(Login Test) did not trigger KillObject");
 			success = FALSE;
 		}
-		/*
 		if(control_seenkillother_excessive)
 		{
 			llSay(PUBLIC_CHANNEL, "Excessive killobject seen");
 			success = FALSE;
-		}*/
+		}
 		_test_Result(success);
 		llSetTimerEvent(1);
 	}
