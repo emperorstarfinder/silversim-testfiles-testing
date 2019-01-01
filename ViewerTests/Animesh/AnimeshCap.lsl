@@ -13,7 +13,7 @@ default
 	state_entry()
 	{
 		llSay(PUBLIC_CHANNEL, "Setting up animesh");
-		llSetPrimitiveParams([PRIM_TYPE, PRIM_TYPE_SCULPT, llGenerateKey(), PRIM_HOLE_DEFAULT]);
+		llSetPrimitiveParams([PRIM_TYPE, PRIM_TYPE_SCULPT, llGenerateKey(), 5]);
 		_test_EnableAnimesh(llGetKey(), TRUE);
 		
 		llSay(PUBLIC_CHANNEL, "Logging in agent");
