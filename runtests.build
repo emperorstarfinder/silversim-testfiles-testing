@@ -63,6 +63,7 @@ ${testfile}"/>
 			</do>
 		</foreach>
 		<call target="runscripttests-inner"/>
+		<call target="runviewertests-inner"/>
 		<call target="writeoverall"/>
 	</target>
 	
@@ -73,7 +74,16 @@ ${testfile}"/>
 		<property name="testresults" value=""/>
 		<mkdir dir="../testresults"/>
 		<call target="runscripttests-inner"/>
-		<call target="runviewertests-inner"/>
+		<call target="writeoverall"/>
+	</target>
+	
+	<target name="runcompileerrortests">
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
+		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
+		<mkdir dir="../testresults"/>
+		<call target="runcompileerrortests-inner"/>
 		<call target="writeoverall"/>
 	</target>
 	
@@ -127,6 +137,33 @@ ${testfile}"/>
 		</foreach>
 	</target>
     
+	<target name="runcompileerrortests-inner">
+		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<foreach item="File" property="stestfile">
+			<in>
+				<items basedir="CompileErrorTests">
+					<include name="**/*.lsl"/>
+				</items>
+			</in>
+			<do>
+				<property name="testfile" 
+				value="${string::substring(stestfile, cwdlength, string::get-length(stestfile) - int::parse(cwdlength))}"/>
+                <call target="compilescript-actual"/>
+			</do>
+		</foreach>
+	</target>
+    
+	<target name="runcompileerrortest">
+		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
+		<property name="numtests" value="0"/>
+		<property name="numfailedtests" value="0"/>
+		<property name="failedtests" value=""/>
+		<property name="testresults" value=""/>
+		<mkdir dir="../testresults"/>
+        <call target="compilescript-actual"/>
+		<call target="writeoverall"/>
+    </target>
+	
 	<target name="runscripttest">
 		<property name="cwdlength" value="${string::get-length(directory::get-current-directory()) + 1}"/>
 		<property name="numtests" value="0"/>
@@ -152,6 +189,41 @@ ${testfile}"/>
                     <arg value="-c"/>
                     <arg value="${scriptini}"/>
                     <arg value="-D:SilverSim.Tests.Scripting.RunScript:00000000-0000-0000-0000-000000000000=../tests/${testfile}"/>
+                    <arg value="-D:TestRunner:Name=${testfile}"/>
+                    <arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
+                </exec>
+				<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;success classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Succcess&lt;/success&gt;
+&lt;/testcase&gt;
+"/>
+            </try>
+            <catch>
+                <property name="failedtests" value="${failedtests}
+${testfile}"/>
+				<property name="testresults" value="${testresults}
+&lt;testcase name=&quot;${testfile}&quot;>
+    &lt;failure classname=&quot;${testfile}&quot; name=&quot;${testfile}&quot;&gt;Failure&lt;/failure&gt;
+&lt;/testcase&gt;
+"/>
+            </catch>
+        </trycatch>
+    </target>
+	
+    <target name="compilescript-actual">
+        <echo message="Compiling ${testfile} for error"/>
+        <property name="testoutput" value="${testfile}.xml"/>
+        <mkdir dir="../testresults/${path::get-directory-name(testoutput)}"/>
+        <property name="scriptini" value="../tests/common/RunCompileError.Common.ini"/>
+        <property name="specscriptini" value="../tests/${testfile}.ini"/>
+        <property name="scriptini" value="${specscriptini}" if="${file::exists(specscriptini)}"/>
+        <trycatch>
+            <try>
+                <exec program="SilverSim.Main.exe" basedir="../bin" workingdir="../bin" managed="true">
+                    <arg value="-m=testing"/>
+                    <arg value="-c"/>
+                    <arg value="${scriptini}"/>
+                    <arg value="-D:SilverSim.Tests.Scripting.CompileError:ScriptFile=../tests/${testfile}"/>
                     <arg value="-D:TestRunner:Name=${testfile}"/>
                     <arg value="-D:TestRunner:XUnitResultsFile=../testresults/${testoutput}"/>
                 </exec>
