@@ -30,6 +30,7 @@ list expectedcaps = [
 	"EnvironmentSettings",
 	"RenderMaterials",
 	"SimConsoleAsync",
+	"EventQueueGet",
 	"GetTexture",
 	"GetMesh",
 	"GetMesh2",
