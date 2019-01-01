@@ -45,48 +45,21 @@ default
 	{
 		llSay(PUBLIC_CHANNEL, "Sending CompleteAgentMovement");
 		vagent.SendCompleteAgentMovement();
-		state runanimesh_beforecap;
+		state enablecaps;
 	}
 }
 
-state runanimesh_beforecap
+state enablecaps
 {
 	state_entry()
 	{
-		llStartObjectAnimation("9e06424c-0178-82eb-ff21-6c0e4e5a7e6d");
+		hashtable capsresult = vcSeedRequest(vagent.CapsPath, ["ObjectAnimation"]);
 		llSetTimerEvent(1);
-		idx = 4;
-		msgcount = 0;
-	}
-	
-	objectanimation_received(agentinfo agent, key sender, objectanimationdatalist objanims)
-	{
-		llSay(PUBLIC_CHANNEL, "objectanimation_received");
-		if(objanims.Count != 1)
-		{
-			llSay(PUBLIC_CHANNEL, "Count mismatch");
-			result = FALSE;
-		}
-		else if(objanims[0].AnimID != "9e06424c-0178-82eb-ff21-6c0e4e5a7e6d")
-		{
-			llSay(PUBLIC_CHANNEL, "Count mismatch");
-			result = FALSE;
-		}
-		++msgcount;
 	}
 	
 	timer()
 	{
-		--idx;
-		if(idx == 0)
-		{
-			if(msgcount != 0)
-			{
-				result = FALSE;
-				llSay(PUBLIC_CHANNEL, "ERROR! ObjectAnimation received before SEED caps");
-			}
-			state testanimesh_aftercap;
-		}
+		state testanimesh_aftercap;
 	}
 }
 
@@ -94,27 +67,43 @@ state testanimesh_aftercap
 {
 	state_entry()
 	{
-		hashtable capsresult = vcSeedRequest(vagent.CapsPath, ["ObjectAnimation"]);
 		llSetTimerEvent(1);
 		idx = 4;
 		msgcount = 0;
+		llStartObjectAnimation("9e06424c-0178-82eb-ff21-6c0e4e5a7e6d");
 	}
 	
 	objectanimation_received(agentinfo agent, key sender, objectanimationdatalist objanims)
 	{
-		llSay(PUBLIC_CHANNEL, "objectanimation_received");
 		++msgcount;
+		llSay(PUBLIC_CHANNEL, "objectanimation_received cnt=" + msgcount + " elems=" + objanims.Count);
+		if(objanims.Count == 1)
+		{
+			if(objanims[0].AnimID != "9e06424c-0178-82eb-ff21-6c0e4e5a7e6d")
+			{
+				llSay(PUBLIC_CHANNEL, "Wrong animation id received");
+				result = FALSE;
+			}
+		}
 	}
 	
 	timer()
 	{
 		--idx;
+		if(idx % 2 == 0)
+		{
+			llStartObjectAnimation("9e06424c-0178-82eb-ff21-6c0e4e5a7e6d");
+		}
+		else if(idx > 0)
+		{
+			llStopObjectAnimation("9e06424c-0178-82eb-ff21-6c0e4e5a7e6d");
+		}
 		if(idx == 0)
 		{
-			if(msgcount == 0)
+			if(msgcount != 4)
 			{
 				result = FALSE;
-				llSay(PUBLIC_CHANNEL, "ERROR! No ObjectAnimation received after SEED caps being triggered");
+				llSay(PUBLIC_CHANNEL, "ERROR! We should have had 4 ObjectAnimation received. Got " + msgcount);
 			}
 			state logout;
 		}
