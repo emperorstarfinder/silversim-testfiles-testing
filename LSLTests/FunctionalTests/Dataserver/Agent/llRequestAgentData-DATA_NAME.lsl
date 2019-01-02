@@ -20,7 +20,7 @@ default
         else
         {
             llSay(PUBLIC_CHANNEL, data);
-            _test_Result(data == "Script.Test @localhost:8002");
+            _test_Result(data == "Script.Test @localhost:9300");
         }
         _test_Shutdown();
     }
