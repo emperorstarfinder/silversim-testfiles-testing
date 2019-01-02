@@ -70,12 +70,12 @@ state testsound
 			result = FALSE;
 			errortexts += ["OwnerID wrong in received Say. Got " + ownerid];
 		}
-		if(sourcetype != 2)
+		if(sourcetype != CHAT_SOURCE_TYPE_OBJECT)
 		{
 			result = FALSE;
 			errortexts += ["SourceType wrong in received Say. Got " + sourcetype];
 		}
-		if(chattype != 0)
+		if(chattype != CHAT_TYPE_WHISPER)
 		{
 			result = FALSE;
 			errortexts += ["ChatType wrong in received Say. Got " + chattype];

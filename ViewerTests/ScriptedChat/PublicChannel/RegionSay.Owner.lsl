@@ -54,7 +54,7 @@ state testsound
 	
 	chatfromsimulator_received(agentinfo agent, string fromname, key sourceid, key ownerid, integer sourcetype, integer chattype, integer audiblelevel, vector position, string message)
 	{
-		if(chattype == 6)
+		if(chattype == CHAT_TYPE_DEBUG_CHANNEL)
 		{
 			/* ignore debugchannel */
 			return;
