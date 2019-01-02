@@ -62,16 +62,6 @@ state runanimesh_beforecap
 	objectanimation_received(agentinfo agent, key sender, objectanimationdatalist objanims)
 	{
 		llSay(PUBLIC_CHANNEL, "objectanimation_received");
-		if(objanims.Count != 1)
-		{
-			llSay(PUBLIC_CHANNEL, "Count mismatch");
-			result = FALSE;
-		}
-		else if(objanims[0].AnimID != "9e06424c-0178-82eb-ff21-6c0e4e5a7e6d")
-		{
-			llSay(PUBLIC_CHANNEL, "Count mismatch");
-			result = FALSE;
-		}
 		++msgcount;
 	}
 	
@@ -103,6 +93,16 @@ state testanimesh_aftercap
 	objectanimation_received(agentinfo agent, key sender, objectanimationdatalist objanims)
 	{
 		llSay(PUBLIC_CHANNEL, "objectanimation_received");
+		if(objanims.Count != 1)
+		{
+			llSay(PUBLIC_CHANNEL, "Count mismatch");
+			result = FALSE;
+		}
+		else if(objanims[0].AnimID != "9e06424c-0178-82eb-ff21-6c0e4e5a7e6d")
+		{
+			llSay(PUBLIC_CHANNEL, "Count mismatch");
+			result = FALSE;
+		}
 		++msgcount;
 	}
 	
