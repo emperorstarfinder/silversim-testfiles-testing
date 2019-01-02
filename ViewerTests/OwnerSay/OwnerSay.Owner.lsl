@@ -75,12 +75,12 @@ state testsound
 			result = FALSE;
 			llSay(PUBLIC_CHANNEL, "OwnerID wrong in received OwnerSay. Got " + ownerid);
 		}
-		if(sourcetype != 2)
+		if(sourcetype != CHAT_SOURCE_TYPE_OBJECT)
 		{
 			result = FALSE;
 			llSay(PUBLIC_CHANNEL, "SourceType wrong in received OwnerSay. Got " + sourcetype);
 		}
-		if(chattype != 8)
+		if(chattype != CHAT_TYPE_OWNER)
 		{
 			result = FALSE;
 			llSay(PUBLIC_CHANNEL, "ChatType wrong in received OwnerSay. Got " + chattype);
