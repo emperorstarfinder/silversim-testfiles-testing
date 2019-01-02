@@ -6,6 +6,8 @@ vieweragent vagent;
 key agentid;
 integer result = TRUE;
 integer msgcount = 0;
+key expected_transactionid;
+key token;
 
 default
 {
@@ -40,7 +42,32 @@ default
 	{
 		llSay(PUBLIC_CHANNEL, "Sending CompleteAgentMovement");
 		vagent.SendCompleteAgentMovement();
-		state test;
+		state activegodmode;
+	}
+}
+
+state activegodmode
+{
+	state_entry()
+	{
+		token = llGenerateKey();
+		vagent.SendRequestGodlikePowers(TRUE, token);
+		llSetTimerEvent(1);
+	}
+	
+	grantgodlikepowers_received(agentinfo agent, integer godlevel, key token)
+	{
+		if(godlevel > 0)
+		{
+			state test;
+		}
+	}
+	
+	alertmessage_received(agentinfo agent, string message, list result)
+	{
+		llSay(PUBLIC_CHANNEL, "God power request failed");
+		result = FALSE;
+		state logout;
 	}
 }
 
@@ -48,36 +75,23 @@ state test
 {
 	state_entry()
 	{
+		llListen(1, "", NULL_KEY, "");
 		llSetTimerEvent(1);
 		msgcount = 0;
-		llRequestExperiencePermissions(agentid, "");
+		expected_transactionid = llGenerateKey();
+		vagent.SendDeRezObject("11223344-1122-1122-1122-000000000001", DEREZ_ACTION_GOD_TAKE_COPY, NULL_KEY, expected_transactionid, 1, 1);
 	}
 	
-	scriptquestion_received(agentinfo agent, key objectid, key itemid, string objectname, string objectowner, integer questions, key experienceid)
+	derezack_received(agentinfo agent, key transactionid, integer success)
 	{
-		if(objectid != llGetKey())
+		if(expected_transactionid != transactionid)
 		{
-			llSay(PUBLIC_CHANNEL, "Unexpected objectid. Got " + objectid);
+			llSay(PUBLIC_CHANNEL, "Unexpected transactionid. Got " + transactionid);
 			result = FALSE;
 		}
-		if(objectname != "Test Object")
+		if(!success)
 		{
-			llSay(PUBLIC_CHANNEL, "Unexpected objectname. Got " + objectname);
-			result = FALSE;
-		}
-		if(objectowner != "Script.Test @localhost:9300")
-		{
-			llSay(PUBLIC_CHANNEL, "Unexpected objectowner. Got " + objectowner);
-			result = FALSE;
-		}
-		if(questions != (PERMISSION_TAKE_CONTROLS | PERMISSION_TRIGGER_ANIMATION | PERMISSION_ATTACH | PERMISSION_TRACK_CAMERA | PERMISSION_CONTROL_CAMERA | PERMISSION_TELEPORT))
-		{
-			llSay(PUBLIC_CHANNEL, "Unexpected questions. Got " + questions);
-			result = FALSE;
-		}
-		if(experienceid != "5d93a628-1bfb-4c72-892b-542d16457c71")
-		{
-			llSay(PUBLIC_CHANNEL, "Unexpected experienceid. Got " + experienceid);
+			llSay(PUBLIC_CHANNEL, "DeRez failed");
 			result = FALSE;
 		}
 		++msgcount;
@@ -87,7 +101,7 @@ state test
 	{
 		if(msgcount == 0)
 		{
-			llSay(PUBLIC_CHANNEL, "No scriptquestion_received");
+			llSay(PUBLIC_CHANNEL, "No derezack received");
 			result = FALSE;
 		}
 		state logout;

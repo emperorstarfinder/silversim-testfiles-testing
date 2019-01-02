@@ -67,7 +67,7 @@ state test
 			llSay(PUBLIC_CHANNEL, "Unexpected objectname. Got " + objectname);
 			result = FALSE;
 		}
-		if(objectowner != "Script.Test @localhost:8002")
+		if(objectowner != "Script.Test @localhost:9300")
 		{
 			llSay(PUBLIC_CHANNEL, "Unexpected objectowner. Got " + objectowner);
 			result = FALSE;
