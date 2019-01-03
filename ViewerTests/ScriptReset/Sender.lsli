@@ -1,0 +1,7 @@
+default
+{
+	state_entry()
+	{
+		llMessageLinked(LINK_SET, llGetStartParameter(), "Hello", "World");
+	}
+}
