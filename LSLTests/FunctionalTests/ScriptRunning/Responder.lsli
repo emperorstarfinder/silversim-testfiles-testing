@@ -1,0 +1,10 @@
+default
+{
+	link_message(integer sender, integer num, string data, key id)
+	{
+		if(num == 0)
+		{
+			llMessageLinked(LINK_SET, 1, data, id);
+		}
+	}
+}
