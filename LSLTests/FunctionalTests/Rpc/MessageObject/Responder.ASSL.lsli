@@ -1,0 +1,13 @@
+//#!Mode:ASSL
+
+default
+{
+	state_entry()
+	{
+	}
+	
+	object_message(key id, string query)
+	{
+		osMessageObject(id, query);
+	}
+}

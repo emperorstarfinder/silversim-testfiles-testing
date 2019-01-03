@@ -1,0 +1,13 @@
+//#!Mode:OSSL
+
+default
+{
+	state_entry()
+	{
+	}
+	
+	dataserver(key id, string query)
+	{
+		osMessageObject(id, query);
+	}
+}
