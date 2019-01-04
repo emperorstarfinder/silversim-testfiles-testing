@@ -71,7 +71,6 @@ state test
 	{
 		llSetTimerEvent(1);
 		msgcount = 0;
-		llListen(1, "", NULL_KEY, "0");
 		vagent.SendScriptReset(llGetKey(), itemid);
 	}
 	
