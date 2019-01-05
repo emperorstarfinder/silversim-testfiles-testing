@@ -127,7 +127,6 @@ state setinactive
         
         eventqueueget_finished(agentinfo agent, key requestid, integer statuscode)
         {
-                llSay(PUBLIC_CHANNEL, "Redo");
                 if(!vagent.RequestEventQueueGet(eqg_url, 5000))
                 {
                         llSay(PUBLIC_CHANNEL, "EQG failed");
