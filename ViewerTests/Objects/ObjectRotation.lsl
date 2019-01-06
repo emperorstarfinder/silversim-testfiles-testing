@@ -49,7 +49,7 @@ state test
 	state_entry()
 	{
 		llSleep(1); /* ensure init */
-		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => <0,1,0,0>");
+		llSay(PUBLIC_CHANNEL, "Sending ObjectRotation => <0,1,0,0>");
 		llSetTimerEvent(1.0);
 		vagent.SendObjectRotation([_test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000001"), EXPECTED]);
 	}
@@ -70,7 +70,7 @@ state test2
 {
 	state_entry()
 	{
-		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => ZERO_ROTATION");
+		llSay(PUBLIC_CHANNEL, "Sending ObjectRotation => ZERO_ROTATION");
 		llSetTimerEvent(1.0);
 		vagent.SendObjectRotation([_test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000001"), ZERO_ROTATION]);
 	}
