@@ -53,9 +53,9 @@ state test
 		llSay(PUBLIC_CHANNEL, "Sending Touch");
 		llSetTimerEvent(1.0);
         localid = _test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000000");
-		vagent.SendObjectGrab(localid, ZERO_VECTOR, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1,0,0>,<0,1,0>]);
-		vagent.SendObjectGrabUpdate(llGetKey(), ZERO_VECTOR, llGetPos(), 1, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1,0,0>,<0,1,0>]);
-        vagent.SendObjectDeGrab(localid, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1,0,0>,<0,1,0>]);
+		vagent.SendObjectGrab(localid, ZERO_VECTOR, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1.0,0,0>,<0,1.0,0>]);
+		vagent.SendObjectGrabUpdate(llGetKey(), ZERO_VECTOR, llGetPos(), 1, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1.0,0,0>,<0,1.0,0>]);
+        vagent.SendObjectDeGrab(localid, [<0.1,0.1,0.0>,<0.2,0.2,0>,0,llGetPos(),<1.0,0,0>,<0,1.0,0>]);
 	}
     
     touch_start(integer det)
@@ -64,6 +64,41 @@ state test
         if(det != 1)
         {
             llSay(PUBLIC_CHANNEL, "touch_start(num_detected) not matching. " + det);
+            result = FALSE;
+        }
+        if(!(llDetectedType(0) & AGENT))
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedType(0) not matching. " + llDetectedType(0));
+            result = FALSE;
+        }
+        if(llDetectedKey(0) != llGetOwner())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedKey(0) not matching. " + llDetectedKey(0));
+            result = FALSE;
+        }
+        if(llDetectedPos(0) != llGetPos())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedPos(0) not matching. " + llDetectedPos(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchUV(0), <0.1,0.1,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchUV(0) not matching. " + llDetectedTouchUV(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchST(0), <0.2,0.2,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchST(0) not matching. " + llDetectedTouchST(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchNormal(0) != <1.0,0.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchNormal(0) not matching. " + llDetectedTouchNormal(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchBinormal(0) != <0.0,1.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchBinormal(0) not matching. " + llDetectedTouchBinormal(0));
             result = FALSE;
         }
         msgcount |= 1;
@@ -77,6 +112,41 @@ state test
             llSay(PUBLIC_CHANNEL, "touch(num_detected) not matching. " + det);
             result = FALSE;
         }
+        if(!(llDetectedType(0) & AGENT))
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedType(0) not matching. " + llDetectedType(0));
+            result = FALSE;
+        }
+        if(llDetectedKey(0) != llGetOwner())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedKey(0) not matching. " + llDetectedKey(0));
+            result = FALSE;
+        }
+        if(llDetectedPos(0) != llGetPos())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedPos(0) not matching. " + llDetectedPos(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchUV(0), <0.1,0.1,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchUV(0) not matching. " + llDetectedTouchUV(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchST(0), <0.2,0.2,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchST(0) not matching. " + llDetectedTouchST(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchNormal(0) != <1.0,0.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchNormal(0) not matching. " + llDetectedTouchNormal(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchBinormal(0) != <0.0,1.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchBinormal(0) not matching. " + llDetectedTouchBinormal(0));
+            result = FALSE;
+        }
         msgcount |= 2;
     }
     
@@ -86,6 +156,41 @@ state test
         if(det != 1)
         {
             llSay(PUBLIC_CHANNEL, "touch_end(num_detected) not matching. " + det);
+            result = FALSE;
+        }
+        if(!(llDetectedType(0) & AGENT))
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedType(0) not matching. " + llDetectedType(0));
+            result = FALSE;
+        }
+        if(llDetectedKey(0) != llGetOwner())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedKey(0) not matching. " + llDetectedKey(0));
+            result = FALSE;
+        }
+        if(llDetectedPos(0) != llGetPos())
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedPos(0) not matching. " + llDetectedPos(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchUV(0), <0.1,0.1,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchUV(0) not matching. " + llDetectedTouchUV(0));
+            result = FALSE;
+        }
+        if(llVecDist(llDetectedTouchST(0), <0.2,0.2,0.0>) > 0.000001)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchST(0) not matching. " + llDetectedTouchST(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchNormal(0) != <1.0,0.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchNormal(0) not matching. " + llDetectedTouchNormal(0));
+            result = FALSE;
+        }
+        if(llDetectedTouchBinormal(0) != <0.0,1.0,0.0>)
+        {
+            llSay(PUBLIC_CHANNEL, "llDetectedTouchBinormal(0) not matching. " + llDetectedTouchBinormal(0));
             result = FALSE;
         }
         msgcount |= 4;
