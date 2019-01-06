@@ -48,7 +48,7 @@ state test
 	state_entry()
 	{
 		llSleep(1); /* ensure init */
-		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => Hello");
+		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => PRIM_MATERIAL_GLASS");
 		llSetTimerEvent(1.0);
 		vagent.SendObjectMaterial([_test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000001"), PRIM_MATERIAL_GLASS]);
 	}
@@ -69,7 +69,7 @@ state test2
 {
 	state_entry()
 	{
-		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => World");
+		llSay(PUBLIC_CHANNEL, "Sending ObjectMaterial => PRIM_MATERIAL_STONE");
 		llSetTimerEvent(1.0);
 		vagent.SendObjectMaterial([_test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000001"), PRIM_MATERIAL_STONE]);
 	}
