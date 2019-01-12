@@ -79,7 +79,7 @@ state test2
         integer action = llList2Integer(llGetObjectDetails("11223344-1122-1122-1122-000000000001", [OBJECT_CLICK_ACTION]), 0);
 		if(action != CLICK_ACTION_TOUCH)
 		{
-			llSay(PUBLIC_CHANNEL, "Not renamed to World");
+			llSay(PUBLIC_CHANNEL, "Not changed to CLICK_ACTION_TOUCH");
 			result = FALSE;
 		}
 		state logout;
