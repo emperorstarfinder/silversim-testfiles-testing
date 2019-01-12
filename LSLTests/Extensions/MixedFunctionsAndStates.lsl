@@ -4,6 +4,7 @@ default
 {
 	state_entry()
 	{
+		callmyfunc2();
 		state two;
 	}
 }
@@ -24,4 +25,8 @@ state two
 		callmyfunc();
 		myvar2 = 6;
 	}
+}
+
+callmyfunc2()
+{
 }
