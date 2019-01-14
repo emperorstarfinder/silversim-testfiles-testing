@@ -1,3 +1,4 @@
+//#!Mode:ASSL
 //#!Enable:testing
 
 default
@@ -9,7 +10,7 @@ default
         {
             llSay(PUBLIC_CHANNEL, "Notecard has wrong name " + llGetInventoryName(INVENTORY_NOTECARD, 0));
         }
-        else if(osGetNotecard("Notecard") != "Note\n")
+        else if(asGetNotecard("Notecard") != "Note")
         {
             llSay(PUBLIC_CHANNEL, "Content of notecard is wrong");
         }
