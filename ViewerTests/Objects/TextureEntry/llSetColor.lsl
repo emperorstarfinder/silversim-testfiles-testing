@@ -68,6 +68,16 @@ default
     }    
 }
 
+displaytecolor(textureentry te)
+{
+    llSay(PUBLIC_CHANNEL, "TE[0]: " + te[0].TextureColor);
+    llSay(PUBLIC_CHANNEL, "TE[1]: " + te[1].TextureColor);
+    llSay(PUBLIC_CHANNEL, "TE[2]: " + te[2].TextureColor);
+    llSay(PUBLIC_CHANNEL, "TE[3]: " + te[3].TextureColor);
+    llSay(PUBLIC_CHANNEL, "TE[4]: " + te[4].TextureColor);
+    llSay(PUBLIC_CHANNEL, "TE[5]: " + te[5].TextureColor);
+}
+
 state test1
 {
     integer received = FALSE;
@@ -93,6 +103,7 @@ state test1
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 1: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -134,6 +145,7 @@ state test2
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 2: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -175,6 +187,7 @@ state test3
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 3: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -216,6 +229,7 @@ state test4
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 4: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -257,6 +271,7 @@ state test5
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 5: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -298,6 +313,7 @@ state test6
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 6: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -340,6 +356,7 @@ state test1b
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 1b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -381,6 +398,7 @@ state test2b
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 2b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -422,6 +440,7 @@ state test3b
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 3b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -463,6 +482,7 @@ state test4b
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 4b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -504,6 +524,7 @@ state test5b
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 5b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -545,6 +566,7 @@ state test6b
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test 6b: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -586,6 +608,7 @@ state testc
                     objdata.TextureEntry[5].TextureColor != <0,0,0>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test c: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
@@ -628,6 +651,7 @@ state testd
                     objdata.TextureEntry[5].TextureColor != <1,1,1>)
                 {
                     llSay(PUBLIC_CHANNEL, "Test d: failed");
+                    displaytecolor(objdata.TextureEntry);
                     result = FALSE;
                 }
                 llSetTimerEvent(0);
