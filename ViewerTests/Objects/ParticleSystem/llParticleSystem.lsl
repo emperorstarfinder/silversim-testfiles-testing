@@ -14,7 +14,6 @@ default
     integer msg_regionhandshake_received = FALSE;
     state_entry()
     {
-        llOffsetTexture(1, 1, ALL_SIDES);
         llSay(PUBLIC_CHANNEL, "Logging in agent");
         _test_Result(FALSE);
         localid = _test_ObjectKey2LocalId("11223344-1122-1122-1122-000000000000");
@@ -117,7 +116,6 @@ state test2
         llParticleSystem([PSYS_PART_FLAGS, PSYS_PART_WIND_MASK | PSYS_PART_EMISSIVE_MASK,
                         PSYS_SRC_PATTERN, PSYS_SRC_PATTERN_ANGLE, 
                         PSYS_PART_START_COLOR, <1.0, 0.0, 0.0>]);
-        llSetTextureAnim(ANIM_ON | LOOP | SMOOTH, 5, 4, 8, 2, 16, 1);
         llSetTimerEvent(1.0);
     }
 
