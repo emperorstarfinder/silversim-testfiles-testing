@@ -86,9 +86,6 @@ state test
                     llSay(PUBLIC_CHANNEL, "Name: " + data.Name);
                     result = FALSE;
                 }
-                vagent.SendObjectDeselect([localid]);
-                llSetTimerEvent(0);
-                state test2;
             }
         }
     }    
