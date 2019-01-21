@@ -74,6 +74,7 @@ default
 state test1
 {
     integer received = FALSE;
+    integer received2 = FALSE;
 	state_entry()
 	{
         llSay(PUBLIC_CHANNEL, "Test 1: Setting lang{fr} sittext to Hello");
@@ -95,7 +96,10 @@ state test1
                     llSay(PUBLIC_CHANNEL, "SitText: " + data.SitText);
                     result = FALSE;
                 }
-                vagent.SendObjectDeselect([localid]);
+                if(received && received2)
+                {
+                    vagent.SendObjectDeselect([localid]);
+                }
             }
         }
     }    
@@ -104,10 +108,21 @@ state test1
 	{
         foreach(objdata in objectlist)
         {
-            if(objdata.LocalID == localid && (objdata.UpdateFlags & 2) == 0)
+            if(objdata.LocalID == localid)
             {
-                llSetTimerEvent(0);
-                state test2;
+                if((objdata.UpdateFlags & 2) == 0)
+                {
+                    llSetTimerEvent(0);
+                    state test2;
+                }
+                else
+                {
+                    received2 = TRUE;
+                    if(received && received2)
+                    {
+                        vagent.SendObjectDeselect([localid]);
+                    }
+                }
             }
         }
     }    
@@ -123,6 +138,7 @@ state test1
 state test2
 {
     integer received = FALSE;
+    integer received2 = FALSE;
 	state_entry()
 	{
         llSay(PUBLIC_CHANNEL, "Test 2: Setting lang{fr} sittext to World");
@@ -144,7 +160,10 @@ state test2
                     llSay(PUBLIC_CHANNEL, "SitText: " + data.SitText);
                     result = FALSE;
                 }
-                vagent.SendObjectDeselect([localid]);
+                if(received && received2)
+                {
+                    vagent.SendObjectDeselect([localid]);
+                }
             }
         }
     }    
@@ -153,10 +172,21 @@ state test2
 	{
         foreach(objdata in objectlist)
         {
-            if(objdata.LocalID == localid && (objdata.UpdateFlags & 2) == 0)
+            if(objdata.LocalID == localid)
             {
-                llSetTimerEvent(0);
-                state test3;
+                if((objdata.UpdateFlags & 2) == 0)
+                {
+                    llSetTimerEvent(0);
+                    state test3;
+                }
+                else
+                {
+                    received2 = TRUE;
+                    if(received && received2)
+                    {
+                        vagent.SendObjectDeselect([localid]);
+                    }
+                }
             }
         }
     }    
@@ -173,6 +203,7 @@ state test2
 state test3
 {
     integer received = FALSE;
+    integer received2 = FALSE;
 	state_entry()
 	{
         llSay(PUBLIC_CHANNEL, "Test 3: Remove language entry");
@@ -194,7 +225,10 @@ state test3
                     llSay(PUBLIC_CHANNEL, "SitText: " + data.SitText);
                     result = FALSE;
                 }
-                vagent.SendObjectDeselect([localid]);
+                if(received && received2)
+                {
+                    vagent.SendObjectDeselect([localid]);
+                }
             }
         }
     }    
@@ -203,10 +237,21 @@ state test3
 	{
         foreach(objdata in objectlist)
         {
-            if(objdata.LocalID == localid && (objdata.UpdateFlags & 2) == 0)
+            if(objdata.LocalID == localid)
             {
-                llSetTimerEvent(0);
-                state logout;
+                if((objdata.UpdateFlags & 2) == 0)
+                {
+                    llSetTimerEvent(0);
+                    state logout;
+                }
+                else
+                {
+                    received2 = TRUE;
+                    if(received && received2)
+                    {
+                        vagent.SendObjectDeselect([localid]);
+                    }
+                }
             }
         }
     }    
