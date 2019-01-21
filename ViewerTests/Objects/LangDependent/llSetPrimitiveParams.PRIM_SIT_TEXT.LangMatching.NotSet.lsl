@@ -79,7 +79,7 @@ state test1
         llSay(PUBLIC_CHANNEL, "Test 1: Setting lang{default} sittext to Hello");
         llSetPrimitiveParams([PRIM_SIT_TEXT, "Hello"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(2.0);
+		llSetTimerEvent(1.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -96,8 +96,6 @@ state test1
                     result = FALSE;
                 }
                 vagent.SendObjectDeselect([localid]);
-                llSetTimerEvent(0);
-                state test2;
             }
         }
     }    
@@ -130,7 +128,7 @@ state test2
         llSay(PUBLIC_CHANNEL, "Test 2: Setting lang{default} sittext to World");
         llSetPrimitiveParams([PRIM_SIT_TEXT, "World"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(2.0);
+		llSetTimerEvent(1.0);
 	}
     
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -180,7 +178,7 @@ state test3
         llSay(PUBLIC_CHANNEL, "Test 3: Remove language entry");
         llSetPrimitiveParams([PRIM_REMOVE_LANGUAGE, "fr"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(2.0);
+		llSetTimerEvent(1.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
