@@ -79,7 +79,7 @@ state test1
         llSay(PUBLIC_CHANNEL, "Test 1: Setting lang{fr} touchtext to Hello");
         llSetPrimitiveParams([PRIM_LANGUAGE, "fr", PRIM_TOUCH_TEXT, "Hello"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -130,7 +130,7 @@ state test2
         llSay(PUBLIC_CHANNEL, "Test 2: Setting lang{fr} touchtext to World");
         llSetPrimitiveParams([PRIM_LANGUAGE, "fr", PRIM_TOUCH_TEXT, "World"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
     
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -180,7 +180,7 @@ state test3
         llSay(PUBLIC_CHANNEL, "Test 3: Remove language entry");
         llSetPrimitiveParams([PRIM_REMOVE_LANGUAGE, "fr"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
