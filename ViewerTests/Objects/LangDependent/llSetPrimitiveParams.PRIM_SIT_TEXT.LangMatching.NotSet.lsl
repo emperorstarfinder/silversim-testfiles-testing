@@ -112,8 +112,11 @@ state test1
             {
                 if((objdata.UpdateFlags & 2) == 0)
                 {
-                    llSetTimerEvent(0);
-                    state test2;
+                    if(received2)
+                    {
+                        llSetTimerEvent(0);
+                        state test2;
+                    }
                 }
                 else
                 {
@@ -176,8 +179,11 @@ state test2
             {
                 if((objdata.UpdateFlags & 2) == 0)
                 {
-                    llSetTimerEvent(0);
-                    state test3;
+                    if(received2)
+                    {
+                        llSetTimerEvent(0);
+                        state test3;
+                    }
                 }
                 else
                 {
@@ -241,8 +247,11 @@ state test3
             {
                 if((objdata.UpdateFlags & 2) == 0)
                 {
-                    llSetTimerEvent(0);
-                    state logout;
+                    if(received2)
+                    {
+                        llSetTimerEvent(0);
+                        state logout;
+                    }
                 }
                 else
                 {
