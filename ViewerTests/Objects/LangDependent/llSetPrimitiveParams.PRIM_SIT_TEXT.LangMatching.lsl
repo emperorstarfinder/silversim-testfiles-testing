@@ -132,7 +132,14 @@ state test1
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 1: No prim update received");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 1: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 1: No prim properties received");
+        }
         result = FALSE;
 		state test2;
 	}
@@ -199,7 +206,14 @@ state test2
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 2: No prim update received");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 2: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 2: No prim properties received");
+        }
         result = FALSE;
 		state test3;
 	}
@@ -267,7 +281,14 @@ state test3
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 3: No prim update received");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 3: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 3: No prim properties received");
+        }
         result = FALSE;
 		state logout;
 	}

@@ -80,7 +80,7 @@ state test1
         llSay(PUBLIC_CHANNEL, "Test 1: Setting lang{default} sittext to Hello");
         llSetPrimitiveParams([PRIM_SIT_TEXT, "Hello"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -115,6 +115,7 @@ state test1
                     if(received2)
                     {
                         llSetTimerEvent(0);
+                        llSay(PUBLIC_CHANNEL, "Test 1 completed");
                         state test2;
                     }
                 }
@@ -132,7 +133,15 @@ state test1
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 1: No prim update received");
+        llSay(PUBLIC_CHANNEL, "timer()");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 1: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 1: No prim properties received");
+        }
         result = FALSE;
 		state test2;
 	}
@@ -147,7 +156,7 @@ state test2
         llSay(PUBLIC_CHANNEL, "Test 2: Setting lang{default} sittext to World");
         llSetPrimitiveParams([PRIM_SIT_TEXT, "World"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
     
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -182,6 +191,7 @@ state test2
                     if(received2)
                     {
                         llSetTimerEvent(0);
+                        llSay(PUBLIC_CHANNEL, "Test 2 completed");
                         state test3;
                     }
                 }
@@ -199,7 +209,15 @@ state test2
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 2: No prim update received");
+        llSay(PUBLIC_CHANNEL, "timer()");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 2: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 2: No prim properties received");
+        }
         result = FALSE;
 		state test3;
 	}
@@ -215,7 +233,7 @@ state test3
         llSay(PUBLIC_CHANNEL, "Test 3: Remove language entry");
         llSetPrimitiveParams([PRIM_REMOVE_LANGUAGE, "fr"]);
         vagent.SendObjectSelect([localid]);
-		llSetTimerEvent(1.0);
+		llSetTimerEvent(2.0);
 	}
 
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
@@ -250,6 +268,7 @@ state test3
                     if(received2)
                     {
                         llSetTimerEvent(0);
+                        llSay(PUBLIC_CHANNEL, "Test 3 completed");
                         state logout;
                     }
                 }
@@ -267,7 +286,15 @@ state test3
     
 	timer()
 	{
-        llSay(PUBLIC_CHANNEL, "Test 3: No prim update received");
+        llSay(PUBLIC_CHANNEL, "timer()");
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 3: No prim update received");
+        }
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Test 3: No prim properties received");
+        }
         result = FALSE;
 		state logout;
 	}
