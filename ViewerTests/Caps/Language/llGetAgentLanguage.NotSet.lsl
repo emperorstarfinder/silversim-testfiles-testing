@@ -81,7 +81,7 @@ state logout
     logoutreply_received(agentinfo agent)
     {
         llSay(PUBLIC_CHANNEL, "Logout confirmed");
-        _test_Result(TRUE);
+        _test_Result(result);
         llSetTimerEvent(1);
     }
     
