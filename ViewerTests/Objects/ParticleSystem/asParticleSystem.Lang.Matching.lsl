@@ -42,7 +42,7 @@ default
             _test_Shutdown();
             return;
         }
-		hashtable capsresult = vcSeedRequest(vagent.CapsPath, ["UpdateAgentLanguage"]);
+        hashtable capsresult = vcSeedRequest(vagent.CapsPath, ["UpdateAgentLanguage"]);
         /* send our chosen language */
         capsUpdateAgentLanguage(capsresult["UpdateAgentLanguage"], "it", TRUE);
     }

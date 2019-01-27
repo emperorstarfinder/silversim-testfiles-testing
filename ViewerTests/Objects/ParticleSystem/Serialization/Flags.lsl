@@ -7,8 +7,8 @@ list flags = [
     
 default
 {
-	state_entry()
-	{
+    state_entry()
+    {
         particlesystemdata ps;
         integer result = TRUE;
         integer successcnt = 0;
@@ -39,6 +39,6 @@ default
         llSay(PUBLIC_CHANNEL, "Fail Count: " + failcnt);
         _test_Result(result);
         
-		_test_Shutdown();
-	}
+        _test_Shutdown();
+    }
 }

@@ -74,7 +74,7 @@ state test
     }
     
     objectproperties_received(agentinfo agent, objectpropertieslist objlist)
-	{
+    {
         foreach(data in objlist)
         {
             if(data.ObjectID == "11223344-1122-1122-1122-000000000001")

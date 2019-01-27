@@ -14,76 +14,76 @@ const key REGION_ID = "39702429-6b4f-4333-bac2-cd7ea688753e";
 
 default
 {
-	state_entry()
-	{
-		llSay(PUBLIC_CHANNEL, "Logging in agent");
-		_test_Result(FALSE);
-		controlcircuitcode = (integer)llFrand(100000) + 200000;
-		circuitcode = (integer)llFrand(100000) + 100000;
-		
-		key agentid = vcCreateAccount("Login", "Test");
-		key controlagentid = vcCreateAccount("Login", "Control");
-		
-		vcontrolagent = vcLoginAgent(controlcircuitcode, 
-				REGION_ID, 
-				controlagentid,
-				llGenerateKey(),
-				llGenerateKey(),
-				"Test Viewer",
-				"Test Viewer",
-				llMD5String(llGenerateKey(), 0),
-				llMD5String(llGenerateKey(), 0),
-				TELEPORT_FLAGS_VIALOGIN,
-				<128, 128, 23>,
-				<1, 0, 0>);
-				
-		if(!vcontrolagent)
-		{
-			llSay(PUBLIC_CHANNEL, "Login failed");
-			_test_Shutdown();
-			return;
-		}
-		
-		vagent = vcLoginAgent(circuitcode, 
-				REGION_ID, 
-				agentid,
-				llGenerateKey(),
-				llGenerateKey(),
-				"Test Viewer",
-				"Test Viewer",
-				llMD5String(llGenerateKey(), 0),
-				llMD5String(llGenerateKey(), 0),
-				TELEPORT_FLAGS_VIALOGIN,
-				<128, 128, 23>,
-				<1, 0, 0>);
-		if(!vagent)
-		{
-			vcontrolagent.Logout();
-			llSay(PUBLIC_CHANNEL, "Login failed");
-			_test_Shutdown();
-			return;
-		}
-	}
-	
-	regionhandshake_received(agentinfo agent, key regionid, regionhandshakedata handshakedata)
-	{
-		llSay(PUBLIC_CHANNEL, "Sending CompleteAgentMovement");
-		if(agent.AgentID == vagent.AgentID)
-		{
-			vagent.SendCompleteAgentMovement();
-		}
-		else if(agent.AgentID == vcontrolagent.AgentID)
-		{
-			vcontrolagent.SendCompleteAgentMovement();
-		}
-		llSetTimerEvent(2);
-	}
-	
-	timer()
-	{
-		llSetTimerEvent(0);
-		state logouttest;
-	}
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Logging in agent");
+        _test_Result(FALSE);
+        controlcircuitcode = (integer)llFrand(100000) + 200000;
+        circuitcode = (integer)llFrand(100000) + 100000;
+        
+        key agentid = vcCreateAccount("Login", "Test");
+        key controlagentid = vcCreateAccount("Login", "Control");
+        
+        vcontrolagent = vcLoginAgent(controlcircuitcode, 
+                REGION_ID, 
+                controlagentid,
+                llGenerateKey(),
+                llGenerateKey(),
+                "Test Viewer",
+                "Test Viewer",
+                llMD5String(llGenerateKey(), 0),
+                llMD5String(llGenerateKey(), 0),
+                TELEPORT_FLAGS_VIALOGIN,
+                <128, 128, 23>,
+                <1, 0, 0>);
+                
+        if(!vcontrolagent)
+        {
+            llSay(PUBLIC_CHANNEL, "Login failed");
+            _test_Shutdown();
+            return;
+        }
+        
+        vagent = vcLoginAgent(circuitcode, 
+                REGION_ID, 
+                agentid,
+                llGenerateKey(),
+                llGenerateKey(),
+                "Test Viewer",
+                "Test Viewer",
+                llMD5String(llGenerateKey(), 0),
+                llMD5String(llGenerateKey(), 0),
+                TELEPORT_FLAGS_VIALOGIN,
+                <128, 128, 23>,
+                <1, 0, 0>);
+        if(!vagent)
+        {
+            vcontrolagent.Logout();
+            llSay(PUBLIC_CHANNEL, "Login failed");
+            _test_Shutdown();
+            return;
+        }
+    }
+    
+    regionhandshake_received(agentinfo agent, key regionid, regionhandshakedata handshakedata)
+    {
+        llSay(PUBLIC_CHANNEL, "Sending CompleteAgentMovement");
+        if(agent.AgentID == vagent.AgentID)
+        {
+            vagent.SendCompleteAgentMovement();
+        }
+        else if(agent.AgentID == vcontrolagent.AgentID)
+        {
+            vcontrolagent.SendCompleteAgentMovement();
+        }
+        llSetTimerEvent(2);
+    }
+    
+    timer()
+    {
+        llSetTimerEvent(0);
+        state logouttest;
+    }
 }
 
 state imtest
@@ -97,16 +97,16 @@ state imtest
         vagent.SendInstantMessage(FALSE, vcontrolagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_MESSAGE_FROM_AGENT, test_session, 10, "Login Test", "Message", ByteArray(0));
     }
     
-	timer()
-	{
+    timer()
+    {
         if(msgcount == 0)
         {
             llSay(PUBLIC_CHANNEL, "ImprovedInstanceMessage not received");
             result = FALSE;
         }
-		llSetTimerEvent(0);
-		state imtest2;
-	}
+        llSetTimerEvent(0);
+        state imtest2;
+    }
     
     improvedinstantmessage_received(
         agentinfo agent, 
@@ -199,16 +199,16 @@ state imtest2
         vcontrolagent.SendInstantMessage(FALSE, vagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_MESSAGE_FROM_AGENT, test_session, 15, "Login Control", "Message", ByteArray(0));
     }
     
-	timer()
-	{
+    timer()
+    {
         if(msgcount == 0)
         {
             llSay(PUBLIC_CHANNEL, "ImprovedInstanceMessage not received");
             result = FALSE;
         }
-		llSetTimerEvent(0);
-		state logouttest;
-	}
+        llSetTimerEvent(0);
+        state logouttest;
+    }
     
     improvedinstantmessage_received(
         agentinfo agent, 
@@ -291,43 +291,44 @@ state imtest2
 
 state logouttest
 {
-	state_entry()
-	{
-		llSay(PUBLIC_CHANNEL, "Requesting logout for Login Test");
-		llSetTimerEvent(5);
-		vagent.Logout();
-	}
-	
-	logoutreply_received(agentinfo agent)
-	{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Requesting logout for Login Test");
+        llSetTimerEvent(5);
+        vagent.Logout();
+    }
+    
+    logoutreply_received(agentinfo agent)
+    {
 
-		llSetTimerEvent(1);
-	}
-	
-	timer()
-	{
-		state logoutcontrol;
-	}
+        llSetTimerEvent(1);
+    }
+    
+    timer()
+    {
+        state logoutcontrol;
+    }
 }
 
 state logoutcontrol
 {
-	state_entry()
-	{
-		llSay(PUBLIC_CHANNEL, "Requesting logout for Login Control");
-		llSetTimerEvent(1);
-		vcontrolagent.Logout();
-	}
-	
-	logoutreply_received(agentinfo agent)
-	{
-		llSay(PUBLIC_CHANNEL, "Logout confirmed");
-		_test_Result(result);
-		llSetTimerEvent(1);
-	}
-	
-	timer()
-	{
-		_test_Shutdown();
-	}
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Requesting logout for Login Control");
+        llSetTimerEvent(1);
+        vcontrolagent.Logout();
+    }
+    
+    logoutreply_received(agentinfo agent)
+    {
+        llSay(PUBLIC_CHANNEL, "Logout confirmed");
+        _test_Result(result);
+        llSetTimerEvent(1);
+    }
+    
+    timer()
+    {
+        llSetTimerEvent(0);
+        _test_Shutdown();
+    }
 }
