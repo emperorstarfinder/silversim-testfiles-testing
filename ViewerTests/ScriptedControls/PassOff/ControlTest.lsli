@@ -127,6 +127,7 @@ state risingedge
     {
         llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " rising edge");
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, TESTING_CONTROL_FLAG, 0);
+        llSetTimerEvent(1);
     }
     
     control(key id, integer level, integer edge)
@@ -170,6 +171,7 @@ state levelone
     {
         llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " level one");
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, TESTING_CONTROL_FLAG, 0);
+        llSetTimerEvent(1);
     }
     
     control(key id, integer level, integer edge)
@@ -194,7 +196,7 @@ state levelone
         {
             llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " flag not cleared for agent");
         }
-        state logout;
+        state fallingedge;
     }
     
     timer()
@@ -213,6 +215,7 @@ state fallingedge
     {
         llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " falling edge");
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
+        llSetTimerEvent(1);
     }
     
     control(key id, integer level, integer edge)
@@ -257,6 +260,7 @@ state levelzero
     {
         llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " level zero");
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
+        llSetTimerEvent(1);
     }
     
     control(key id, integer level, integer edge)
