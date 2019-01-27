@@ -1,0 +1,359 @@
+vieweragent vagent;
+key agentid;
+integer result = TRUE;
+
+default
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Logging in agent");
+        
+        agentid = llGetOwner();
+        
+        vagent = vcLoginAgent((integer)llFrand(100000) + 100000, 
+                "39702429-6b4f-4333-bac2-cd7ea688753e", 
+                agentid,
+                llGenerateKey(),
+                llGenerateKey(),
+                "Test Viewer",
+                "Test Viewer",
+                llMD5String(llGenerateKey(), 0),
+                llMD5String(llGenerateKey(), 0),
+                TELEPORT_FLAGS_VIALOGIN,
+                <128, 128, 23>,
+                <1, 0, 0>);
+        if(!vagent)
+        {
+            llSay(PUBLIC_CHANNEL, "Login failed");
+            _test_Shutdown();
+            return;
+        }
+    }
+    
+    regionhandshake_received(agentinfo agent, key regionid, regionhandshakedata handshakedata)
+    {
+        llSay(PUBLIC_CHANNEL, "Sending CompleteAgentMovement");
+        vagent.SendCompleteAgentMovement();
+        state acquireperms;
+    }
+}
+
+state acquireperms
+{
+    integer received = FALSE;
+    integer received2 = FALSE;
+    state_entry()
+    {
+        llSetTimerEvent(1);
+        llRequestPermissions(agentid, PERMISSION_TAKE_CONTROLS);
+    }
+    
+    scriptquestion_received(agentinfo agent, key objectid, key itemid, string objectname, string objectowner, integer questions, key experienceid)
+    {
+        vagent.SendScriptAnswerYes(objectid, itemid, questions);
+    }
+    
+    run_time_permissions(integer perms)
+    {
+        received2 = TRUE;
+        llSetTimerEvent(0);
+        state takecontrols;
+    }
+    
+    timer()
+    {
+        if(!received)
+        {
+            llSay(PUBLIC_CHANNEL, "Not received the scriptquestion dialog");
+            result = FALSE;
+        }
+        if(!received2)
+        {
+            llSay(PUBLIC_CHANNEL, "Not received the perm response");
+            result = FALSE;
+        }
+        state logout;
+    }
+}
+
+state takecontrols
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Taking " + TESTING_CONTROL_FLAG_NAME);
+        llTakeControls(TESTING_CONTROL_FLAG, TRUE, FALSE);
+        llSetTimerEvent(1);
+    }
+    
+    scriptcontrolchange_received(agentinfo agent, scriptcontrolchangedatalist controllist)
+    {
+        foreach(controldata in controllist)
+        {
+            if(controldata.Controls & TESTING_CONTROL_FLAG)
+            {
+                llSetTimerEvent(0);
+                if(!controldata.TakeControls)
+                {
+                    llSay(PUBLIC_CHANNEL, "llTakeControls accept not notified to viewer");
+                    result = FALSE;
+                }
+                if(!controldata.PassToAgent)
+                {
+                    llSay(PUBLIC_CHANNEL, "llTakeControls pass not notified to viewer");
+                    result = FALSE;
+                }
+                state logout;
+            }
+        }
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "scriptcontrolchange not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+state risingedge
+{
+    integer received = FALSE;
+    
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " rising edge");
+        vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, TESTING_CONTROL_FLAG, 0);
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+        llSetTimerEvent(0);
+        if(id != agentid)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Wrong agent id");
+        }
+        if(!(edge & TESTING_CONTROL_FLAG))
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " edge");
+        }
+        if(!(level & TESTING_CONTROL_FLAG))
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " set");
+        }
+        if(!(vagent.GetActiveAgentControlFlags() & TESTING_CONTROL_FLAG))
+        {
+            llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " flag not set for agent");
+        }
+        state levelone;
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "control not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+state levelone
+{
+    integer received = FALSE;
+    
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " level one");
+        vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, TESTING_CONTROL_FLAG, 0);
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+        llSetTimerEvent(0);
+        if(id != agentid)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Wrong agent id");
+        }
+        if(edge & TESTING_CONTROL_FLAG)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Received " + TESTING_CONTROL_FLAG_NAME + " edge");
+        }
+        if(!(level & TESTING_CONTROL_FLAG))
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " set");
+        }
+        if(!(vagent.GetActiveAgentControlFlags() & TESTING_CONTROL_FLAG))
+        {
+            llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " flag not set for agent");
+        }
+        state logout;
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "control not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+state fallingedge
+{
+    integer received = FALSE;
+    
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " falling edge");
+        vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+        llSetTimerEvent(0);
+        if(id != agentid)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Wrong agent id");
+        }
+        if(!(edge & TESTING_CONTROL_FLAG))
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " edge");
+        }
+        if(!(level & TESTING_CONTROL_FLAG))
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " cleared");
+        }
+        if(vagent.GetActiveAgentControlFlags() & TESTING_CONTROL_FLAG)
+        {
+            llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " flag not cleared for agent");
+        }
+        state levelzero;
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "control not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+
+state levelzero
+{
+    integer received = FALSE;
+    
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " level zero");
+        vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, llGetPos(), ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+        llSetTimerEvent(0);
+        if(id != agentid)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Wrong agent id");
+        }
+        if(edge & TESTING_CONTROL_FLAG)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Received " + TESTING_CONTROL_FLAG_NAME + " edge");
+        }
+        if(level & TESTING_CONTROL_FLAG)
+        {
+            result = FALSE;
+            llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " cleared");
+        }
+        if(vagent.GetActiveAgentControlFlags() & TESTING_CONTROL_FLAG)
+        {
+            llSay(PUBLIC_CHANNEL, TESTING_CONTROL_FLAG_NAME + " flag not cleared for agent");
+        }
+        state releasecontrols;
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "control not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+state releasecontrols
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Releasing " + TESTING_CONTROL_FLAG_NAME);
+        llReleaseControls();
+        llSetTimerEvent(1);
+    }
+    
+    scriptcontrolchange_received(agentinfo agent, scriptcontrolchangedatalist controllist)
+    {
+        foreach(controldata in controllist)
+        {
+            if(controldata.Controls & TESTING_CONTROL_FLAG)
+            {
+                llSetTimerEvent(0);
+                if(controldata.TakeControls)
+                {
+                    llSay(PUBLIC_CHANNEL, "llReleaseControls not released");
+                    result = FALSE;
+                }
+                if(!controldata.PassToAgent)
+                {
+                    llSay(PUBLIC_CHANNEL, "llReleaseControls not released");
+                    result = FALSE;
+                }
+                state logout;
+            }
+        }
+    }
+    
+    control(key id, integer level, integer edge)
+    {
+    }
+    
+    timer()
+    {
+        llSay(PUBLIC_CHANNEL, "scriptcontrolchange not received");
+        result = FALSE;
+        state logout;
+    }
+}
+
+state logout
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Requesting logout");
+        llSetTimerEvent(1);
+        vagent.Logout();
+    }
+    
+    logoutreply_received(agentinfo agent)
+    {
+        llSay(PUBLIC_CHANNEL, "Logout confirmed");
+        _test_Result(result);
+        llSetTimerEvent(1);
+    }
+    
+    timer()
+    {
+        llSetTimerEvent(0);
+        _test_Shutdown();
+    }
+}
