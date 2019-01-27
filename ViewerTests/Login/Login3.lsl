@@ -287,6 +287,7 @@ state logoutcontrol
 	
 	timer()
 	{
+        llSetTimerEvent(0);
 		_test_Shutdown();
 	}
 }
