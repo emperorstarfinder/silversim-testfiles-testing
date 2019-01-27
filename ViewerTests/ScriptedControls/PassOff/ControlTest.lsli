@@ -102,7 +102,7 @@ state takecontrols
                     llSay(PUBLIC_CHANNEL, "llTakeControls pass not notified to viewer");
                     result = FALSE;
                 }
-                state logout;
+                state risingedge;
             }
         }
     }
@@ -231,7 +231,7 @@ state fallingedge
             result = FALSE;
             llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " edge");
         }
-        if(!(level & TESTING_CONTROL_FLAG))
+        if(level & TESTING_CONTROL_FLAG)
         {
             result = FALSE;
             llSay(PUBLIC_CHANNEL, "Not received " + TESTING_CONTROL_FLAG_NAME + " cleared");
@@ -307,11 +307,11 @@ state releasecontrols
     
     scriptcontrolchange_received(agentinfo agent, scriptcontrolchangedatalist controllist)
     {
+        llSetTimerEvent(0);
         foreach(controldata in controllist)
         {
             if(controldata.Controls & TESTING_CONTROL_FLAG)
             {
-                llSetTimerEvent(0);
                 if(controldata.TakeControls)
                 {
                     llSay(PUBLIC_CHANNEL, "llReleaseControls not released");
@@ -322,9 +322,9 @@ state releasecontrols
                     llSay(PUBLIC_CHANNEL, "llReleaseControls not released");
                     result = FALSE;
                 }
-                state logout;
             }
         }
+        state logout;
     }
     
     control(key id, integer level, integer edge)
