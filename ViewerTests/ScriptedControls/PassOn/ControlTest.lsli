@@ -81,7 +81,7 @@ state takecontrols
     state_entry()
     {
         llSay(PUBLIC_CHANNEL, "Taking " + TESTING_CONTROL_FLAG_NAME);
-        llTakeControls(TESTING_CONTROL_FLAG, TRUE, FALSE);
+        llTakeControls(TESTING_CONTROL_FLAG, TRUE, TRUE);
         llSetTimerEvent(1);
     }
     
