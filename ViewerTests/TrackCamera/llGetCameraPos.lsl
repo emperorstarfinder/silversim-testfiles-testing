@@ -49,7 +49,7 @@ state trackcamerapos_x
     vector camerapos = <128, 128, 128>;
     state_entry()
     {
-        llSay(PUBLIC_CHANNEL, "Testing x-position");
+        llSay(PUBLIC_CHANNEL, "Testing x-position " + camerapos.x);
         llSetTimerEvent(0.2);
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
     }
@@ -67,6 +67,7 @@ state trackcamerapos_x
         if(camerapos.x < 128.01)
         {
             camerapos.x += 0.001;
+            llSay(PUBLIC_CHANNEL, "Testing x-position " + camerapos.x);
             vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
         }
         else
@@ -81,7 +82,7 @@ state trackcamerapos_y
     vector camerapos = <128, 128, 128>;
     state_entry()
     {
-        llSay(PUBLIC_CHANNEL, "Testing y-position");
+        llSay(PUBLIC_CHANNEL, "Testing y-position " + camerapos.y);
         llSetTimerEvent(0.2);
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
     }
@@ -99,6 +100,7 @@ state trackcamerapos_y
         if(camerapos.y < 128.01)
         {
             camerapos.y += 0.001;
+            llSay(PUBLIC_CHANNEL, "Testing y-position " + camerapos.y);
             vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
         }
         else
@@ -114,7 +116,7 @@ state trackcamerapos_z
     vector camerapos = <128, 128, 128>;
     state_entry()
     {
-        llSay(PUBLIC_CHANNEL, "Testing z-position");
+        llSay(PUBLIC_CHANNEL, "Testing z-position " + camerapos.z);
         llSetTimerEvent(0.2);
         vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
     }
@@ -132,6 +134,7 @@ state trackcamerapos_z
         if(camerapos.z < 128.01)
         {
             camerapos.z += 0.001;
+            llSay(PUBLIC_CHANNEL, "Testing z-position " + camerapos.z);
             vagent.SendAgentUpdate(ZERO_ROTATION, ZERO_ROTATION, 0, camerapos, ZERO_VECTOR, ZERO_VECTOR, ZERO_VECTOR, 100, 0, 0);
         }
         else
