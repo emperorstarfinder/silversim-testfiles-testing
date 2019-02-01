@@ -6,15 +6,29 @@ default
     state_entry()
     {
         integer result = TRUE;
+        key otheragentid = llGenerateKey();
+        _test_AddAvatarName(otheragentid, "List", "Test");
         
-        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD");
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD: Estate Owner");
         if(llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_ADD, llGetOwner()))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE");
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: Estate Owner");
         if(!llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, llGetOwner()))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD: Other agent");
+        if(!llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_ADD, otheragentid))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: Other agent");
+        if(!llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, otheragentid))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
