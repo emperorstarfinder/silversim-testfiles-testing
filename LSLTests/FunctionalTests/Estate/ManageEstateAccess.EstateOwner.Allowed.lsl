@@ -7,14 +7,40 @@ default
     {
         integer result = TRUE;
         
-        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_ADD");
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_ADD: Estate Owner");
         if(!llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_ADD, llGetOwner()))
         {
+            llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_REMOVE");
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_REMOVE: Estate Owner");
         if(!llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_REMOVE, llGetOwner()))
         {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_ADD: Wrong agent");
+        if(llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_ADD, llGenerateKey()))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_REMOVE: Wrong agent");
+        if(llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_REMOVE, llGenerateKey()))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_ADD: NULL_KEY");
+        if(llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_ADD, NULL_KEY))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_ALLOWED_AGENT_REMOVE: NULL_KEY");
+        if(llManageEstateAccess(ESTATE_ACCESS_ALLOWED_AGENT_REMOVE, NULL_KEY))
+        {
+            llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
         _test_Result(result);
