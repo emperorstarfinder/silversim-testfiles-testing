@@ -86,7 +86,7 @@ state test
         string message,
         bytearray binaryBucket)
     {
-        if(message != "Added group \"List.Test @http://localhost:9300/\" to allowed list for estate \"My Estate\"")
+        if(message != "Added group \"List.Test @localhost:9300\" to allowed list for estate \"My Estate\"")
         {
             llSay(PUBLIC_CHANNEL, "Unexpected message. Got: " + message);
             result = FALSE;
@@ -142,7 +142,7 @@ state test2
         string message,
         bytearray binaryBucket)
     {
-        if(message != "Removed group \"List.Test @http://localhost:9300/\" from allowed list for estate \"My Estate\"")
+        if(message != "Removed group \"List.Test @localhost:9300\" from allowed list for estate \"My Estate\"")
         {
             llSay(PUBLIC_CHANNEL, "Unexpected message. Got: " + message);
             result = FALSE;
