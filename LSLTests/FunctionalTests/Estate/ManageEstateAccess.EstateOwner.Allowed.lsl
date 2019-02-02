@@ -73,7 +73,7 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        allowedlist = _test_GetEstateBannedAgentsList();
+        allowedlist = _test_GetEstateAllowedAgentsList();
         if(allowedlist.Length != 0)
         {
             llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
@@ -85,7 +85,7 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        allowedlist = _test_GetEstateBannedAgentsList();
+        allowedlist = _test_GetEstateAllowedAgentsList();
         if(allowedlist.Length != 0)
         {
             llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
@@ -97,7 +97,7 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        allowedlist = _test_GetEstateBannedAgentsList();
+        allowedlist = _test_GetEstateAllowedAgentsList();
         if(allowedlist.Length != 0)
         {
             llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
@@ -109,7 +109,7 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
-        allowedlist = _test_GetEstateBannedAgentsList();
+        allowedlist = _test_GetEstateAllowedAgentsList();
         if(allowedlist.Length != 0)
         {
             llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
