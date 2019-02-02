@@ -15,10 +15,22 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
+        list allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
+            result = FALSE;
+        }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: Estate Owner");
         if(!llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, llGetOwner()))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
             result = FALSE;
         }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD: Other agent");
@@ -27,10 +39,27 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 2)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
+            result = FALSE;
+        }
+        else if(allowedlist[0] != otheragentid)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Agent not added");
+            result = FALSE;
+        }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: Other agent");
         if(!llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, otheragentid))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
             result = FALSE;
         }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD: Wrong agent");
@@ -39,10 +68,22 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
+            result = FALSE;
+        }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: Wrong agent");
         if(llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, llGenerateKey()))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
             result = FALSE;
         }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_ADD: NULL_KEY");
@@ -51,10 +92,22 @@ default
             llSay(PUBLIC_CHANNEL, "Fail");
             result = FALSE;
         }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
+            result = FALSE;
+        }
         llSay(PUBLIC_CHANNEL, "ESTATE_ACCESS_BANNED_AGENT_REMOVE: NULL_KEY");
         if(llManageEstateAccess(ESTATE_ACCESS_BANNED_AGENT_REMOVE, NULL_KEY))
         {
             llSay(PUBLIC_CHANNEL, "Fail");
+            result = FALSE;
+        }
+        allowedlist = _test_GetEstateBannedAgentsList();
+        if(allowedlist.Length != 0)
+        {
+            llSay(PUBLIC_CHANNEL, "Fail: Unexpected list length");
             result = FALSE;
         }
         _test_Result(result);
