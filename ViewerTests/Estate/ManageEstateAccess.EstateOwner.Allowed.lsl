@@ -96,6 +96,7 @@ state test
     
     timer()
     {
+        llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "timer()");
         if(msgcount == 0)
         {
@@ -152,6 +153,7 @@ state test2
     
     timer()
     {
+        llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "timer()");
         if(msgcount == 0)
         {
@@ -214,6 +216,7 @@ state test3
     
     timer()
     {
+        llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "timer()");
         if(msgcount == 0)
         {
@@ -270,6 +273,7 @@ state test4
     
     timer()
     {
+        llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "timer()");
         if(msgcount == 0)
         {
@@ -358,6 +362,7 @@ state test5
     
     timer()
     {
+        llSetTimerEvent(0);
         llSay(PUBLIC_CHANNEL, "timer()");
         if(msgcount != 0)
         {
