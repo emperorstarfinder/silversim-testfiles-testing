@@ -178,18 +178,20 @@ state giveinventory
             success = FALSE;
         }
         
-        integer baseperm = vcontrolagent.GetInventoryItemBasePerm(inventoryid);
-        integer currentperm = vcontrolagent.GetInventoryItemOwnerPerm(inventoryid);
-        integer groupperm = vcontrolagent.GetInventoryItemGroupPerm(inventoryid);
-        integer everyoneperm = vcontrolagent.GetInventoryItemEveryOnePerm(inventoryid);
-        integer nextownerperm = vcontrolagent.GetInventoryItemNextOwnerPerm(inventoryid);
-        if((baseperm & PERM_MOVE) == 0)
+        agentinventory invaccess = vcontrolagent.GetLocalAgentInventory();
+        agentinventoryitem item = invaccess.Items[inventoryid];
+        if(!item)
         {
             llSay(PUBLIC_CHANNEL, "Item missing");
             success = FALSE;
         }
         else
         {
+            integer baseperm = item.BasePermissions;
+            integer currentperm = item.CurrentPermissions;
+            integer groupperm = item.GroupPermissions;
+            integer everyoneperm = item.EveryOnePermissions;
+            integer nextownerperm = item.NextOwnerPermissions;
             if((groupperm & PERM_MOVE) != 0)
             {
                 llSay(PUBLIC_CHANNEL, "GroupPerms: Mismatch on " + inventorynames[idx] + ": cur=" + decodeperms(everyoneperm));
