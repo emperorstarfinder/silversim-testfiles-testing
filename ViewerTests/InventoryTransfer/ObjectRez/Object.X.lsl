@@ -7,6 +7,10 @@ const integer ASSET_TYPE = AssetType.Object;
 const integer INVENTORY_TYPE = InventoryType.Object;
 const key ASSET_ID = "2edcee9f-fda5-484c-acb1-21d4182cc2b7";
 const integer CHECK_FLAGS = 0xF1100;
+key rezzableinventoryid;
+integer rezzableidx = 0;
+key rezzedobjectid;
+integer rezzedobjectlocalid;
 
 vieweragent vagent;
 vieweragent vcontrolagent;
@@ -115,7 +119,7 @@ state inventorysetup
                 ASSET_ID, 
                 1048576, 
                 PERM_ALL | PERM_EXPORT, 
-                PERM_COPY | PERM_MODIFY | PERM_TRANSFER | PERM_MOVE, 
+                PERM_COPY | PERM_MODIFY | PERM_TRANSFER | PERM_MOVE | PERM_EXPORT, 
                 0, 
                 everyonemask, 
                 PERM_COPY | PERM_MODIFY | PERM_TRANSFER | PERM_MOVE | everyonemask);
@@ -143,12 +147,10 @@ string decodeperms(integer flags)
 
 state giveinventory
 {
-    integer idx = 0;
-    
     state_entry()
     {
-        llSay(PUBLIC_CHANNEL, "Sending " + inventorynames[idx]);
-        vagent.SendInstantMessage(FALSE, vcontrolagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_INVENTORY_OFFERED, llGenerateKey(), 10, "Inventory Sender", inventorynames[idx], vcBuildInventoryOfferedData(ASSET_TYPE, inventoryids[idx]));
+        llSay(PUBLIC_CHANNEL, "Sending " + inventorynames[rezzableidx]);
+        vagent.SendInstantMessage(FALSE, vcontrolagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_INVENTORY_OFFERED, llGenerateKey(), 10, "Inventory Sender", inventorynames[rezzableidx], vcBuildInventoryOfferedData(ASSET_TYPE, inventoryids[rezzableidx]));
     }
     
     improvedinstantmessage_received(
@@ -175,13 +177,13 @@ state giveinventory
         key inventoryid = binarybucket[1,16].ToKey();
         if(assettype != ASSET_TYPE)
         {
-            llSay(PUBLIC_CHANNEL, "AssetType: Mismatch on " + inventorynames[idx] + ": " + assettype);
+            llSay(PUBLIC_CHANNEL, "AssetType: Mismatch on " + inventorynames[rezzableidx] + ": " + assettype);
             success = FALSE;
         }
         
-        if(message != inventorynames[idx])
+        if(message != inventorynames[rezzableidx])
         {
-            llSay(PUBLIC_CHANNEL, "Message: Mismatch on " + inventorynames[idx] + ": " + message);
+            llSay(PUBLIC_CHANNEL, "Message: Mismatch on " + inventorynames[rezzableidx] + ": " + message);
             success = FALSE;
         }
         
@@ -199,43 +201,141 @@ state giveinventory
             integer groupperm = item.GroupPermissions;
             integer everyoneperm = item.EveryOnePermissions;
             integer nextownerperm = item.NextOwnerPermissions;
-            integer expectedperm = inventorypermmasks[idx];
+            integer expectedperm = inventorypermmasks[rezzableidx];
         
             if((item.Flags & CHECK_FLAGS) != CHECK_FLAGS)
             {
-                llSay(PUBLIC_CHANNEL, "Flags: Mismatch on " + inventorynames[idx] + ": cur=" + (item.Flags & CHECK_FLAGS) + " exp=" + CHECK_FLAGS);
+                llSay(PUBLIC_CHANNEL, "Flags: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + (item.Flags & CHECK_FLAGS) + " exp=" + CHECK_FLAGS);
                 success = FALSE;
             }
             
             if((baseperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
             {
-                llSay(PUBLIC_CHANNEL, "BasePerms: Mismatch on " + inventorynames[idx] + ": cur=" + decodeperms(baseperm) + " exp=" + decodeperms(expectedperm));
+                llSay(PUBLIC_CHANNEL, "BasePerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(baseperm) + " exp=" + decodeperms(expectedperm));
                 success = FALSE;
             }
             
             if((everyoneperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
             {
-                llSay(PUBLIC_CHANNEL, "EveryOnePerms: Mismatch on " + inventorynames[idx] + ": cur=" + decodeperms(everyoneperm));
+                llSay(PUBLIC_CHANNEL, "EveryOnePerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(everyoneperm));
                 success = FALSE;
             }
             
             if((nextownerperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
             {
-                llSay(PUBLIC_CHANNEL, "NextOwnerPerms: Mismatch on " + inventorynames[idx] + ": cur=" + decodeperms(nextownerperm) + " exp=" + decodeperms(expectedperm));
+                llSay(PUBLIC_CHANNEL, "NextOwnerPerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(nextownerperm) + " exp=" + decodeperms(expectedperm));
                 success = FALSE;
             }
         }
         
-        if(++idx < inventoryids.Length)
+        if(item)
         {
-            llSay(PUBLIC_CHANNEL, "Sending " + inventorynames[idx]);
-            vagent.SendInstantMessage(FALSE, vcontrolagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_INVENTORY_OFFERED, llGenerateKey(), 10, "Inventory Sender", inventorynames[idx], vcBuildInventoryOfferedData(ASSET_TYPE, inventoryids[idx]));
+            rezzableinventoryid = inventoryid;
+            state rezinventory;
+        }
+        else if(++rezzableidx < inventoryids.Length)
+        {
+            llSay(PUBLIC_CHANNEL, "Sending " + inventorynames[rezzableidx]);
+            vagent.SendInstantMessage(FALSE, vcontrolagent.AgentID, 1, REGION_ID, llGetPos(), FALSE, DIALOG_INVENTORY_OFFERED, llGenerateKey(), 10, "Inventory Sender", inventorynames[rezzableidx], vcBuildInventoryOfferedData(ASSET_TYPE, inventoryids[rezzableidx]));
         }
         else
         {
             state logouttest;
         }
     }    
+}
+
+state rezinventory
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "Rezzing " + inventorynames[rezzableidx]);
+        rayrezobjectdata data;
+        data.RayStart = <128, 128, 23>;
+        data.RayEnd = <128, 128, 22>;
+        vcontrolagent.SendRezObject(NULL_KEY, data, rezzableinventoryid);
+    }
+
+    objectupdate_received(agentinfo agent, float timedilation, objectdatalist objectlist)
+    {
+        if(agent.AgentID == vcontrolagent.AgentID)
+        {
+            llSay(PUBLIC_CHANNEL, "Rezzed " + inventorynames[rezzableidx]);
+            foreach(objdata in objectlist)
+            {
+                key id = objdata.FullID;
+                if(id != vagent.AgentID && id != vcontrolagent.AgentID)
+                {
+                    rezzedobjectid = id;
+                    rezzedobjectlocalid = objdata.LocalID;
+                    state requestperms;
+                }
+            }
+        }
+    }
+}
+
+state requestperms
+{
+    state_entry()
+    {
+        vcontrolagent.SendRequestObjectPropertiesFamily(0, rezzedobjectid);
+    }
+    
+    objectpropertiesfamily_received(agentinfo agent, integer requestFlags, key objectid, objectpropertiesfamilydata data)
+    {
+        integer baseperm = data.BaseMask;
+        integer currentperm = data.OwnerMask;
+        integer groupperm = data.GroupMask;
+        integer everyoneperm = data.EveryoneMask;
+        integer nextownerperm = data.NextOwnerMask;
+        integer expectedperm = inventorypermmasks[rezzableidx];
+
+        if((baseperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
+        {
+            llSay(PUBLIC_CHANNEL, "BasePerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(baseperm) + " exp=" + decodeperms(expectedperm));
+            success = FALSE;
+        }
+        
+        if((everyoneperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
+        {
+            llSay(PUBLIC_CHANNEL, "EveryOnePerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(everyoneperm));
+            success = FALSE;
+        }
+        
+        if((nextownerperm & PERM_EXPORT) != (expectedperm & PERM_EXPORT))
+        {
+            llSay(PUBLIC_CHANNEL, "NextOwnerPerms: Mismatch on " + inventorynames[rezzableidx] + ": cur=" + decodeperms(nextownerperm) + " exp=" + decodeperms(expectedperm));
+            success = FALSE;
+        }
+        
+        state derez;
+    }    
+}
+
+state derez
+{
+    state_entry()
+    {
+        llSay(PUBLIC_CHANNEL, "De-Rezzing " + inventorynames[rezzableidx]);
+        vcontrolagent.SendObjectDelete(TRUE, [rezzedobjectlocalid]);
+    }
+    
+    killobject_received(agentinfo agent, list killedobjects)
+    {
+        if(llListFindList(killedobjects, rezzedobjectlocalid) >= 0)
+        {
+            llSay(PUBLIC_CHANNEL, "De-Rezzed " + inventorynames[rezzableidx]);
+            if(++rezzableidx < inventoryids.Length)
+            {
+                state giveinventory;
+            }
+            else
+            {
+                state logouttest;
+            }
+        }
+    }
 }
 
 state logouttest

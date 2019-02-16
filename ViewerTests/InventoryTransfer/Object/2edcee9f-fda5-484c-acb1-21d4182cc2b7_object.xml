@@ -173,7 +173,7 @@
     <LastOwnerID>
       <UUID>00000000-0000-0000-0000-000000000000</UUID>
     </LastOwnerID>
-    <BaseMask>581632</BaseMask>
+    <BaseMask>647168</BaseMask>
     <OwnerMask>2147483647</OwnerMask>
     <GroupMask>0</GroupMask>
     <EveryoneMask>0</EveryoneMask>
