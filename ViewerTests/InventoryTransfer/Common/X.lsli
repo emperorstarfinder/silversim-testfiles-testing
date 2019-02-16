@@ -109,7 +109,7 @@ state inventorysetup
                 ASSET_TYPE, 
                 ASSET_ID, 
                 0, 
-                PERM_ALL, 
+                PERM_ALL | PERM_EXPORT, 
                 PERM_COPY | PERM_MODIFY | PERM_TRANSFER | PERM_MOVE, 
                 0, 
                 everyonemask, 
