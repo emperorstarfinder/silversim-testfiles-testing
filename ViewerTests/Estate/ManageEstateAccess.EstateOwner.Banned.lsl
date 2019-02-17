@@ -63,7 +63,7 @@ state test
             result = FALSE;
         }
     
-        llSetTimerEvent(1.0);
+        llSetTimerEvent(2.0);
     }
     
     improvedinstantmessage_received(
@@ -115,7 +115,7 @@ state test2
             result = FALSE;
         }
     
-        llSetTimerEvent(1.0);
+        llSetTimerEvent(2.0);
     }
     
     improvedinstantmessage_received(
@@ -178,7 +178,7 @@ state test3
             result = FALSE;
         }
     
-        llSetTimerEvent(1.0);
+        llSetTimerEvent(2.0);
     }
     
     improvedinstantmessage_received(
@@ -235,7 +235,7 @@ state test4
             result = FALSE;
         }
     
-        llSetTimerEvent(1.0);
+        llSetTimerEvent(2.0);
     }
     
     improvedinstantmessage_received(
@@ -329,7 +329,7 @@ state test5
             result = FALSE;
         }
         
-        llSetTimerEvent(1.0);
+        llSetTimerEvent(2.0);
     }
     
     improvedinstantmessage_received(
